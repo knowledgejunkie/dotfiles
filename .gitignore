@@ -1,0 +1,29 @@
+# Always-ignore extensions
+*~
+*.diff
+*.err
+*.log
+*.orig
+*.pyc
+*.rej
+*.sass-cache
+*.sw?
+*.vi
+
+# Always ignore files
+TAGS
+tags
+viminfo
+
+# Specific ignores
+.qt/.*.lock
+.vim/custom-dictionary.utf-8*
+.vim/plugged/
+.vim/tags/*.ctags
+.vim/tmp/
+.xmonad/history
+.xmonad/xmonad-i386-linux
+.xmonad/xmonad-x86_64-linux
+.xmonad/xmonad.errors
+.xmonad/xmonad.hi
+.xmonad/xmonad.o

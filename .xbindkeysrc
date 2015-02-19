@@ -1,0 +1,22 @@
+# Make the Zoom slider work on a Microsoft Natural Ergonomic Keyboard 4000
+# Details at http://ubuntuforums.org/showthread.php?t=229559&page=18
+#
+# We need to update the stock Debian udev rule '95-keymaps.rules' by placing an
+# override rule in /etc/udev/rules.d to remap the slider's >255 keycodes to
+# keycodes <255 so that X receives them (we choose keycodes for F23 and F24)
+#
+# For testing/debugging key assignments, the following packages should be
+# installed:
+#
+#   aptitude install x11-utils evtest
+#
+# For this .xbindkeysrc file to work, we need to install:
+#
+#   aptitude install xbindkeys xdotool
+
+
+"xdotool click 4"   # Scroll Up
+c:201
+
+"xdotool click 5"   # Scroll Down
+c:202

@@ -1,0 +1,2 @@
+#!/bin/sh
+zenity --question --text "Switch user?" --title "New login" && gdmflexiserver --new

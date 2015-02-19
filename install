@@ -1,0 +1,103 @@
+#!/bin/bash
+
+# Inspired by https://github.com/necolas/dotfiles/blob/master/bin/dotfiles
+# and https://github.com/kewah/dotfiles/blob/master/install
+
+DOTFILES_DIRECTORY="${HOME}/.dotfiles"
+POWERLINE_FONTS_DIRECTORY="${HOME}/.powerline-fonts"
+PREZTO_DIRECTORY="${HOME}/.zprezto"
+
+link() {
+  #FIXME - backup files before replacing them
+  if [ -e "${HOME}/${2}" ]; then
+      echo "  Cannot create link to ${HOME}/${2} (file already exists)"
+    exit 1
+  fi
+
+  # Create/replace the symlink.
+  ln -fs "${1}" "${HOME}/${2}"
+}
+
+# Clone the upstream Powerline patched fonts repo
+echo "Cloning upstream 'powerline-fonts' repository..."
+git clone https://github.com/powerline/fonts.git "${POWERLINE_FONTS_DIRECTORY}" >/dev/null
+
+# Setup powerline-fonts
+echo "Configuring powerline-fonts..."
+cd ${POWERLINE_FONTS_DIRECTORY}
+./install.sh >/dev/null
+cd ${DOTFILES_DIRECTORY}
+
+# Clone the upstream Prezto repo
+echo "Cloning upstream 'prezto' repository..."
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${PREZTO_DIRECTORY}" >/dev/null
+
+# Prezto setup
+echo "Configuring zsh/prezto..."
+link "${DOTFILES_DIRECTORY}/.zlogin"    ".zlogin"
+link "${DOTFILES_DIRECTORY}/.zlogout"   ".zlogout"
+link "${DOTFILES_DIRECTORY}/.zpreztorc" ".zpreztorc"
+link "${DOTFILES_DIRECTORY}/.zprofile"  ".zprofile"
+link "${DOTFILES_DIRECTORY}/.zshenv"    ".zshenv"
+link "${DOTFILES_DIRECTORY}/.zshrc"     ".zshrc"
+
+if [ -e "${HOME}/.zfunctions" ]; then
+  rm -rf "${HOME}/.zfunctions"
+fi
+
+mkdir "${HOME}/.zfunctions"
+
+ln -fs "${DOTFILES_DIRECTORY}/.zprezto/modules/prompt/functions/prompt_knowledgejunkie_setup" "${HOME}/.zfunctions/prompt_knowledgejunkie_setup"
+
+# Vim setup
+
+echo "Configuring vim..."
+
+# Force remove the vim directory if it's already there.
+if [ -e "${HOME}/.vim" ]; then
+  rm -rf "${HOME}/.vim"
+fi
+
+link "${DOTFILES_DIRECTORY}/.vimrc" ".vimrc"
+link "${DOTFILES_DIRECTORY}/.vim"   ".vim"
+
+echo "Configuring xmonad.."
+
+# Force remove the xmonad directory if it's already there.
+if [ -e "${HOME}/.xmonad" ]; then
+  rm -rf "${HOME}/.xmonad"
+fi
+
+link "${DOTFILES_DIRECTORY}/.xmonad" ".xmonad"
+
+# Scripts dir setup (provided .zshrc prepends this dir to $PATH)
+echo "Configuring scripts directory..."
+link "${DOTFILES_DIRECTORY}/bin" "bin"
+#
+# Remaining dotfiles setup
+echo "Configuring remaining dotfiles..."
+link "${DOTFILES_DIRECTORY}/.Xresources"    ".Xresources"
+link "${DOTFILES_DIRECTORY}/.ackrc"         ".ackrc"
+link "${DOTFILES_DIRECTORY}/.bash_aliases"  ".bash_aliases"
+link "${DOTFILES_DIRECTORY}/.ctags"         ".ctags"
+link "${DOTFILES_DIRECTORY}/.editrc"        ".editrc"
+link "${DOTFILES_DIRECTORY}/.gitconfig"     ".gitconfig"
+link "${DOTFILES_DIRECTORY}/.gitignore"     ".gitignore"
+link "${DOTFILES_DIRECTORY}/.gitmessage"    ".gitmessage"
+link "${DOTFILES_DIRECTORY}/.gitmodules"    ".gitmodules"
+link "${DOTFILES_DIRECTORY}/.inputrc"       ".inputrc"
+link "${DOTFILES_DIRECTORY}/.pentadactylrc" ".pentadactylrc"
+link "${DOTFILES_DIRECTORY}/.reportbugrc"   ".reportbugrc"
+link "${DOTFILES_DIRECTORY}/.xbindkeysrc"   ".xbindkeysrc"
+link "${DOTFILES_DIRECTORY}/.xinitrc"       ".xinitrc"
+link "${DOTFILES_DIRECTORY}/.xinitrc.xfce4" ".xinitrc.xfce4"
+
+# Set default shell to Zsh
+echo ""
+echo "Enter password to set zsh as this account's default shell"
+chsh -s /bin/zsh
+
+# Install Vim plugins from within Vim
+echo "Please run :PlugInstall from within vim to complete vim plugin installation"
+echo ""
+echo "Finished!"

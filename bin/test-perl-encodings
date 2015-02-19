@@ -1,0 +1,9 @@
+#!/usr/bin/perl -w
+
+use Encode;
+
+@list = Encode->encodings();
+
+for (@list) {
+    print $_ . "\n";
+}
