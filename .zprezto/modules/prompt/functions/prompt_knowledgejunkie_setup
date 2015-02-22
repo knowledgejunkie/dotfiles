@@ -90,15 +90,14 @@ function prompt_knowledgejunkie_setup {
   zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
   # Set python-info parameters.
-  zstyle ':prezto:module:python' virtualenv '(%v)'
+  zstyle ':prezto:module:python:info:virtualenv' format '(%v)'
 
   # Define prompts.
   PROMPT="
-${_prompt_knowledgejunkie_colors[3]}%n%f on ${_prompt_knowledgejunkie_colors[2]}%m%f in ${_prompt_knowledgejunkie_colors[5]}%~%f "'${vcs_info_msg_0_}'" 
+${_prompt_knowledgejunkie_colors[3]}%n%f on ${_prompt_knowledgejunkie_colors[2]}%m%f in ${_prompt_knowledgejunkie_colors[5]}%~%f "'${vcs_info_msg_0_}'"
 "'$python_info[virtualenv]'"$ "
   RPROMPT='$(battery_charge)'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
 prompt_knowledgejunkie_setup "$@"
-
