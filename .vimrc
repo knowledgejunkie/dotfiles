@@ -219,29 +219,21 @@ set formatoptions=qrn1
 
 "   }}}
 "   History/undo/backups {{{
+"     Probably want to add these to .gitignore if sharing dotfiles
 
 set history=1000
-set undofile
-set undoreload=10000
 
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
-endif
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
-endif
-set backup                        " enable backups
 set noswapfile                    " disable swapfile
 
-" FIXME
-"   Probably want to add these to .gitignore if sharing dotfiles
+set undofile
+set undoreload=10000
 set undodir=~/.vim/tmp/undo//     " undo files
-set backupdir=~/.vim/tmp/backup// " backups
-
-" Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
 endif
+
+set backup                        " enable backups
+set backupdir=~/.vim/tmp/backup// " backups
 if !isdirectory(expand(&backupdir))
     call mkdir(expand(&backupdir), "p")
 endif
