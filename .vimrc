@@ -153,7 +153,11 @@ Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
-" Call :PlugInstall whenever plugins are updated
+" To update plugins from inside Vim:
+"   :PlugUpdate
+"
+" To update plugins from command line:
+"   $ vim +PlugUpdate +qall now
 
 "}}}
 " Vim startup ------------------------------------------------------------- {{{
