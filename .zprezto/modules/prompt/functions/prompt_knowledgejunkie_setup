@@ -49,7 +49,7 @@ function prompt_knowledgejunkie_setup {
   # Add hook for calling vcs_info before each command.
   add-zsh-hook precmd prompt_knowledgejunkie_precmd
 
-  # Use extended color pallete if available.
+  # Use extended color palette if available.
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     _prompt_knowledgejunkie_colors=(
       "%F{81}"  # Turquoise
