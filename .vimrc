@@ -305,8 +305,9 @@ autocmd FileType perl,python,java autocmd BufWritePre     * :call TrimWhiteSpace
 
 augroup cline
     au!
-    au WinLeave * set nocursorline
+    au BufRead,BufNewFile * set cursorline
     au WinEnter * set cursorline
+    au WinLeave * set nocursorline
     au InsertEnter * set nocursorline
     au InsertLeave * set cursorline
 augroup END
