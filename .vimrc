@@ -145,7 +145,7 @@ Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 
-Plug 'knowledgejunkie/vim-xmltvfixup'
+Plug 'knowledgejunkie/vim-xmltvfixup', { 'do': './install.sh' }
 
 Plug 'nanotech/jellybeans.vim'
 Plug 'altercation/vim-colors-solarized'
