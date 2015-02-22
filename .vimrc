@@ -326,7 +326,7 @@ augroup END
 "   Wildmenu completion {{{
 
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:full
 
 set wildignore+=.git,.svn,.cvs,.hg               " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
