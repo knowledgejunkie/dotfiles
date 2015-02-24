@@ -45,4 +45,5 @@
 
 --type-set=coffee:ext:coffee
 --type-set=cucumber:ext:feature
+--type-set=linguist:ext:ts
 --type-set=web:ext:html,htm,js,css
