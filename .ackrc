@@ -37,6 +37,7 @@
 
 --type-add=css:ext:sass,less,scss
 --type-add=js:ext:coffee
+--type-add=xml:ext:xsd
 
 
 # Custom Filetypes
