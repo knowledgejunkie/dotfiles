@@ -298,10 +298,10 @@ endfunction
 nnoremap <silent> <LocalLeader>w mz:call TrimWhiteSpace()<CR>'z
 
 " Remove trailing whitespace on save
-autocmd FileType perl,python,java autocmd FileWritePre    * :call TrimWhiteSpace()
-autocmd FileType perl,python,java autocmd FileAppendPre   * :call TrimWhiteSpace()
-autocmd FileType perl,python,java autocmd FilterWritePre  * :call TrimWhiteSpace()
-autocmd FileType perl,python,java autocmd BufWritePre     * :call TrimWhiteSpace()
+" autocmd FileType perl,python,java autocmd FileWritePre    * :call TrimWhiteSpace()
+" autocmd FileType perl,python,java autocmd FileAppendPre   * :call TrimWhiteSpace()
+" autocmd FileType perl,python,java autocmd FilterWritePre  * :call TrimWhiteSpace()
+" autocmd FileType perl,python,java autocmd BufWritePre     * :call TrimWhiteSpace()
 
 "   }}}
 "   Cursorline {{{
