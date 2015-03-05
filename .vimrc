@@ -118,6 +118,7 @@ Plug 'scrooloose/syntastic'
 
 Plug 'mileszs/ack.vim'
 Plug 'bling/vim-airline'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'docunext/closetag.vim'
 Plug 'ap/vim-css-color'
 " Plug 'chrisbra/csv.vim'
