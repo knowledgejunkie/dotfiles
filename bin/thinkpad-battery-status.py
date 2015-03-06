@@ -29,8 +29,10 @@ percentage = int((rem/full) * 10)
 # Output
 
 total_slots, slots = 10, []
-filled = int(math.ceil(percentage * (total_slots / 10.0))) * u'▶'
-empty  = (total_slots - len(filled)) * u'▷'
+# filled = int(math.ceil(percentage * (total_slots / 10.0))) * u'▶'
+filled = int(math.ceil(percentage * (total_slots / 10.0))) * u'●'
+# empty  = (total_slots - len(filled)) * u'▷'
+empty  = (total_slots - len(filled)) * u'○'
 out    = (filled + empty).encode('utf-8')
 
 charging =  (u'↯').encode('utf-8')
