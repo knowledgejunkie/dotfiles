@@ -23,6 +23,9 @@ if [[ -f "${HOME}/.xbindkeysrc" ]]; then
     xbindkeys
 fi
 
+# Fixup for blank Java GUIs when running xmonad
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # use gnome-keyring-daemon to manage keys?
 # /usr/bin/gnome-keyring-daemon --start --components=gpg
 # /usr/bin/gnome-keyring-daemon --start --components=ssh
