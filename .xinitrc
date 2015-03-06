@@ -1,4 +1,4 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 # http://unix.stackexchange.com/questions/59281/xinitrc-not-being-run
 
