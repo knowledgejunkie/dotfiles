@@ -15,7 +15,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
- 
+
 # Useful aliases -------------------------------------------------------------
 alias c="clear"
 alias collapse="sed -e 's/\s+/ /g'"
