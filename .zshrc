@@ -39,6 +39,9 @@ export HISTFILESIZE=1000
 export HISTCONTROL=erasedups
 export COMMAND_MODE=unix2003
 
+# xmonad/Java fixup ----------------------------------------------------------
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Vim... ---------------------------------------------------------------------
 
 # Restore Ctrl-r history search in vim mode
