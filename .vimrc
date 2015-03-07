@@ -286,18 +286,18 @@ au VimResized * :wincmd =
 "   Trailing whitespace {{{
 " Only shown when not in insert mode so I don't go insane.
 
-"augroup trailing
-    "au!
-    "au InsertEnter * :set listchars-=trail:˽
-    "au InsertLeave * :set listchars+=trail:˽
-"augroup END
+" augroup trailing
+"     au!
+"     au InsertEnter * :set listchars-=trail:˽
+"     au InsertLeave * :set listchars+=trail:˽
+" augroup END
 
 " Clean trailing whitespace
-function! TrimWhiteSpace()
-    %s/\s\+$//e
-endfunction
+" function! TrimWhiteSpace()
+"     %s/\s\+$//e
+" endfunction
 
-nnoremap <silent> <LocalLeader>w mz:call TrimWhiteSpace()<CR>'z
+" nnoremap <silent> <LocalLeader>w mz:call TrimWhiteSpace()<CR>'z
 
 " Remove trailing whitespace on save
 " autocmd FileType perl,python,java autocmd FileWritePre    * :call TrimWhiteSpace()
