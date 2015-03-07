@@ -145,7 +145,7 @@ Plug 'rstacruz/sparkup'
 Plug 'godlygeek/tabular'
 " Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
 
 Plug 'knowledgejunkie/vim-xmltvfixup', { 'do': './install.sh' }
 

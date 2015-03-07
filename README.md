@@ -53,7 +53,7 @@ on, and re-run the script.
 ### (Optional) Install udev rule for MS Natural Ergonomic Keyboard 4000
 
 On a default installation of Debian, the Zoom slider key does not function as
-the keycodes it emits (418,419) are >255. As a result, this key is not 
+the keycodes it emits (418,419) are >255. As a result, this key is not
 passed to the running X session.
 
 This repository includes a udev rules file to remap the key to use keycodes
@@ -61,6 +61,28 @@ This repository includes a udev rules file to remap the key to use keycodes
 (see `.xbindkeysrc`)
 
     # cp ~/.dotfiles/etc/udev/rules.d/95-keymaps.rules /etc/udev/rules.d
+
+### Install Vim dependencies
+
+The [YouCompleteMe][ycm] Vim plugin is compiled with clang semantic completion
+and configured to use system clang and boost libraries, instead of downloading
+them everytime the plugin is updated (which can take >30 minutes...)
+
+Ensure the following packages are installed *prior* to calling :PlugInstall in
+the next step:
+
+- build-essential
+- cmake
+- python-dev
+- libclang1
+- libboost-all-dev
+
+On Debian-based systems the YCM install script may not find the system clang
+library. It may be necessary to create a symlink to ensure libclang is detected
+when compiling YCM (adjust path to libclang as necessary):
+
+    # cd /usr/lib/llvm-3.5/lib
+    # ln -s libclang.so.1 libclang.so
 
 ### Install Vim plugins
 
@@ -70,9 +92,6 @@ the Vim plugins from within Vim by calling the PlugInstall command:
 
     $ vim
     :PlugInstall
-
-Note: The [YouCompleteMe][ycm] plugin is compiled with clang semantic completion and
-requires the build-essential, cmake and python-dev packages to be installed
 
 Note: When running vim for the first time after installation of these dotfiles, it is
 highly likely that it will complain about missing plugin files/settings. These warnings
