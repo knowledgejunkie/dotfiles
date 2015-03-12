@@ -64,6 +64,9 @@ This repository includes a udev rules file to remap the key to use keycodes
 
 ### Install Vim dependencies
 
+JSON pretty-printing support uses json\_pp from the standard perl package.
+XML pretty-printing support uses xml\_pp from the xml-twig-tools package.
+
 The [YouCompleteMe][ycm] Vim plugin is compiled with clang semantic completion
 and configured to use system clang and boost libraries, instead of downloading
 them everytime the plugin is updated (which can take >30 minutes...)
