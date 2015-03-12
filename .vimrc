@@ -528,16 +528,16 @@ nnoremap <F11> :call ToggleMouse()<CR>
 nnoremap <Leader>r :registers<CR>
 
 " map the various registers to a leader shortcut for pasting from them
-nnoremap <Leader>0 "0p
-nnoremap <Leader>1 "1p
-nnoremap <Leader>2 "2p
-nnoremap <Leader>3 "3p
-nnoremap <Leader>4 "4p
-nnoremap <Leader>5 "5p
-nnoremap <Leader>6 "6p
-nnoremap <Leader>7 "7p
-nnoremap <Leader>8 "8p
-nnoremap <Leader>9 "9p
+" nnoremap <Leader>0 "0p
+" nnoremap <Leader>1 "1p
+" nnoremap <Leader>2 "2p
+" nnoremap <Leader>3 "3p
+" nnoremap <Leader>4 "4p
+" nnoremap <Leader>5 "5p
+" nnoremap <Leader>6 "6p
+" nnoremap <Leader>7 "7p
+" nnoremap <Leader>8 "8p
+" nnoremap <Leader>9 "9p
 "   }}}
 "   Compile/run file {{{
 
