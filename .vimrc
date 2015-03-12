@@ -953,20 +953,18 @@ augroup END
 "   }}}
 "   JSON {{{
 
-" http://stackoverflow.com/questions/352098/how-to-pretty-print-json-from-the-command-line
 augroup ft_json
-  autocmd!
-  autocmd FileType json setlocal autoindent
-  autocmd FileType json setlocal formatoptions=tcq2l
-  autocmd FileType json setlocal textwidth=78 shiftwidth=2
-  autocmd FileType json setlocal softtabstop=2 tabstop=8
-  autocmd FileType json setlocal expandtab
-  autocmd FileType json setlocal foldmethod=syntax
+    autocmd!
+    autocmd FileType json setlocal autoindent
+    autocmd FileType json setlocal formatoptions=tcq2l
+    autocmd FileType json setlocal textwidth=78 shiftwidth=2
+    autocmd FileType json setlocal softtabstop=2 tabstop=8
+    autocmd FileType json setlocal expandtab
+    autocmd FileType json setlocal foldmethod=syntax
 
-  " FIXME
-  " tidy/pretty-print via json_pp
-  nnoremap <Leader>jt :%!json_pp<cr>
-  vnoremap <Leader>jt :!json_pp<cr>
+    " tidy/pretty-print via json_pp
+    nnoremap <Leader>jt :%!json_pp<cr>
+    vnoremap <Leader>jt :!json_pp<cr>
 augroup END
 "   }}}
 "   Makefiles {{{
@@ -1173,6 +1171,10 @@ augroup ft_xml
     au!
     "au FileType xml setlocal foldmethod=syntax
     au FileType xml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+    " tidy/pretty-print via xml_pp
+    nnoremap <Leader>xt :%!xml_pp<cr>
+    vnoremap <Leader>xt :!xml_pp<cr>
 augroup END
 "   }}}
 "   XMLTV Fixups {{{
