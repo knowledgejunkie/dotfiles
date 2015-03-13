@@ -138,14 +138,16 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'myusuf3/numbers.vim'
 " Plug 'edkolev/promptline.vim'
 Plug 'duff/vim-scratch'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
 Plug 'rstacruz/sparkup'
 " Plug 'millermedeiros/vim-statline'
 Plug 'godlygeek/tabular'
 " Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
+
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'knowledgejunkie/vim-xmltvfixup', { 'do': './install.sh' }
 
@@ -1553,15 +1555,17 @@ nnoremap <F10> :TagbarToggle<CR>
 
 "   }}}
 "   UltiSnips {{{
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 let g:UltiSnipsEditSplit="vertical"
 "   }}}
 "   Unimpaired {{{
 "     https://github.com/tpope/vim-unimpaired
 "   }}}
 "   YouCompleteMe {{{
+let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_confirm_extra_conf    = 0
 let g:ycm_complete_in_comments  = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
