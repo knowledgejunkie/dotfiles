@@ -1386,13 +1386,16 @@ augroup ps_nerdtree
     au!
 
     au Filetype nerdtree setlocal nolist
-    au Filetype nerdtree nnoremap <buffer> K :q<cr>
+    " au Filetype nerdtree nnoremap <buffer> K :q<cr>
 augroup END
 
 let NERDTreeHighlightCursorline = 1
 let NERDTreeIgnore = ['\~$', '.*\.pyc$', '.*\.o$', 'db.db']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDChristmasTree = 1
+let NERDTreeChDirMode = 2
+let NERDTreeMapJumpFirstChild = 'gK'
 
 "   }}}
 "   NERDTreeTabs {{{
@@ -1400,22 +1403,6 @@ let NERDTreeDirArrows = 1
 "
 nnoremap <F2> :NERDTreeTabsToggle<cr>
 inoremap <F2> <esc>:NERDTreeTabsToggle<cr>
-
-augroup ps_nerdtree
-    au!
-
-    au Filetype nerdtree setlocal nolist
-    " au Filetype nerdtree nnoremap <buffer> K :q<cr>
-augroup END
-
-let NERDTreeHighlightCursorline = 1
-let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$', '.*.pid', '.*\.o$', '.*\.pdf$', '.*\.mid$']
-
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDChristmasTree = 1
-let NERDTreeChDirMode = 2
-let NERDTreeMapJumpFirstChild = 'gK'
 
 "   }}}
 "   Numbers {{{
