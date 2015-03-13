@@ -386,6 +386,23 @@ colorscheme jellybeans
 match ErrorMsg /^\(<\|=\|>\)\{7\}\([^=].\+\)\?$/
 
 "   }}}
+"   Cursor colour {{{
+" Make cursor more obvious
+au InsertLeave * hi Cursor guibg=red
+au InsertEnter * hi Cursor guibg=green
+
+" http://vim.wikia.com/wiki/Configuring_the_cursor
+if &term =~ "xterm\\|rxvt"
+  " use a green cursor in insert mode
+  let &t_SI = "\<Esc>]12;green\x7"
+  " use a red cursor otherwise
+  let &t_EI = "\<Esc>]12;red\x7"
+  silent !echo -ne "\033]12;red\007"
+  " reset cursor when vim exits
+  " au VimLeave * silent !echo -ne "\033]112\007"
+  au VimLeave * silent !echo -ne "\033]12;gray\007"
+endif
+"   }}}
 " }}}
 " Convenience mappings ---------------------------------------------------- {{{
 "   Selecting text {{{
@@ -493,16 +510,16 @@ vnoremap <C-Up> :m-2<CR>gv
 
 " Use Ctrl-Space for autocompletion. Don't forget that Ctrl-E exits
 " from the completion list'
-if has("gui_running")
-    " C-Space seems to work under gVim on both Linux and win32
-    inoremap <C-Space> <C-n>
-else " no gui
-  if has("unix")
-    inoremap <Nul> <C-n>
-  else
-  " I have no idea of the name of Ctrl-Space elsewhere
-  endif
-endif
+" if has("gui_running")
+"     " C-Space seems to work under gVim on both Linux and win32
+"     inoremap <C-Space> <C-n>
+" else " no gui
+"   if has("unix")
+"     inoremap <Nul> <C-n>
+"   else
+"   " I have no idea of the name of Ctrl-Space elsewhere
+"   endif
+" endif
 "   }}}
 "   Mouse Toggle (Vim/terminal) {{{
 "     http://nvie.com/posts/how-i-boosted-my-vim/
@@ -1731,8 +1748,6 @@ command! ToggleTaskList call s:ToggleTaskList()
 if has('gui_running')
     " GUI Vim
 
-"    set guifont=Menlo\ Regular\ for\ Powerline:h12
-
     " Remove all the UI cruft
     set guioptions-=T
     set guioptions-=l
@@ -1741,15 +1756,9 @@ if has('gui_running')
     set guioptions-=R
 
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-
-    " Different cursors for different modes.
-    set guicursor=n-c:block-Cursor-blinkon0
-    set guicursor+=v:block-vCursor-blinkon0
-    set guicursor+=i-ci:ver20-iCursor
-
 else
     " Console Vim
-    " assume 256 color terminal like urxvt-256color
+    " assume 256 color terminal like rxvt-unicode-256color
     set t_Co=256
     " Mouse support
     set mouse=a
