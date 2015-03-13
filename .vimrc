@@ -1390,7 +1390,7 @@ augroup ps_nerdtree
 augroup END
 
 let NERDTreeHighlightCursorline = 1
-let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$', '.*\.o$', 'db.db']
+let NERDTreeIgnore = ['\~$', '.*\.pyc$', '.*\.o$', 'db.db']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
