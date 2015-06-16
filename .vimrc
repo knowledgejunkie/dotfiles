@@ -1302,6 +1302,12 @@ let g:ackprg="ack -H --nocolor --nogroup --column"
 nnoremap <Leader>a :Ack!<space>
 
 "   }}}
+"   Airline {{{
+"     https://github.com/bling/vim-airline
+
+let g:airline_powerline_fonts = 1
+
+"   }}}
 "   Ctrl-P {{{
 "     https://github.com/kien/ctrlp.vim
 
