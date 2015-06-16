@@ -1311,7 +1311,7 @@ let g:airline_powerline_fonts = 1
 "   Ctrl-P {{{
 "     https://github.com/kien/ctrlp.vim
 
-let g:ctrlp_map = '<LocalLeader>f'
+let g:ctrlp_map = '<Leader>f'
 
 "let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_jump_to_buffer = 0
