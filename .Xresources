@@ -33,7 +33,8 @@
 
 Xft.dpi: 96
 Xft.antialias: 1
-Xft.rgba: rgb
+! Xft.rgba: rgb
+Xft.rgba: none
 Xft.hinting: 1
 Xft.autohint: 1
 Xft.hintstyle: hintfull
@@ -49,7 +50,7 @@ XTerm*vt100.saveLines : 0
 
 ! appearance
 XTerm*termName : xterm-256color
-XTerm*font : xft:Inconsolata:pixelsize=18
+XTerm*font : xft:Inconsolata for Powerline:pixelsize=18
 XTerm*vt100.colorMode : True
 XTerm*vt100.colorBDMode : True
 XTerm*vt100.colorULMode : True
@@ -69,7 +70,7 @@ URxvt.buffered: true
 URxvt.depth: 24
 URxvt.geometry: 90x30
 URxvt.transparent: false
-URxvt.fading: 50
+URxvt.fading: 40
 URxvt.urgentOnBell: true
 URxvt.visualBell: true
 URxvt.loginShell: true
@@ -79,10 +80,10 @@ URxvt.externalBorder: -1
 URxvt.lineSpace: 0
 
 ! Fonts
-URxvt.font: xft:Inconsolata:pixelsize=18
-URxvt.boldFont: xft:Inconsolata:pixelsize=18:Bold
-URxvt.italicFont: xft:Inconsolata:pixelsize=18:Italic
-URxvt.bolditalicFont: xft:Inconsolata:pixelsize=18:Bold:Italic
+URxvt.font: xft:Inconsolata for Powerline:pixelsize=18
+URxvt.boldFont: xft:Inconsolata for Powerline:pixelsize=18:Bold
+URxvt.italicFont: xft:Inconsolata for Powerline:pixelsize=18:Italic
+URxvt.bolditalicFont: xft:Inconsolata for Powerline:pixelsize=18:Bold:Italic
 URxvt.allow_bold: true
 URxvt.skipBuiltinGlyphs: True
 URxvt.letterSpace: -1
