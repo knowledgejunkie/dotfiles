@@ -22,6 +22,7 @@ alias collapse="sed -e 's/\s+/ /g'"
 alias count="sort | uniq -c | sort -n"
 alias cuts="cut -d' '"
 alias g="git"
+alias grep="grep --color=auto"
 alias v="vim"
 
 alias cdgit="cd ~/dev/src/git/"
@@ -33,7 +34,6 @@ alias cdhg="cd ~/dev/src/hg/"
 export PATH="$HOME/bin:${PATH}"
 
 export EDITOR='vim'
-export GREP_OPTIONS='--color=auto'
 export HISTSIZE=1000
 export HISTFILESIZE=1000
 export HISTCONTROL=erasedups
