@@ -24,6 +24,7 @@ alias cuts="cut -d' '"
 alias g="git"
 alias grep="grep --color=auto"
 alias v="vim"
+alias vi="vim -u NONE -N"
 
 alias cdgit="cd ~/dev/src/git/"
 alias cdcvs="cd ~/dev/src/cvs/"
@@ -34,8 +35,8 @@ alias cdhg="cd ~/dev/src/hg/"
 export PATH="$HOME/bin:${PATH}"
 
 export EDITOR='vim'
-export HISTSIZE=1000
-export HISTFILESIZE=1000
+export HISTSIZE=10000
+export HISTFILESIZE=10000
 export HISTCONTROL=erasedups
 export COMMAND_MODE=unix2003
 
