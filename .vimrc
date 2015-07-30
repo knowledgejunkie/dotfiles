@@ -175,14 +175,14 @@ function! VimStartUp() " {{{
     end
 endfunction " }}}
 
-"autocmd! VimEnter * call VimStartUp()
+autocmd! VimEnter * call VimStartUp()
 
 " }}}
 " Basic options ----------------------------------------------------------- {{{
 "   Leader/LocalLeader {{{
 
 let mapleader = ","
-let maplocalleader = "\\"
+let maplocalleader = "_"
 
 "   }}}
 "   Basic editor behaviour {{{
@@ -207,10 +207,21 @@ set ttimeoutlen=10
 " Save when losing focus
 au FocusLost * :silent! wall
 
+" jj to quickly exit Insert mode
+inoremap jj <Esc>
+
+" prevent switch to Replace mode if <Insert> pressed in Insert mode
+inoremap <Insert> <Nop>
+
+" Making it so ; works like : for commands. Saves typing and eliminates :W
+" style typos due to lazy holding shift
+" FIXME: shadows normal ; functionality
+nnoremap ; :
+
 "   }}}
 "   Tabs/spaces/wrapping {{{
 
-set tabstop=8
+set tabstop=4
 set softtabstop=4
 set expandtab
 set smarttab
@@ -218,10 +229,7 @@ set shiftwidth=4
 set shiftround
 set autoindent
 set smartindent
-
 set nowrap
-"set textwidth=80
-"set linebreak
 
 set formatoptions=qrn1
 
@@ -275,11 +283,11 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪
 set fillchars=diff:⣿,vert:│
 set title
-"set colorcolumn=+1
 set laststatus=2
 set splitbelow
 set splitright
 set synmaxcol=800
+"set colorcolumn=+1
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
@@ -318,16 +326,6 @@ augroup cline
     au WinLeave * set nocursorline
     au InsertEnter * set nocursorline
     au InsertLeave * set cursorline
-augroup END
-
-"   }}}
-"   Compatible-mode options {{{
-
-" Something occasionally removes this.  If I manage to find it I'm going to
-" comment out the line and replace all its characters with 'FUCK'.
-augroup twospace
-    au!
-    au BufRead * :set cpoptions+=J
 augroup END
 
 "   }}}
@@ -403,13 +401,16 @@ if &term =~ "xterm\\|rxvt"
   au VimLeave * silent !echo -ne "\033]12;gray\007"
 endif
 "   }}}
+"   Alternate line highlighting {{{
+"     http://stackoverflow.com/a/219693
+
+" Highlight every other line (may need to update match string if
+" using very-magic matching)
+map <Leader>ho :set hls<CR>/\n.*\n/<CR>
+"   }}}
 " }}}
 " Convenience mappings ---------------------------------------------------- {{{
 "   Selecting text {{{
-
-"   Ctrl-A to select all
-nnoremap <silent> <C-a> ggVG
-inoremap <C-a> <ESC><C-a>
 
 "   Select (charwise) the contents of the current line, excluding indentation.
 "   Great for pasting Python lines into REPLs.
@@ -425,34 +426,58 @@ nnoremap Vat vatV
 nnoremap Vab vabV
 nnoremap VaB vaBV
 "   }}}
-"   Visual shifting {{{
-"     https://github.com/spf13/spf13-vim/blob/master/.vimrc
+"   Moving text {{{
 
-" Visual shifting (does not exit Visual mode)
+"     Visual shifting (does not exit Visual mode)
+"       https://github.com/spf13/spf13-vim/blob/master/.vimrc
 vnoremap < <gv
 vnoremap > >gv
+"
+"     Shifting whole lines up/down
+"       https://github.com/pera/vim/blob/master/.vimrc
+nnoremap <C-Down> :m+<CR>
+nnoremap <C-Up> :m-2<CR>
+inoremap <C-Down> <Esc>:m+<CR>
+inoremap <C-Up> <Esc>:m-2<CR>
+vnoremap <C-Down> :m'>+<CR>gv
+vnoremap <C-Up> :m-2<CR>gv
 "   }}}
-"   System clipboard {{{
+"   Copying/pasting text {{{
 
 set pastetoggle=<F12>
 
-"   From https://github.com/henrik/dotfiles/blob/master/vim/config/mappings.vim
+" X primary
 noremap <Leader>y "*y
 noremap <Leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
 noremap <Leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
 
-"   http://unix.stackexchange.com/a/23437
+" X clipboard
 nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 "   }}}
-"   Tab/window handling {{{
-"     Snippets from http://stackoverflow.com/a/1639333
+"   Sorting text {{{
 
 " Sort lines
 nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
+"   }}}
+"   Linewise consistency mappings {{{
+ 
+" Yank from the cursor to the end of the line
+nnoremap Y y$
+
+" Make D behave
+nnoremap D d$
+" 
+" Easier to type if you don't use the default behaviour.
+noremap H ^
+noremap L $
+vnoremap L g_
+"   }}}
+"   Buffer/window/tab handling {{{
+"     Snippets from http://stackoverflow.com/a/1639333
 
 " Create new tab
 nnoremap <C-t> :tabnew<CR>
@@ -488,22 +513,11 @@ map <silent> <M-l> <C-w>>
 map <silent> <M-s> :split<CR>
 map <silent> <M-v> :vsplit<CR>
 "   }}}
-"   Alternate line highlighting {{{
-"     http://stackoverflow.com/a/219693
+"   Quick vimrc/snippet/dictionary editing {{{
 
-" Highlight every other line (may need to update match string if
-" using very-magic matching)
-map <Leader>ho :set hls<CR>/\n.*\n/<CR>
-"   }}}
-"   Shifting whole lines up/down {{{
-"     https://github.com/pera/vim/blob/master/.vimrc
-
-nnoremap <C-Down> :m+<CR>
-nnoremap <C-Up> :m-2<CR>
-inoremap <C-Down> <Esc>:m+<CR>
-inoremap <C-Up> <Esc>:m-2<CR>
-vnoremap <C-Down> :m'>+<CR>gv
-vnoremap <C-Up> :m-2<CR>gv
+nnoremap <Leader>ev :tabnew $MYVIMRC<cr>
+nnoremap <Leader>es :vsplit ~/.vim/snippets/<cr>
+nnoremap <Leader>ed :vsplit ~/.vim/custom-dictionary.utf-8.add<cr>
 "   }}}
 "   Ctrl-Space for omnicompletion {{{
 "     http://stackoverflow.com/a/2276654
@@ -578,26 +592,7 @@ nnoremap _pl :set ft=perl<CR>
 inoremap <c-f> <c-x><c-f>
 inoremap <c-]> <c-x><c-]>
 "   }}}
-"   Quick vimrc/snippet/dictionary editing {{{
-
-nnoremap <Leader>ev :tabnew $MYVIMRC<cr>
-nnoremap <Leader>es :vsplit ~/.vim/snippets/<cr>
-nnoremap <Leader>ed :vsplit ~/.vim/custom-dictionary.utf-8.add<cr>
-"   }}}
 "   Uncategorised {{{
-
-" Yank from the cursor to the end of the line, to be consistent with C and D
-nnoremap Y y$
-
-" jj to quickly exit Insert mode
-inoremap jj <Esc>
-
-" prevent switch to Replace mode if <Insert> pressed in Insert mode
-inoremap <Insert> <Nop>
-
-" Making it so ; works like : for commands. Saves typing and eliminates :W
-" style typos due to lazy holding shift
-nnoremap ; :
 
 " Stop indent-breakage when entering a # when smartindent is set
 "   http://vim.wikia.com/wiki/VimTip644
@@ -699,13 +694,13 @@ au VimEnter * :nnoremap U <c-r>
 "   }}}
 " }}}
 " Searching and movement -------------------------------------------------- {{{
+"
+" Remap comma (used as <Leader>) to preserve reverse char search
+noremap \ ,
 
 " Use sane regexes.
 nnoremap / /\v
 vnoremap / /\v
-
-" replace the default grep program with ack
-set grepprg=ack
 
 set ignorecase
 set smartcase
@@ -724,9 +719,6 @@ noremap <silent> <Leader><space> :noh<cr>:call clearmatches()<cr>
 
 map <tab> %
 
-" Made D behave
-nnoremap D d$
-
 " Don't move on *
 nnoremap * *<c-o>
 
@@ -738,14 +730,12 @@ nnoremap N Nzzzv
 nnoremap g; g;zz
 nnoremap g, g,zz
 
-" Easier to type, and I never use the default behavior.
-noremap H ^
-noremap L $
-vnoremap L g_
-
 " gi already moves to "last place you exited insert mode", so we'll map gI to
 " something similar: move to last change
 nnoremap gI `.
+
+" replace the default grep program with ack
+set grepprg=ack
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -756,16 +746,7 @@ nnoremap <silent> <Leader>/ :execute "Ack! '" . substitute(substitute(substitute
 " Toggle "keep current line in the center of the screen" mode
 nnoremap <Leader>C :let &scrolloff=999-&scrolloff<cr>
 
-" Directional Keys {{{
-
-" It's 2013.
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-
-" }}}
-" Visual Mode */# from Scrooloose {{{
+" Visual Mode */# {{{
 
 function! s:VSetSearch()
   let temp = @@
@@ -778,6 +759,15 @@ vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 
 " }}}
+" Directional Keys {{{
+
+" It's 2013.
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+" }}}
 " List navigation {{{
 
 ""nnoremap <left>  :cprev<cr>zvzz
@@ -786,7 +776,6 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 ""nnoremap <down>  :lnext<cr>zvzz
 
 " }}}
-
 " }}}
 " Folding ----------------------------------------------------------------- {{{
 
