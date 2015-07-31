@@ -216,7 +216,7 @@ inoremap <Insert> <Nop>
 " Making it so ; works like : for commands. Saves typing and eliminates :W
 " style typos due to lazy holding shift
 " FIXME: shadows normal ; functionality
-nnoremap ; :
+" nnoremap ; :
 
 "   }}}
 "   Tabs/spaces/wrapping {{{
@@ -519,22 +519,6 @@ nnoremap <Leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <Leader>es :vsplit ~/.vim/snippets/<cr>
 nnoremap <Leader>ed :vsplit ~/.vim/custom-dictionary.utf-8.add<cr>
 "   }}}
-"   Ctrl-Space for omnicompletion {{{
-"     http://stackoverflow.com/a/2276654
-
-" Use Ctrl-Space for autocompletion. Don't forget that Ctrl-E exits
-" from the completion list'
-" if has("gui_running")
-"     " C-Space seems to work under gVim on both Linux and win32
-"     inoremap <C-Space> <C-n>
-" else " no gui
-"   if has("unix")
-"     inoremap <Nul> <C-n>
-"   else
-"   " I have no idea of the name of Ctrl-Space elsewhere
-"   endif
-" endif
-"   }}}
 "   Mouse Toggle (Vim/terminal) {{{
 "     http://nvie.com/posts/how-i-boosted-my-vim/
 
@@ -716,8 +700,6 @@ set sidescrolloff=10
 set virtualedit+=block
 
 noremap <silent> <Leader><space> :noh<cr>:call clearmatches()<cr>
-
-map <tab> %
 
 " Don't move on *
 nnoremap * *<c-o>
@@ -1017,87 +999,6 @@ augroup ft_perl
     au FileType perl match ErrorMsg /^\t\+\|\s\+$/
     "au FileType perl setlocal foldmethod=syntax
 
-"FIXME need to temp unset mappings for brackets used in the abbrs
-"
-" abbreviations for Perl programming
-"function! LoadPerlAbbrevs()
-"    iabbr if if () {<CR>}<C-O>k<C-O>2l<C-O>
-"    iabbr for for (;;) {<CR>}<C-O>k<C-O>3l<C-O>
-"    iabbr while while () {<CR>}<C-O>k<C-O>5l<C-O>
-"    iabbr do do {<CR>} while ();<C-O>3h<C-O>
-"    iabbr switch switch () {<CR>}<C-O>k<C-O>6l<C-O>
-"endfunction
-"au FileType perl call LoadPerlAbbrevs()
-
-" Add 'use' statement automatically to top of file
-" from http://blogs.perl.org/users/marcel_grunauer/2010/12/vim-add-a-use-statement-without-moving-the-cursor.html
-"
-" i) improved iskeyword handling and locally-scoped vars:
-"    http://blogs.perl.org/users/marcel_grunauer/2010/12/vim-add-a-use-statement-without-moving-the-cursor.html#comment-12693
-"
-" ii) improved package name handling when adding a pkg name that's a subset of
-"     another already present with a use statement:
-"     http://colinnewell.wordpress.com/2011/07/13/vim-tricks-for-perl/
-"
-function! PerlAddUseStatement()
-    " temporarily override iskeyword with:
-    "   setlocal iskeyword=48-57,_,A-Z,a-z,:
-    " so that colons are recognized as part of a keyword
-    let l:save_iskeyword = &l:iskeyword
-    setlocal iskeyword=48-57,_,A-Z,a-z,:
-    let l:package = input('Package? ', expand('<cword>'))
-    let &l:iskeyword = l:save_iskeyword
-
-    " skip if that use statement already exists
-    if (search('^use\s\+'.l:package.'[^A-Za-z_0-9:]', 'bnw') == 0)
-        " below the last use statement, except for some special cases
-        let l:line = search('^use\s\+\(constant\|strict\|warnings\|parent\|base\|5\)\@!','bnw')
-        " otherwise, below the ABSTRACT (see Dist::Zilla)
-        if (l:line == 0)
-            let l:line = search('^# ABSTRACT','bnw')
-        endif
-        " otherwise, below the package statement
-        if (l:line == 0)
-            let l:line = search('^package\s\+','bnw')
-        endif
-        " if there isn't a package statement either, put it below
-        " the last use statement, no matter what it is
-        if (l:line == 0)
-            let l:line = search('^use\s\+','bnw')
-        endif
-        " if there are no package or use statements, it might be a
-        " script; put it below the shebang line
-        if (l:line == 0)
-            let l:line = search('^#!','bnw')
-        endif
-        " if s:line still is 0, it just goes at the top
-        call append(l:line, 'use ' . l:package . ';')
-    endif
-endfunction
-
-map <Leader>us :<C-u>call PerlAddUseStatement()<CR>
-
-
-" Fix the current file's package name, based on its location in the filesystem
-" http://blogs.perl.org/users/marcel_grunauer/2011/07/vim-script-to-fix-the-current-files-package-name.html
-"
-function! PerlPackageNameFromFile()
-    let filename = expand('%:p')
-    let package = substitute(filename, '^.*/lib/', '', '')
-    let package = substitute(package, '\.pm$', '', '')
-    let package = substitute(package, '/', '::', 'g')
-    return package
-endfunction
-
-function! PerlReplacePackageName()
-    let package = PerlPackageNameFromFile()
-    let pos = getpos('.')
-    1,/^package\s/s/^package\s\+\zs[A-Za-z_0-9:]\+\ze\(\s\+{\|;\)/\=package/
-    call setpos('.', pos)
-endfunction
-
-nnoremap <Leader>pa :<C-u>call PerlReplacePackageName()<CR>
-
 " Perltidy support
 " http://publius-ovidius.livejournal.com/242806.html
 nnoremap  <Leader>pt :%!perltidy -q<cr>
@@ -1311,8 +1212,8 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_extensions = ['tag']
 
 let g:ctrlp_prompt_mappings = {
-\ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
-\ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
+\ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+\ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
 \ 'PrtHistory(-1)':       ['<c-n>'],
 \ 'PrtHistory(1)':        ['<c-p>'],
 \ 'ToggleFocus()':        ['<c-tab>'],
@@ -1484,9 +1385,6 @@ endfunction
 nnoremap <silent> <Leader><tab> :ScratchToggle<cr>
 
 "   }}}
-"   Snippets {{{
-"     https://github.com/honza/vim-snippets
-"   }}}
 "   Sparkup (disabled) {{{
 "     https://github.com/rstacruz/sparkup (general)
 "     https://github.com/tristen/vim-sparkup (vim-specific)
@@ -1567,17 +1465,19 @@ nnoremap <F10> :TagbarToggle<CR>
 
 "   }}}
 "   UltiSnips {{{
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsExpandTrigger="<C-Space>"
+let g:UltiSnipsJumpForwardTrigger="<C-Space>"
+let g:UltiSnipsJumpBackwardTrigger="<S-C-Space>"
 let g:UltiSnipsEditSplit="vertical"
+"
+"     https://github.com/honza/vim-snippets
 "   }}}
 "   Unimpaired {{{
 "     https://github.com/tpope/vim-unimpaired
 "   }}}
 "   YouCompleteMe {{{
-let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+let g:ycm_key_list_select_completion=['<Tab>, <C-n>', '<Down>']
+let g:ycm_key_list_previous_completion=['<S-Tab>, <C-p>', '<Up>']
 let g:ycm_confirm_extra_conf    = 0
 let g:ycm_complete_in_comments  = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
