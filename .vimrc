@@ -1476,8 +1476,6 @@ let g:UltiSnipsEditSplit="vertical"
 "     https://github.com/tpope/vim-unimpaired
 "   }}}
 "   YouCompleteMe {{{
-let g:ycm_key_list_select_completion=['<Tab>, <C-n>', '<Down>']
-let g:ycm_key_list_previous_completion=['<S-Tab>, <C-p>', '<Up>']
 let g:ycm_confirm_extra_conf    = 0
 let g:ycm_complete_in_comments  = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
