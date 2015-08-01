@@ -12,8 +12,6 @@
 " }}}
 " Hints and tips ---------------------------------------------------------- {{{
 "
-" Display
-"
 " Display ordering of loaded Vimscripts
 " :scriptnames
 "
@@ -46,9 +44,21 @@
 " :%!xxd
 " :%!xxd -r
 "
+" Capture standard output of external command to buffer
+" :read !{cmd}
+"
+" Pass buffer as standard input to external command
+" :write !{cmd}
+"
 " Execute Perl/Ruby one-liners (if support compiled in) over file or selection
 " :perldo ...
 " :rubydo ...
+"
+" Execute an Ex command for all buffers listed in :ls
+" :bufdo {cmd}
+"
+" Execute an Ex command for all arguments listed in :args
+" :argdo {cmd}
 "
 " To retab a buffer when changing tab settings (e.g. set noexpandtab)
 " :retab
@@ -169,13 +179,13 @@ call plug#end()
 " Open NERDTree if no files were given on command line
 "   http://blogs.perl.org/users/ovid/2011/04/nerdtree-on-startup.html
 
-function! VimStartUp() " {{{
-    if 0 == argc()
-        NERDTreeTabsToggle
-    end
-endfunction " }}}
+" function! VimStartUp() " {{{
+"     if 0 == argc()
+"         NERDTreeTabsToggle
+"     end
+" endfunction " }}}
 
-autocmd! VimEnter * call VimStartUp()
+" autocmd! VimEnter * call VimStartUp()
 
 " }}}
 " Basic options ----------------------------------------------------------- {{{
@@ -201,8 +211,7 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
-"set autowrite
-"set autoread
+set hidden
 
 " Save when losing focus
 au FocusLost * :silent! wall
@@ -228,7 +237,6 @@ set smarttab
 set shiftwidth=4
 set shiftround
 set autoindent
-set smartindent
 set nowrap
 
 set formatoptions=qrn1
@@ -573,14 +581,15 @@ nnoremap _pl :set ft=perl<CR>
 "   }}}
 "   Insert Mode Completion {{{
 
-inoremap <c-f> <c-x><c-f>
-inoremap <c-]> <c-x><c-]>
+inoremap <C-f> <C-x><C-f>
+inoremap <C-]> <C-x><C-]>
+"   }}}
+"   Command Mode History {{{
+
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 "   }}}
 "   Uncategorised {{{
-
-" Stop indent-breakage when entering a # when smartindent is set
-"   http://vim.wikia.com/wiki/VimTip644
-inoremap # X<BS>#
 
 " Highlight Group(s)
 nnoremap <F8> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -589,18 +598,18 @@ nnoremap <F8> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> t
 
 " "Uppercase current word
 "
-" This mapping allows you to press <c-u> in insert mode to convert the current
+" This mapping allows you to press <C-u> in insert mode to convert the current
 " word to uppercase.  It's handy when you're writing names of constants and
 " don't want to use Capslock.
 "
 " To use it you type the name of the constant in lowercase.  While your
-" cursor is at the end of the word, press <c-u> to uppercase it, and then
+" cursor is at the end of the word, press <C-u> to uppercase it, and then
 " continue happily on your way:
 "
 "                            cursor
 "                            v
 "     max_connections_allowed|
-"     <c-u>
+"     <C-u>
 "     MAX_CONNECTIONS_ALLOWED|
 "                            ^
 "                            cursor
@@ -621,10 +630,6 @@ nnoremap <Leader>u :syntax sync fromstart<cr>:redraw!<cr>
 " From https://github.com/henrik/dotfiles/blob/master/vim/config/mappings.vim
 vnoremap u <nop>
 vnoremap gu u
-
-" Make backspace work sanely in normal/visual mode
-"nnoremap <BS> <BS>
-"vnoremap <BS> x
 
 " Insert the directory of the current buffer in command line mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -674,7 +679,7 @@ vnoremap - =
 nnoremap <Leader>i :set list!<cr>
 
 " Has to be an autocommand because repeat.vim eats the mapping otherwise :(
-au VimEnter * :nnoremap U <c-r>
+au VimEnter * :nnoremap U <C-r>
 "   }}}
 " }}}
 " Searching and movement -------------------------------------------------- {{{
@@ -701,8 +706,11 @@ set virtualedit+=block
 
 noremap <silent> <Leader><space> :noh<cr>:call clearmatches()<cr>
 
+" Avoid Caps Lock errors
+nnoremap ZZ zz
+
 " Don't move on *
-nnoremap * *<c-o>
+nnoremap * *<C-o>
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
@@ -712,9 +720,8 @@ nnoremap N Nzzzv
 nnoremap g; g;zz
 nnoremap g, g,zz
 
-" gi already moves to "last place you exited insert mode", so we'll map gI to
-" something similar: move to last change
-nnoremap gI `.
+" Toggle "keep current line in the center of the screen" mode
+nnoremap <Leader>C :let &scrolloff=999-&scrolloff<cr>
 
 " replace the default grep program with ack
 set grepprg=ack
@@ -725,39 +732,25 @@ nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 " Ack for the last search.
 nnoremap <silent> <Leader>/ :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
-" Toggle "keep current line in the center of the screen" mode
-nnoremap <Leader>C :let &scrolloff=999-&scrolloff<cr>
-
-" Visual Mode */# {{{
-
+" Visual star search (updated version from Practical Vim)
 function! s:VSetSearch()
-  let temp = @@
-  norm! gvy
-  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-  let @@ = temp
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
 endfunction
 
-vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
-vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
-" }}}
-" Directional Keys {{{
+" gi already moves to "last place you exited insert mode", so we'll map gI to
+" something similar: move to last change
+nnoremap gI `.
 
-" It's 2013.
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
+" Include flags when repeating last substition
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 
-" }}}
-" List navigation {{{
-
-""nnoremap <left>  :cprev<cr>zvzz
-""nnoremap <right> :cnext<cr>zvzz
-""nnoremap <up>    :lprev<cr>zvzz
-""nnoremap <down>  :lnext<cr>zvzz
-
-" }}}
 " }}}
 " Folding ----------------------------------------------------------------- {{{
 
@@ -781,7 +774,7 @@ nnoremap zO zCzO
 " This mapping wipes out the z mark, which I never use.
 "
 " I use :sus for the rare times I want to actually background Vim.
-nnoremap <Leader>z mzzMzvzz15<c-e>`z:Pulse<cr>
+nnoremap <Leader>z mzzMzvzz15<C-e>`z:Pulse<cr>
 
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
@@ -1113,15 +1106,15 @@ vnoremap ar a[
 " Motion for "next/last object". For example, "din(" would go to the next "()"
 " pair and delete its contents.
 
-onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
+onoremap an :<C-u>call <SID>NextTextObject('a', 'f')<cr>
+xnoremap an :<C-u>call <SID>NextTextObject('a', 'f')<cr>
+onoremap in :<C-u>call <SID>NextTextObject('i', 'f')<cr>
+xnoremap in :<C-u>call <SID>NextTextObject('i', 'f')<cr>
 
-onoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
+onoremap al :<C-u>call <SID>NextTextObject('a', 'F')<cr>
+xnoremap al :<C-u>call <SID>NextTextObject('a', 'F')<cr>
+onoremap il :<C-u>call <SID>NextTextObject('i', 'F')<cr>
+xnoremap il :<C-u>call <SID>NextTextObject('i', 'F')<cr>
 
 function! s:NextTextObject(motion, dir)
   let c = nr2char(getchar())
@@ -1144,12 +1137,12 @@ endfunction
 "              ^                          ^
 " TODO: Handle floats.
 
-onoremap N :<c-u>call <SID>NumberTextObject(0)<cr>
-xnoremap N :<c-u>call <SID>NumberTextObject(0)<cr>
-onoremap aN :<c-u>call <SID>NumberTextObject(1)<cr>
-xnoremap aN :<c-u>call <SID>NumberTextObject(1)<cr>
-onoremap iN :<c-u>call <SID>NumberTextObject(1)<cr>
-xnoremap iN :<c-u>call <SID>NumberTextObject(1)<cr>
+onoremap N :<C-u>call <SID>NumberTextObject(0)<cr>
+xnoremap N :<C-u>call <SID>NumberTextObject(0)<cr>
+onoremap aN :<C-u>call <SID>NumberTextObject(1)<cr>
+xnoremap aN :<C-u>call <SID>NumberTextObject(1)<cr>
+onoremap iN :<C-u>call <SID>NumberTextObject(1)<cr>
+xnoremap iN :<C-u>call <SID>NumberTextObject(1)<cr>
 
 function! s:NumberTextObject(whole)
     normal! v
@@ -1212,11 +1205,11 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_extensions = ['tag']
 
 let g:ctrlp_prompt_mappings = {
-\ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
-\ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
-\ 'PrtHistory(-1)':       ['<c-n>'],
-\ 'PrtHistory(1)':        ['<c-p>'],
-\ 'ToggleFocus()':        ['<c-tab>'],
+\ 'PrtSelectMove("j")':   ['<C-j>', '<down>'],
+\ 'PrtSelectMove("k")':   ['<C-k>', '<up>'],
+\ 'PrtHistory(-1)':       ['<C-n>'],
+\ 'PrtHistory(1)':        ['<C-p>'],
+\ 'ToggleFocus()':        ['<C-tab>'],
 \ }
 
 let ctrlp_filter_greps = "".
@@ -1389,7 +1382,7 @@ nnoremap <silent> <Leader><tab> :ScratchToggle<cr>
 "     https://github.com/rstacruz/sparkup (general)
 "     https://github.com/tristen/vim-sparkup (vim-specific)
 
-"let g:sparkupNextMapping = '<c-s>'
+"let g:sparkupNextMapping = '<C-s>'
 
 "  }}}
 "   Statline {{{
