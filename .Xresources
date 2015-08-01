@@ -80,10 +80,10 @@ URxvt.externalBorder: -1
 URxvt.lineSpace: 0
 
 ! Fonts
-URxvt.font: xft:Inconsolata for Powerline:pixelsize=18
-URxvt.boldFont: xft:Inconsolata for Powerline:pixelsize=18:Bold
-URxvt.italicFont: xft:Inconsolata for Powerline:pixelsize=18:Italic
-URxvt.bolditalicFont: xft:Inconsolata for Powerline:pixelsize=18:Bold:Italic
+URxvt.font: xft:Inconsolata for Powerline:pixelsize=20
+URxvt.boldFont: xft:Inconsolata for Powerline:pixelsize=20:Bold
+URxvt.italicFont: xft:Inconsolata for Powerline:pixelsize=20:Italic
+URxvt.bolditalicFont: xft:Inconsolata for Powerline:pixelsize=20:Bold:Italic
 URxvt.allow_bold: true
 URxvt.skipBuiltinGlyphs: True
 URxvt.letterSpace: -1
