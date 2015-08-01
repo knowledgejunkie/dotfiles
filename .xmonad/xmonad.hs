@@ -293,7 +293,7 @@ defaults = defaultConfig {
 
       -- hooks, layouts
         {-layoutHook = ewmhDesktopsLayout $ avoidStruts $ myLayout,-}
-        layoutHook = avoidStruts $ myLayout,
+        layoutHook = avoidStruts $ smartBorders $ myLayout,
         manageHook = manageDocks <+> myManageHook,
         logHook = ewmhDesktopsLogHook,
         startupHook = myStartupHook
