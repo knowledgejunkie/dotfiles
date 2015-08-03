@@ -521,11 +521,9 @@ map <silent> <M-l> <C-w>>
 map <silent> <M-s> :split<CR>
 map <silent> <M-v> :vsplit<CR>
 "   }}}
-"   Quick vimrc/snippet/dictionary editing {{{
+"   Quick vimrc editing {{{
 
-nnoremap <Leader>ev :tabnew $MYVIMRC<cr>
-nnoremap <Leader>es :vsplit ~/.vim/snippets/<cr>
-nnoremap <Leader>ed :vsplit ~/.vim/custom-dictionary.utf-8.add<cr>
+nnoremap <Leader>ev :edit $MYVIMRC<cr>
 "   }}}
 "   Mouse Toggle (Vim/terminal) {{{
 "     http://nvie.com/posts/how-i-boosted-my-vim/
@@ -1195,6 +1193,8 @@ nnoremap <Leader>a :Ack!<space>
 "     https://github.com/bling/vim-airline
 
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 "   }}}
 "   Ctrl-P {{{
