@@ -706,6 +706,12 @@ set virtualedit+=block
 
 noremap <silent> <Leader><space> :noh<cr>:call clearmatches()<cr>
 
+augroup togglehlsearch
+    au!
+    au InsertEnter * :set nohlsearch
+    au InsertLeave * :set hlsearch
+augroup END
+
 " Avoid Caps Lock errors
 nnoremap ZZ zz
 
@@ -892,7 +898,7 @@ augroup END
 augroup ft_help
     au!
     au FileType help setlocal textwidth=78
-    au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
+    au FileType help wincmd L
 augroup END
 "   }}}
 "   HTML {{{
