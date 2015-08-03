@@ -16,6 +16,11 @@ fi
 
 # Customize to your needs...
 
+# Solarised dircolors  -------------------------------------------------------
+if [[ -s "${ZDOTDIR:-$HOME}/.dircolors" ]]; then
+    eval `dircolors "${ZDOTDIR:-$HOME}/.dircolors"`
+fi
+
 # Useful aliases -------------------------------------------------------------
 alias c="clear"
 alias collapse="sed -e 's/\s+/ /g'"
