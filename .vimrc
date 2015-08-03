@@ -161,8 +161,8 @@ Plug 'honza/vim-snippets'
 
 Plug 'knowledgejunkie/vim-xmltvfixup'
 
+Plug 'knowledgejunkie/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
-Plug 'altercation/vim-colors-solarized'
 " Plug 'godlygeek/csapprox'
 
 call plug#end()
@@ -379,11 +379,11 @@ syntax on
 set background=dark
 
 " https://github.com/nanotech/jellybeans.vim.git
-colorscheme jellybeans
+" colorscheme jellybeans
 
 " https://github.com/altercation/vim-colors-solarized
 "let g:solarized_termcolors=256
-"colorscheme solarized
+colorscheme solarized
 
 "   }}}
 "   Custom highlighting {{{
@@ -1278,7 +1278,7 @@ let g:gundo_preview_statusline = "Gundo Preview"
 "     https://github.com/airblade/vim-gitgutter
 
 " Set the sign column background to black (update jellybeans colorscheme)
-exec "hi SignColumn ctermbg=".g:jellybeans_background_color_256
+" exec "hi SignColumn ctermbg=".g:jellybeans_background_color_256
 
 let g:gitgutter_sign_column_always=1
 
