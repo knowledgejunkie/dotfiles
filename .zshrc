@@ -59,5 +59,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # bindkey -a u undo
 # bindkey -a '^R' redo
 
+# History grep ---------------------------------------------------------------
+
+hgrep () { 
+    history 0 | grep -P --color=always "$@" | grep -P --color=always -v "hgrep $@"
+}
+
 # Local Settings -------------------------------------------------------------
 if [[ -s $HOME/.zshrc_local ]] ; then source $HOME/.zshrc_local ; fi
