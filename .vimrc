@@ -914,6 +914,10 @@ augroup ft_html
 
     " Indent tag
     au FileType html nnoremap <buffer> <LocalLeader>= Vat=
+
+    " tidy/pretty-print via tidy
+    nnoremap <Leader>ht :%!tidy -indent -quiet --show-errors 0 --show-warnings 0<cr>
+    vnoremap <Leader>ht :!tidy -indent -quiet --show-errors 0 --show-warnings 0<cr>
 augroup END
 "   }}}
 "   Java {{{
