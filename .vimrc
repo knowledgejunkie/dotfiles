@@ -83,7 +83,73 @@
 "
 " }}}
 " Plugin Management ------------------------------------------------------- {{{
-"
+
+call plug#begin('~/.vim/plugged')
+
+" Enabled {{{
+Plug 'tpope/vim-characterize'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-jdaddy'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vividchalk'
+
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+
+Plug 'mileszs/ack.vim'
+Plug 'bling/vim-airline'
+Plug 'docunext/closetag.vim'
+Plug 'ap/vim-css-color'
+Plug 'kien/ctrlp.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/goyo.vim'
+Plug 'sjl/gundo.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'elzr/vim-json'
+Plug 'junegunn/limelight.vim'
+Plug 'Valloric/MatchTagAlways'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'myusuf3/numbers.vim'
+Plug 'duff/vim-scratch'
+Plug 'rstacruz/sparkup'
+Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
+
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'knowledgejunkie/vim-xmltvfixup'
+
+Plug 'knowledgejunkie/vim-colors-solarized'
+Plug 'nanotech/jellybeans.vim'
+" }}}
+" Disabled {{{
+" Plug 'tpope/vim-sensible'
+" Plug 'scrooloose/nerdcommenter'
+" Plug 'ntpeters/vim-better-whitespace'
+" Plug 'chrisbra/csv.vim'
+" Plug 'dansomething/vim-eclim'
+" Plug 'ervandew/eclim'
+" Plug 'mhinz/vim-signify'
+" Plug 'edkolev/promptline.vim'
+" Plug 'millermedeiros/vim-statline'
+" Plug 'junegunn/vim-easy-align'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'godlygeek/csapprox'
+" }}}
+
+call plug#end()
+
+" Plugin workflow {{{
 " Configure vim-plug to manage plugins
 "   https://github.com/junegunn/vim-plug
 "
@@ -107,73 +173,16 @@
 " Unmanaged plugin (manually installed and updated)
 "Plug '~/my-prototype-plugin'
 
-call plug#begin('~/.vim/plugged')
-
-Plug 'tpope/vim-characterize'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-jdaddy'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-scriptease'
-" Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vividchalk'
-
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-" Plug 'scrooloose/nerdcommenter'
-
-Plug 'mileszs/ack.vim'
-Plug 'bling/vim-airline'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'docunext/closetag.vim'
-Plug 'ap/vim-css-color'
-" Plug 'chrisbra/csv.vim'
-Plug 'kien/ctrlp.vim'
-Plug 'Raimondi/delimitMate'
-" Plug 'dansomething/vim-eclim'
-" Plug 'ervandew/eclim'
-Plug 'airblade/vim-gitgutter'
-" Plug 'mhinz/vim-signify'
-Plug 'junegunn/goyo.vim'
-Plug 'sjl/gundo.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'elzr/vim-json'
-Plug 'junegunn/limelight.vim'
-Plug 'Valloric/MatchTagAlways'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'myusuf3/numbers.vim'
-" Plug 'edkolev/promptline.vim'
-Plug 'duff/vim-scratch'
-Plug 'rstacruz/sparkup'
-" Plug 'millermedeiros/vim-statline'
-Plug 'godlygeek/tabular'
-" Plug 'junegunn/vim-easy-align'
-Plug 'majutsushi/tagbar'
-
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
-
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-Plug 'knowledgejunkie/vim-xmltvfixup'
-
-Plug 'knowledgejunkie/vim-colors-solarized'
-Plug 'nanotech/jellybeans.vim'
-" Plug 'godlygeek/csapprox'
-
-call plug#end()
-
 " To update plugins from inside Vim:
 "   :PlugUpdate
 "
+" To sync plugins from inside Vim:
+"   :PlugClean
+"
 " To update plugins from command line:
 "   $ vim +PlugUpdate +qall now
-
-"}}}
+" }}}
+" }}}
 " Vim startup ------------------------------------------------------------- {{{
 "
 " Open NERDTree if no files were given on command line
