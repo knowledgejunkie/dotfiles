@@ -391,7 +391,9 @@ set background=dark
 " colorscheme jellybeans
 
 " https://github.com/altercation/vim-colors-solarized
-"let g:solarized_termcolors=256
+" https://github.com/knowledgejunkie/vim-colors-solarized
+" let g:solarized_termcolors=256
+" let g:solarized_hitrail=0
 colorscheme solarized
 
 "   }}}
