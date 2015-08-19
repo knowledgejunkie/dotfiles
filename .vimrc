@@ -1006,7 +1006,7 @@ augroup ft_perl
 
 " Perltidy support
 " http://publius-ovidius.livejournal.com/242806.html
-nnoremap  <Leader>pt :%!perltidy -q<cr>
+nnoremap <Leader>pt :%!perltidy -q<cr>
 vnoremap <Leader>pt :!perltidy -q<cr>
 
 " Perldoc support
