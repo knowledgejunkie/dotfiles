@@ -993,16 +993,16 @@ augroup END
 "   }}}
 "   Perl {{{
 
-let g:perl_fold = 1
-let g:perl_fold_blocks = 1
-let g:perl_include_pod = 1
-let g:perl_extended_vars = 1
+" let g:perl_fold = 1
+" let g:perl_fold_blocks = 1
+" let g:perl_include_pod = 1
+" let g:perl_extended_vars = 1
 
 augroup ft_perl
     au!
     au BufNewFile,BufRead *.pl,*.pm,*.t,*.in set filetype=perl
-    au FileType perl match ErrorMsg /^\t\+\|\s\+$/
-    "au FileType perl setlocal foldmethod=syntax
+    " au FileType perl match ErrorMsg /^\t\+\|\s\+$/
+    " au FileType perl setlocal foldmethod=syntax
 
 " Perltidy support
 " http://publius-ovidius.livejournal.com/242806.html
