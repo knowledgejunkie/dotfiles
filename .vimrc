@@ -495,15 +495,8 @@ noremap H ^
 noremap L $
 vnoremap L g_
 "   }}}
-"   Buffer/window/tab handling {{{
+"   Buffer/window handling {{{
 "     Snippets from http://stackoverflow.com/a/1639333
-
-" Create new tab
-nnoremap <C-t> :tabnew<CR>
-
-" Moving in tabs
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
 
 " Easy buffer navigation
 noremap <C-h> <C-w>h
