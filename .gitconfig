@@ -21,7 +21,7 @@
 
 [alias]
     st = status
-    ci = commit
+    ci = commit --verbose
     cm = commit -m
     co = checkout
     sub = submodule
@@ -31,7 +31,7 @@
 
     stage = add
     unstage = reset HEAD
-    amend = commit --amend
+    amend = commit --amend --verbose
     uncommit = reset --soft HEAD^
     unstash = stash pop
     discard = checkout --
