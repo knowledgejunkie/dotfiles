@@ -1259,9 +1259,9 @@ let delimitMate_offByDefault = 1
 "     https://github.com/tpope/vim-fugitive
 
 nnoremap <Leader>gs :Gstatus<cr>
-nnoremap <Leader>gci :Gcommit<cr>
-nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gd :Gdiff<cr>
+nnoremap <Leader>gw :Gwrite<cr>
+nnoremap <Leader>gci :Gcommit -v<cr>
 nnoremap <Leader>gb :Gblame<cr>
 
 " FIXME - sync with .gitconfig
