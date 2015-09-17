@@ -483,13 +483,13 @@ nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
 "   }}}
 "   Linewise consistency mappings {{{
- 
+
 " Yank from the cursor to the end of the line
 nnoremap Y y$
 
 " Make D behave
 nnoremap D d$
-" 
+"
 " Easier to type if you don't use the default behaviour.
 noremap H ^
 noremap L $
