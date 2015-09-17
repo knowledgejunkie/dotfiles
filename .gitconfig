@@ -100,6 +100,9 @@
     
     zip-current-branch = !git archive --format zip --output=./$(pwd | rev | cut -d/ -f1 | rev).zip $(git currentbranch)
 
+    wdiff = diff --color-words
+    wshow = show --color-words
+
 [diff]
     algorithm = patience
 
