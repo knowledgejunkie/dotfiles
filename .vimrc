@@ -1219,28 +1219,28 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_extensions = ['tag']
 
 let g:ctrlp_prompt_mappings = {
-\ 'PrtSelectMove("j")':   ['<C-j>', '<down>'],
-\ 'PrtSelectMove("k")':   ['<C-k>', '<up>'],
-\ 'PrtHistory(-1)':       ['<C-n>'],
-\ 'PrtHistory(1)':        ['<C-p>'],
-\ 'ToggleFocus()':        ['<C-tab>'],
-\ }
+            \ 'PrtSelectMove("j")':   ['<C-j>', '<down>'],
+            \ 'PrtSelectMove("k")':   ['<C-k>', '<up>'],
+            \ 'PrtHistory(-1)':       ['<C-n>'],
+            \ 'PrtHistory(1)':        ['<C-p>'],
+            \ 'ToggleFocus()':        ['<C-tab>'],
+            \ }
 
 let ctrlp_filter_greps = "".
-    \ "egrep -iv '\\.(" .
-    \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
-    \ ")$' | " .
-    \ "egrep -v '^(\\./)?(" .
-    \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
-    \ ")'"
+            \ "egrep -iv '\\.(" .
+            \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
+            \ ")$' | " .
+            \ "egrep -v '^(\\./)?(" .
+            \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
+            \ ")'"
 
 let my_ctrlp_user_command = "" .
-    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
-    \ ctrlp_filter_greps
+            \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
+            \ ctrlp_filter_greps
 
 let my_ctrlp_git_command = "" .
-    \ "cd %s && git ls-files | " .
-    \ ctrlp_filter_greps
+            \ "cd %s && git ls-files | " .
+            \ ctrlp_filter_greps
 
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
