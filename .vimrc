@@ -452,14 +452,14 @@ nnoremap VaB vaBV
 vnoremap < <gv
 vnoremap > >gv
 "
-"     Shifting whole lines up/down
-"       https://github.com/pera/vim/blob/master/.vimrc
-nnoremap <C-Down> :m+<CR>
-nnoremap <C-Up> :m-2<CR>
-inoremap <C-Down> <Esc>:m+<CR>
-inoremap <C-Up> <Esc>:m-2<CR>
-vnoremap <C-Down> :m'>+<CR>gv
-vnoremap <C-Up> :m-2<CR>gv
+"     Shifting whole lines up/down with automatic indenting
+"       http://vimrcfu.com/snippet/77 (V-mode)
+nnoremap <C-Down> :m+1<CR>==
+nnoremap <C-Up> :m-2<CR>==
+inoremap <C-Down> <Esc>:m+1<CR>==i
+inoremap <C-Up> <Esc>:m-2<CR>==i
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+vnoremap <C-Up> :m '<-2<CR>gv=gv
 "   }}}
 "   Copying/pasting text {{{
 
