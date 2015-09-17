@@ -97,7 +97,7 @@
     graft = cherry-pick -x
 
     ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-    
+
     zip-current-branch = !git archive --format zip --output=./$(pwd | rev | cut -d/ -f1 | rev).zip $(git currentbranch)
 
     wdiff = diff --color-words
