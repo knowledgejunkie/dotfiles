@@ -45,6 +45,10 @@ export HISTFILESIZE=10000
 export HISTCONTROL=erasedups
 export COMMAND_MODE=unix2003
 
+# Debian ---------------------------------------------------------------------
+export DEBFULLNAME='Nick Morrott'
+export DEBEMAIL='knowledgejunkie@gmail.com'
+
 # xmonad/Java fixup ----------------------------------------------------------
 export _JAVA_AWT_WM_NONREPARENTING=1
 
