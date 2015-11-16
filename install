@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Copyright (c) Nick Morrott 2015
+
 # Inspired by https://github.com/necolas/dotfiles/blob/master/bin/dotfiles
 # and https://github.com/kewah/dotfiles/blob/master/install
 
@@ -7,103 +9,187 @@ DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 POWERLINE_FONTS_DIRECTORY="${HOME}/.powerline-fonts"
 PREZTO_DIRECTORY="${HOME}/.zprezto"
 
+# DATE=`date +%Y%m%d-%H%M%S`
+DATE=`date +%s`
+BACKUP_DIRECTORY="${HOME}/.dotfiles-backup/${DATE}"
+
+#------------------------------- general subs --------------------------------
 link() {
-  #FIXME - backup files before replacing them
-  if [ -e "${HOME}/${2}" ]; then
-      echo "  Cannot create link to ${HOME}/${2} (file already exists)"
-    exit 1
+  if [ -h "${HOME}/${2}" ]; then
+    echo "    Deleting symlink ${HOME}/${2}"
+    rm -f ${HOME}/${2}
+  elif [ -f "${HOME}/${2}" || -d "${HOME}/${2}" ]; then
+    backup_dotfile "${HOME}/${2}"
   fi
 
-  # Create/replace the symlink.
-  ln -fs "${1}" "${HOME}/${2}"
+  # Create the symlink.
+  echo "    Creating symlink ${HOME}/${2}"
+  ln -s "${1}" "${HOME}/${2}"
 }
 
-# Clone the upstream Powerline patched fonts repo
-echo "Cloning upstream 'powerline-fonts' repository..."
-git clone https://github.com/powerline/fonts.git "${POWERLINE_FONTS_DIRECTORY}" >/dev/null
+backup_dotfile() {
+  if [ ! -e ${BACKUP_DIRECTORY} ]; then
+    mkdir -p ${BACKUP_DIRECTORY}
+  fi
 
-# Setup powerline-fonts
-echo "Configuring powerline-fonts..."
-cd ${POWERLINE_FONTS_DIRECTORY}
-./install.sh >/dev/null
-cd ${DOTFILES_DIRECTORY}
+  echo "    Backing up ${1} to ${BACKUP_DIRECTORY}"
+  mv ${1} ${BACKUP_DIRECTORY} >/dev/null
+}
 
-# Clone the upstream Prezto repo
-echo "Cloning upstream 'prezto' repository..."
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${PREZTO_DIRECTORY}" >/dev/null
+#-------------------------------- powerline-fonts ----------------------------
+install_powerline() {
+  if [ ! -e "${POWERLINE_FONTS_DIRECTORY}" ]; then
+    # Clone the upstream Powerline patched fonts repo
+    echo "  Cloning upstream 'powerline-fonts' repository..."
+    git clone https://github.com/powerline/fonts.git "${POWERLINE_FONTS_DIRECTORY}" >/dev/null
+  else
+    # Update the upstream Powerline patched fonts repo if we already have it
+    echo "  Updating upstream 'powerline-fonts' repository..."
+    cd ${POWERLINE_FONTS_DIRECTORY}
+    git pull >/dev/null
+  fi
+}
 
-# Prezto setup
-echo "Configuring zsh/prezto..."
-link "${DOTFILES_DIRECTORY}/.zlogin"    ".zlogin"
-link "${DOTFILES_DIRECTORY}/.zlogout"   ".zlogout"
-link "${DOTFILES_DIRECTORY}/.zpreztorc" ".zpreztorc"
-link "${DOTFILES_DIRECTORY}/.zprofile"  ".zprofile"
-link "${DOTFILES_DIRECTORY}/.zshenv"    ".zshenv"
-link "${DOTFILES_DIRECTORY}/.zshrc"     ".zshrc"
+configure_powerline() {
+  # Setup powerline-fonts
+  echo "  Configuring..."
+  cd ${POWERLINE_FONTS_DIRECTORY}
+  ./install.sh >/dev/null
+}
 
-if [ -e "${HOME}/.zfunctions" ]; then
-  rm -rf "${HOME}/.zfunctions"
+#-------------------------------- zsh/prezto ---------------------------------
+install_prezto() {
+  if [ ! -e "${PREZTO_DIRECTORY}" ]; then
+    # Clone the upstream Prezto repo
+    echo "  Cloning upstream 'prezto' repository..."
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${PREZTO_DIRECTORY}" >/dev/null
+  else
+    # Update the upstream Prezto repo if we already have it
+    echo "  Updating upstream 'prezto' repository..."
+    cd ${PREZTO_DIRECTORY}
+    git pull --recurse-submodules >/dev/null
+    git submodule update --recursive >/dev/null
 fi
+}
 
-mkdir "${HOME}/.zfunctions"
+configure_prezto() {
+  echo "  Configuring..."
+  link "${DOTFILES_DIRECTORY}/.zlogin"    ".zlogin"
+  link "${DOTFILES_DIRECTORY}/.zlogout"   ".zlogout"
+  link "${DOTFILES_DIRECTORY}/.zpreztorc" ".zpreztorc"
+  link "${DOTFILES_DIRECTORY}/.zprofile"  ".zprofile"
+  link "${DOTFILES_DIRECTORY}/.zshenv"    ".zshenv"
+  link "${DOTFILES_DIRECTORY}/.zshrc"     ".zshrc"
 
-ln -fs "${DOTFILES_DIRECTORY}/.zprezto/modules/prompt/functions/prompt_knowledgejunkie_setup" "${HOME}/.zfunctions/prompt_knowledgejunkie_setup"
+  echo "  Installing custom prompt..."
+  if [ ! -e "${HOME}/.zfunctions" ]; then
+    mkdir "${HOME}/.zfunctions"
+  else
+    echo "    Directory ${HOME}/.zfunctions already exists, so we'll use it"
+  fi
+  link "${DOTFILES_DIRECTORY}/.zprezto/modules/prompt/functions/prompt_knowledgejunkie_setup" ".zfunctions/prompt_knowledgejunkie_setup"
+}
 
-# Vim setup
+set_default_shell_to_zsh() {
+  echo ""
+  echo "Enter password to set zsh as this account's default shell"
+  chsh -s /bin/zsh
+}
 
-echo "Configuring vim..."
+#----------------------------------- vim -------------------------------------
 
-# Force remove the vim directory if it's already there.
-if [ -e "${HOME}/.vim" ]; then
-  rm -rf "${HOME}/.vim"
-fi
+configure_vim() {
+  echo "  Configuring..."
 
-link "${DOTFILES_DIRECTORY}/.vimrc" ".vimrc"
-link "${DOTFILES_DIRECTORY}/.vim"   ".vim"
+  # Backup "real" vim directory (not symlink)
+  # if [ -e "${HOME}/.vim" ]; then
+  #   backup_dotfile "${HOME}/.vim"
+  # fi
 
-echo "Configuring xmonad.."
+  link "${DOTFILES_DIRECTORY}/.vim"   ".vim"
+  link "${DOTFILES_DIRECTORY}/.vimrc" ".vimrc"
+}
 
-# Force remove the xmonad directory if it's already there.
-if [ -e "${HOME}/.xmonad" ]; then
-  rm -rf "${HOME}/.xmonad"
-fi
+configure_vim_plugins() {
+  # Plugins
+  if [ ! -e "${DOTFILES_DIRECTORY}/.vim/plugged" ]; then
+    echo "  Installing plugins..."
+    # Install if it looks like we haven't already run PlugInstall
+    vim +PlugInstall +qall now
+  else
+    # Otherwise update
+    echo "  Updating plugins..."
+    vim +PlugUpdate +qall now
+  fi
+}
 
-link "${DOTFILES_DIRECTORY}/.xmonad" ".xmonad"
+#---------------------------------- xmonad -----------------------------------
 
-# Scripts dir setup (provided .zshrc prepends this dir to $PATH)
-echo "Configuring scripts directory..."
-link "${DOTFILES_DIRECTORY}/bin" "bin"
-#
-# Remaining dotfiles setup
-echo "Configuring remaining dotfiles..."
-link "${DOTFILES_DIRECTORY}/.Xresources"        ".Xresources"
-link "${DOTFILES_DIRECTORY}/.ackrc"             ".ackrc"
-link "${DOTFILES_DIRECTORY}/.bash_aliases"      ".bash_aliases"
-link "${DOTFILES_DIRECTORY}/.ctags"             ".ctags"
-link "${DOTFILES_DIRECTORY}/.dircolors"         ".dircolors"
-link "${DOTFILES_DIRECTORY}/.dput.cf"           ".dput.cf"
-link "${DOTFILES_DIRECTORY}/.editrc"            ".editrc"
-link "${DOTFILES_DIRECTORY}/.gbp.conf"          ".gbp.conf"
-link "${DOTFILES_DIRECTORY}/.gitconfig"         ".gitconfig"
-link "${DOTFILES_DIRECTORY}/.gitignore"         ".gitignore"
-link "${DOTFILES_DIRECTORY}/.gitk"              ".gitk"
-link "${DOTFILES_DIRECTORY}/.gitmessage"        ".gitmessage"
-link "${DOTFILES_DIRECTORY}/.gitmodules"        ".gitmodules"
-link "${DOTFILES_DIRECTORY}/.inputrc"           ".inputrc"
-link "${DOTFILES_DIRECTORY}/.quiltrc"           ".quiltrc"
-link "${DOTFILES_DIRECTORY}/.reportbugrc"       ".reportbugrc"
-link "${DOTFILES_DIRECTORY}/.reportbugrc"       ".reportbugrc"
-link "${DOTFILES_DIRECTORY}/.xbindkeysrc"       ".xbindkeysrc"
-link "${DOTFILES_DIRECTORY}/.xinitrc"           ".xinitrc"
-link "${DOTFILES_DIRECTORY}/.xinitrc.xfce4"     ".xinitrc.xfce4"
-link "${DOTFILES_DIRECTORY}/.ycm_extra_conf.py" ".ycm_extra_conf.py"
+configure_xmonad() {
+  # Backup "real" xmonad directory (not symlink)
+  # if [ -e "${HOME}/.xmonad" ]; then
+  #   backup_dotfile "${HOME}/.xmonad"
+  # fi
 
-# Set default shell to Zsh
+  echo "  Configuring..."
+  link "${DOTFILES_DIRECTORY}/.xmonad" ".xmonad"
+}
+
+#--------------------------------- dotfiles ----------------------------------
+
+install_dotfiles() {
+  # Scripts dir setup (provided .zshrc prepends this dir to $PATH)
+  echo "  Configuring scripts directory..."
+  link "${DOTFILES_DIRECTORY}/bin"                "bin"
+
+  # Remaining dotfiles setup
+  echo "  Configuring symlinks"
+  link "${DOTFILES_DIRECTORY}/.Xresources"        ".Xresources"
+  link "${DOTFILES_DIRECTORY}/.ackrc"             ".ackrc"
+  link "${DOTFILES_DIRECTORY}/.bash_aliases"      ".bash_aliases"
+  link "${DOTFILES_DIRECTORY}/.ctags"             ".ctags"
+  link "${DOTFILES_DIRECTORY}/.dircolors"         ".dircolors"
+  link "${DOTFILES_DIRECTORY}/.dput.cf"           ".dput.cf"
+  link "${DOTFILES_DIRECTORY}/.editrc"            ".editrc"
+  link "${DOTFILES_DIRECTORY}/.gbp.conf"          ".gbp.conf"
+  link "${DOTFILES_DIRECTORY}/.gitconfig"         ".gitconfig"
+  link "${DOTFILES_DIRECTORY}/.gitignore"         ".gitignore"
+  link "${DOTFILES_DIRECTORY}/.gitk"              ".gitk"
+  link "${DOTFILES_DIRECTORY}/.gitmessage"        ".gitmessage"
+  link "${DOTFILES_DIRECTORY}/.inputrc"           ".inputrc"
+  link "${DOTFILES_DIRECTORY}/.quiltrc"           ".quiltrc"
+  link "${DOTFILES_DIRECTORY}/.reportbugrc"       ".reportbugrc"
+  link "${DOTFILES_DIRECTORY}/.reportbugrc"       ".reportbugrc"
+  link "${DOTFILES_DIRECTORY}/.xbindkeysrc"       ".xbindkeysrc"
+  link "${DOTFILES_DIRECTORY}/.xinitrc"           ".xinitrc"
+  link "${DOTFILES_DIRECTORY}/.xinitrc.xfce4"     ".xinitrc.xfce4"
+  link "${DOTFILES_DIRECTORY}/.ycm_extra_conf.py" ".ycm_extra_conf.py"
+}
+
+#-----------------------------------------------------------------------------
+
+echo "[powerline-fonts]"
+install_powerline
+configure_powerline
 echo ""
-echo "Enter password to set zsh as this account's default shell"
-chsh -s /bin/zsh
 
-# Install Vim plugins from within Vim
-echo "Please run :PlugInstall from within vim to complete vim plugin installation"
+echo "[zsh/prezto]"
+install_prezto
+configure_prezto
+set_default_shell_to_zsh
 echo ""
+
+echo "[vim]"
+configure_vim
+configure_vim_plugins
+echo ""
+
+echo "[xmonad]"
+configure_xmonad
+echo ""
+
+echo "[dotfiles]"
+install_dotfiles
+echo ""
+
 echo "Finished!"
