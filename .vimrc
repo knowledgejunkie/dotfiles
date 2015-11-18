@@ -819,6 +819,21 @@ autocmd FileType mako set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 " }}}
+" Tags -------------------------------------------------------------------- {{{
+
+" If vim-fugitive is installed, the .git/tags path is automatically added
+" but we include it here in case the plugin is not available
+set tags=.git/tags;,./tags;,tags;
+
+" Update tags after every write? Requires git ctags hook
+"   http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html#comment-283074229
+"
+" autocmd BufWritePost *
+"       \ if exists('b:git_dir') && executable(b:git_dir.'/hooks/ctags') |
+"       \   call system('"'.b:git_dir.'/hooks/ctags" &') |
+"       \ endif
+
+" }}}
 " Filetype-specific ------------------------------------------------------- {{{
 "   C {{{
 
@@ -1209,8 +1224,10 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "     https://github.com/kien/ctrlp.vim
 
 let g:ctrlp_map = '<Leader>f'
+nnoremap <Leader>t :CtrlPTag<CR>
 
 "let g:ctrlp_dont_split = 'NERD_tree_2'
+let g:ctrlp_by_filename = 1
 let g:ctrlp_jump_to_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window_reversed = 1
@@ -1488,6 +1505,7 @@ let g:ycm_complete_in_comments  = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
 let g:ycm_extra_conf_vim_data   = ['&filetype']
 let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
 "   }}}
 " }}}
 " Mini-plugins ------------------------------------------------------------ {{{

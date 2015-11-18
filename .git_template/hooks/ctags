@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# ctags commit hook from http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+
+set -e
+dir="`git rev-parse --git-dir`"
+
+# these lines edited from https://github.com/richo/git_template/blob/master/hooks/ctags
+mkdir $dir/tags_lock 2>/dev/null || exit 0
+trap "rmdir $dir/tags_lock; rm -f $dir/$$.tags" EXIT
+# replacing:
+#trap 'rm -f "$dir/$$.tags"' EXIT
+
+git ls-files | ctags --tag-relative=yes -L - -f"$dir/$$.tags" --fields=+l --languages=-javascript,sql
+mv "$dir/$$.tags" "$dir/tags"

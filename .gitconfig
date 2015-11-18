@@ -103,6 +103,8 @@
     wdiff = diff --color-words
     wshow = show --color-words
 
+    ctags = !.git/hooks/ctags
+
 [diff]
     algorithm = patience
 
@@ -137,3 +139,5 @@
 
 [include]
     path = .gitconfig.user
+[init]
+	templatedir = ~/.git_template

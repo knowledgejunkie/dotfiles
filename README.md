@@ -9,7 +9,7 @@ This repository installs and customises the following applications available on
 - [urxvt][urxvt]
 - [zsh][zsh] with [prezto][prezto]
 - [vim][vim] with several plugins
-- [git][git]
+- [git][git] with ctags hooks
 
 Configurations for several other Debian-specific and general development tools
 and utilities are also provided.
@@ -61,7 +61,7 @@ commands (as root, or via sudo) as required:
 
 #### vim
 
-    # aptitude install vim-gtk xml-twig-tools build-essential cmake python-dev libclang1 libboost-all-dev
+    # aptitude install vim-gtk xml-twig-tools build-essential cmake python-dev libclang1 libboost-all-dev exuberant-ctags
 
 #### git
 
@@ -109,6 +109,10 @@ necessary):
     # cd /usr/lib/llvm-3.5/lib
     # ln -s libclang.so.1 libclang.so
 
+Vim and the TagBar plugin can use tags created by ctags (exuberant-ctags). A
+'git ctags' alias and hooks are provided to automatically update a Git project's
+tags file after a checkout/commit/merge/rebase.
+
 ### Vim plugins
 
 Vim plugins in this repository are managed using the [vim-plug][vim-plug]
@@ -126,6 +130,14 @@ Note: When running Vim for the first time after installation it is likely that
 it will complain about missing plugin files/directories/settings. These
 warnings can be safely ignored and will not appear when Vim has been run once
 and plugins have been installed successfully.
+
+### Git
+
+A default Git templates framework is provided that will be configured with any
+newly-created Git repositories after installation.
+
+A 'git ctags' alias and hooks are provided to automatically update a
+Git project's tags file after a checkout/commit/merge/rebase.
 
 ### xinitrc for XFCE4
 

@@ -1,17 +1,28 @@
---python-kinds=cfm
---javascript-kinds=cm
---fields=-s
+--recurse
+--tag-relative=yes
 
---languages=-html
---languages=-javascript
+--fields=+l
 
---exclude=flowplayer
+--exclude=CVS
+--exclude=.git
 --exclude=.hg
---exclude=.ropeproject
---exclude=libs
 --exclude=build
---exclude=dist
---exclude=user-data
---exclude=venv
+--exclude=debian
+--exclude=DEBIAN
+--exclude=doc
+--exclude=docs
+--exclude=log
+--exclude=logs
+--exclude=tmp
+--exclude=todo
 
---langmap=Lisp:+.clj
+--languages=-sql,javascript
+
+--langdef=markdown
+--langmap=markdown:.md
+--regex-markdown=/^#[ \t]+(.*)/\1/h,Heading_L1/
+--regex-markdown=/^##[ \t]+(.*)/\1/i,Heading_L2/
+--regex-markdown=/^###[ \t]+(.*)/\1/k,Heading_L3/
+--regex-markdown=/^####[ \t]+(.*)/\1/k,Heading_L4/
+--regex-markdown=/^#####[ \t]+(.*)/\1/k,Heading_L5/
+--regex-markdown=/^######[ \t]+(.*)/\1/k,Heading_L6/

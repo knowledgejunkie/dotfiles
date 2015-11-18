@@ -142,6 +142,10 @@ install_dotfiles() {
   echo "  Configuring scripts directory..."
   link "${DOTFILES_DIRECTORY}/bin"                "bin"
 
+  # git template/hooks dir setup
+  echo "  Configuring git template/hooks directory..."
+  link "${DOTFILES_DIRECTORY}/.git_template"      ".git_template"
+
   # Remaining dotfiles setup
   echo "  Configuring symlinks"
   link "${DOTFILES_DIRECTORY}/.Xresources"        ".Xresources"
