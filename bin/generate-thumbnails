@@ -1,0 +1,96 @@
+#!/bin/bash
+#
+# Generate image thumbnails
+# (c) Nick Morrott, 2015
+#
+# Generates thumbnails in a thumbnails/ sub-directory under the directory
+# given as argument, if suitable image/jpeg images are found. Identification
+# is by file extension, not by magic number.
+#
+# Renames *.JPG *.JPEG *.jpeg to .jpg
+#
+# Deletes orphaned thumbnails in case original source image has been
+# moved/renamed.
+#
+# E.g.
+#
+# find /mnt/media/photos -mindepth 1 -maxdepth 1 -type d -exec ./generate-thumbnails "{}" \;
+
+IMAGES_DIR="$1"
+THUMBS_DIR="${IMAGES_DIR}/thumbnails"
+
+START_DIR=$(pwd)
+
+shopt -s nullglob
+
+echo
+
+# Check if we were passed a directory
+if [ $# -eq 0 ]; then
+    echo -e "No images directory specified, exiting\n"
+    exit 1
+fi
+
+# Check if directory exists, exit if not
+if [ ! -d "${IMAGES_DIR}" ]; then
+    echo -e "Missing images directory ${IMAGES_DIR}, exiting\n"
+    exit 1
+fi
+
+echo -e "Processing images directory ${IMAGES_DIR}\n"
+
+# Check if we have any images to process
+cd "${IMAGES_DIR}"
+set -- *.jpg *.jpeg *.JPG *.JPEG
+
+if [ "$#" -gt 0 ]; then
+# if [ ! -e "${IMAGES_DIR}" ]; then
+    echo -e "  Found $# images\n"
+else
+    echo -e "  No images found to process, exiting\n"
+    exit 1
+fi
+
+# Check if thumbnails directory exists
+if [ ! -d "${THUMBS_DIR}" ]; then
+    echo -e "  Creating thumbnails directory ${THUMBS_DIR}\n"
+    mkdir "${THUMBS_DIR}"
+fi
+
+chmod -R 755 *
+
+# replace whitespace with underscore
+rename 's/\s+/_/g' *
+
+# give files with .JPG/.JPEG/.jpeg extension a consistent .jpg extension
+find . -maxdepth 1 -type f -name '*.JPG'  -print0 |xargs -0 rename 's/\.JPG$/.jpg/'
+find . -maxdepth 1 -type f -name '*.JPEG' -print0 |xargs -0 rename 's/\.JPEG$/.jpg/'
+find . -maxdepth 1 -type f -name '*.jpeg' -print0 |xargs -0 rename 's/\.jpeg$/.jpg/'
+
+# create thumbnails
+for f in *.jpg ; do
+    ff=`echo "${f}" | sed 's/\.[^.]*$//'`
+    THUMB_FILE="thumb-${ff}.jpg"
+    if [ ! -e "${THUMBS_DIR}"/"${THUMB_FILE}" ]; then
+        echo "  Processing ${f}: thumbnail missing, creating"
+        convert -resize 1936x1296 "${f}" "${THUMBS_DIR}"/"${THUMB_FILE}"
+    # else
+        # echo "  Processing ${f}"
+    fi
+done
+
+# check for orphaned thumbnails
+cd "${THUMBS_DIR}"
+
+for f in *.jpg ; do
+    #echo "  Processing thumbnail ${f}"
+    SRC_IMG="${f##thumb-}"
+    if [ ! -e ../"${SRC_IMG}" ]; then
+        echo "  Deleting thumbnail for missing image ${SRC_IMG}"
+        rm "${f}"
+    fi
+done
+
+cd ${START_DIR}
+echo
+exit 0
