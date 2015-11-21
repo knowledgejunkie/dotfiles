@@ -14,6 +14,9 @@ This repository installs and customises the following applications available on
 Configurations for several other Debian-specific and general development tools
 and utilities are also provided.
 
+Scripts that I've found useful are installed into ~/.bin and $PATH is updated
+to reflect this. (Yes, it's hidden. Yes, it contains binaries.)
+
 In addition, this repository includes customisation for the following hardware:
 
 - [Microsoft Natural Ergonomic Keyboard 4000][ergo4000]

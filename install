@@ -140,7 +140,7 @@ configure_xmonad() {
 install_dotfiles() {
   # Scripts dir setup (provided .zshrc prepends this dir to $PATH)
   echo "  Configuring scripts directory..."
-  link "${DOTFILES_DIRECTORY}/bin"                "bin"
+  link "${DOTFILES_DIRECTORY}/bin"                ".bin"
 
   # git template/hooks dir setup
   echo "  Configuring git template/hooks directory..."

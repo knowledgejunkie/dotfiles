@@ -37,7 +37,7 @@ alias cdsvn="cd ~/dev/src/svn/"
 alias cdhg="cd ~/dev/src/hg/"
 
 # Environment variables ------------------------------------------------------
-export PATH="$HOME/bin:${PATH}"
+export PATH="$HOME/.bin:${PATH}"
 
 export EDITOR='vim'
 export HISTSIZE=10000
