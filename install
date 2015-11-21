@@ -151,6 +151,7 @@ install_dotfiles() {
   # Remaining dotfiles setup
   echo "  Configuring symlinks"
   link "${DOTFILES_DIRECTORY}/.Xresources"        ".Xresources"
+  link "${DOTFILES_DIRECTORY}/.abcde.conf"        ".abcde.conf"
   link "${DOTFILES_DIRECTORY}/.ackrc"             ".ackrc"
   link "${DOTFILES_DIRECTORY}/.bash_aliases"      ".bash_aliases"
   link "${DOTFILES_DIRECTORY}/.ctags"             ".ctags"
