@@ -1,0 +1,68 @@
+#!/usr/bin/perl
+#
+# check_codepoints
+# (c) Nick Morrott, 2015
+#
+# Check if a given Unicode codepoint is available in locally-installed fonts
+#
+# Usage:
+#
+# ./check_codepoints U+3DF
+#
+# Rationale:
+#
+# An energy supplier changed their UTF-8-encoded subject line to include a
+# Unicode character that my regular display font doesn't have available. I
+# wondered whether it was available in any other fonts available on my system.
+#
+# Base-64 encoded in email header:
+#
+#   Subject: =?UTF-8?B?z58gUmVhZGluZ3MgcGxlYXNlIM+f?=
+#   Subject: =?UTF-8?B?8J+ThSBSZWFkaW5ncyBwbGVhc2Ug8J+ThQ==?=
+#
+# Base-64 decoded for display:
+#
+#   Subject: ϟ Readings please ϟ      -> U+3DF (GREEK SMALL LETTER KOPPA)
+#   Subject: 📅 Readings please 📅      -> U+1F4C5 (CALENDAR)
+
+use strict;
+use warnings;
+use charnames ();
+use utf8;
+use Encode qw( encode );
+use Font::FreeType;
+
+die "Usage: $0 CODEPOINT\n" unless @ARGV == 1;
+my $ucp = uc $ARGV[0];
+
+$ucp =~ s/^U\+//; # Remove leading "U+" if present
+$ucp =~ s/^0+//;  # Remove leading zeroes if present
+if ($ucp !~ m/^[[:xdigit:]]+$/) {
+    die "Invalid hexadecimal characters seen in input, please check";
+}
+$ucp = "U+" . $ucp; # Restore leading "U+"
+
+my $char_name = charnames::viacode($ucp);
+my $char_code = charnames::vianame($ucp);
+
+print "\n";
+printf "Checking available fonts for Unicode Codepoint %s ( %s , %s )\n\n",
+        $ucp, encode("UTF-8", $char_code), $char_name;
+
+my @fontconfig_list = `fc-list`;
+my %matched_fonts;
+
+foreach my $entry (sort @fontconfig_list) {
+    my ($path) = $entry =~ /^([^:]+)/;
+    my $font = Font::FreeType->new->face($path);
+
+    $font->foreach_char(sub {
+        my $ccp = "U+" . sprintf("%X", $_->char_code);
+        if ($ccp =~ m/^\Q$ucp\E$/) {
+            $matched_fonts{$font->family_name} = $font->family_name;
+            return;
+        }
+    });
+}
+
+print "  " . $_ . "\n" foreach (sort keys %matched_fonts);
