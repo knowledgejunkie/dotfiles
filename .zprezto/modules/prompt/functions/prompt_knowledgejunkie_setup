@@ -14,7 +14,7 @@
 #   TODO
 #
 
-BAT_CHARGE=~/bin/thinkpad-battery-status.py
+BAT_CHARGE=~/.bin/thinkpad-battery-status.py
 
 function battery_charge {
     echo `$BAT_CHARGE` 2>/dev/null
