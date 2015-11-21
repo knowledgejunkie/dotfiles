@@ -18,7 +18,9 @@ link() {
   if [ -h "${HOME}/${2}" ]; then
     echo "    Deleting symlink ${HOME}/${2}"
     rm -f ${HOME}/${2}
-  elif [ -f "${HOME}/${2}" || -d "${HOME}/${2}" ]; then
+  elif [ -f "${HOME}/${2}" ]; then
+    backup_dotfile "${HOME}/${2}"
+  elif [ -d "${HOME}/${2}" ]; then
     backup_dotfile "${HOME}/${2}"
   fi
 
