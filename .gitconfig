@@ -37,8 +37,11 @@
     discard = checkout --
     discard-merge = reset --hard HEAD
 
+    b = branch -a
     branches = branch -a
+    r = remote -v
     remotes = remote -v
+    t = tag -l
     tags = tag -l
 
     cloneall = clone --recursive
