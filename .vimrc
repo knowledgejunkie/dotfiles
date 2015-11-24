@@ -483,6 +483,55 @@ vnoremap <C-p> "+gP
 nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
 "   }}}
+"   Switching case {{{
+
+" "Uppercase current word
+"
+" This mapping allows you to press <C-u> in insert mode to convert the current
+" word to uppercase.  It's handy when you're writing names of constants and
+" don't want to use Capslock.
+"
+" To use it you type the name of the constant in lowercase.  While your
+" cursor is at the end of the word, press <C-u> to uppercase it, and then
+" continue happily on your way:
+"
+"                            cursor
+"                            v
+"     max_connections_allowed|
+"     <C-u>
+"     MAX_CONNECTIONS_ALLOWED|
+"                            ^
+"                            cursor
+"
+" It works by exiting out of insert mode, recording the current cursor location
+" in the z mark, using gUiw to uppercase inside the current word, moving back to
+" the z mark, and entering insert mode again.
+"
+" Note that this will overwrite the contents of the z mark.  I never use it, but
+" if you do you'll probably want to use another mark.
+inoremap <C-u> <esc>mzgUiw`za
+nnoremap <C-u> gUiw
+
+" I constantly hit "u" in visual mode when I mean to "y". Use "gu" for those rare occasions.
+" From https://github.com/henrik/dotfiles/blob/master/vim/config/mappings.vim
+" vnoremap u <nop>
+" vnoremap gu u
+
+" Cycle case of selection between upper, lower and sentence case
+"   http://vim.wikia.com/wiki/Switching_case_of_characters
+function! CycleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+vnoremap ~ y:call setreg('', CycleCase(@"), getregtype(''))<CR>gv""Pgv
+
+"   }}}
 "   Linewise consistency mappings {{{
 
 " Yank from the cursor to the end of the line
@@ -599,40 +648,8 @@ nnoremap <F8> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> t
                         \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
                         \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" "Uppercase current word
-"
-" This mapping allows you to press <C-u> in insert mode to convert the current
-" word to uppercase.  It's handy when you're writing names of constants and
-" don't want to use Capslock.
-"
-" To use it you type the name of the constant in lowercase.  While your
-" cursor is at the end of the word, press <C-u> to uppercase it, and then
-" continue happily on your way:
-"
-"                            cursor
-"                            v
-"     max_connections_allowed|
-"     <C-u>
-"     MAX_CONNECTIONS_ALLOWED|
-"                            ^
-"                            cursor
-"
-" It works by exiting out of insert mode, recording the current cursor location
-" in the z mark, using gUiw to uppercase inside the current word, moving back to
-" the z mark, and entering insert mode again.
-"
-" Note that this will overwrite the contents of the z mark.  I never use it, but
-" if you do you'll probably want to use another mark.
-inoremap <C-u> <esc>mzgUiw`za
-nnoremap <C-u> gUiw
-
 " Unfuck my screen
 nnoremap <Leader>u :syntax sync fromstart<cr>:redraw!<cr>
-
-" I constantly hit "u" in visual mode when I mean to "y". Use "gu" for those rare occasions.
-" From https://github.com/henrik/dotfiles/blob/master/vim/config/mappings.vim
-vnoremap u <nop>
-vnoremap gu u
 
 " Insert the directory of the current buffer in command line mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
