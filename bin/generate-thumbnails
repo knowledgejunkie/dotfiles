@@ -12,6 +12,8 @@
 # Deletes orphaned thumbnails in case original source image has been
 # moved/renamed.
 #
+# Updates timestamps of original/thumbnail during thumbnail creation
+#
 # E.g.
 #
 # find /mnt/media/photos -mindepth 1 -maxdepth 1 -type d -exec ./generate-thumbnails "{}" \;
@@ -71,11 +73,21 @@ find . -maxdepth 1 -type f -name '*.jpeg' -print0 |xargs -0 rename 's/\.jpeg$/.j
 for f in *.jpg ; do
     ff=`echo "${f}" | sed 's/\.[^.]*$//'`
     THUMB_FILE="thumb-${ff}.jpg"
-    if [ ! -e "${THUMBS_DIR}"/"${THUMB_FILE}" ]; then
+    THUMB_FULL_PATH="${THUMBS_DIR}"/"${THUMB_FILE}"
+    if [ ! -e "${THUMB_FULL_PATH}" ]; then
         echo "  Processing ${f}: thumbnail missing, creating"
-        convert -resize 1936x1296 "${f}" "${THUMBS_DIR}"/"${THUMB_FILE}"
-    # else
-        # echo "  Processing ${f}"
+        convert -resize 1936x1296 "${f}" "${THUMB_FULL_PATH}"
+
+        ORIG_TIMESTAMP=$(exiftool -m -p '$DateTimeOriginal' -d "%FT%T%z" "${f}" 2>/dev/null)
+        if [ ! -z  ${ORIG_TIMESTAMP} ]; then
+            echo "    Updating original image timestamp"
+            touch -d "${ORIG_TIMESTAMP}" "${f}"
+
+            echo "    Updating thumbnail timestamp"
+            touch -d "${ORIG_TIMESTAMP}" "${THUMB_FULL_PATH}"
+        else
+            echo "    Missing timestamp in original image"
+        fi
     fi
 done
 
