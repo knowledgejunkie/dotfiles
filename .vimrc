@@ -79,7 +79,6 @@
 " <F9>
 " <F10> Tagbar toggle
 " <F11> Mouse toggle
-" <F12> Paste toggle
 "
 " }}}
 " Plugin Management ------------------------------------------------------- {{{
@@ -109,6 +108,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'ap/vim-css-color'
 Plug 'kien/ctrlp.vim'
 Plug 'Raimondi/delimitMate'
+Plug 'svermeulen/vim-easyclip'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
 Plug 'sjl/gundo.vim'
@@ -222,6 +222,8 @@ set ttimeout
 set ttimeoutlen=10
 
 set hidden
+
+set clipboard=unnamed
 
 " Save when losing focus
 au FocusLost * :silent! wall
@@ -461,21 +463,6 @@ inoremap <C-Down> <Esc>:m+1<CR>==i
 inoremap <C-Up> <Esc>:m-2<CR>==i
 vnoremap <C-Down> :m '>+1<CR>gv=gv
 vnoremap <C-Up> :m '<-2<CR>gv=gv
-"   }}}
-"   Copying/pasting text {{{
-
-set pastetoggle=<F12>
-
-" X primary
-noremap <Leader>y "*y
-noremap <Leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-noremap <Leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
-
-" X clipboard
-nnoremap <C-y> "+y
-vnoremap <C-y> "+y
-nnoremap <C-p> "+gP
-vnoremap <C-p> "+gP
 "   }}}
 "   Sorting text {{{
 
@@ -1289,6 +1276,21 @@ nnoremap <Leader>. :CtrlPTag<cr>
 " To turn it on, use :DelimitMateSwitch in a buffer
 let delimitMate_offByDefault = 1
 
+"   }}}
+"   EasyClip {{{
+"     https://github.com/svermeulen/vim-easyclip
+let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
+let g:EasyClipPreserveCursorPositionAfterYank = 1
+let g:EasyClipAutoFormat = 1
+
+imap <C-v> <plug>EasyClipInsertModePaste
+cmap <C-v> <plug>EasyClipCommandModePaste
+
+" So we don't clobber 'm', now 'x' takes a motion
+let g:EasyClipUseCutDefaults = 0
+nmap x <Plug>MoveMotionPlug
+xmap x <Plug>MoveMotionXPlug
+nmap xx <Plug>MoveMotionLinePlug
 "   }}}
 "   Fugitive {{{
 "     https://github.com/tpope/vim-fugitive
