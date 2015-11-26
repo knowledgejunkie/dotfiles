@@ -1,0 +1,59 @@
+#!/bin/bash
+#
+# Set image file's timestamp using available Exif data
+# (c) Nick Morrott, 2015
+#
+# Updates timestamps of *.jpg images found in given directory to those
+# specified in their Exif data (DateTimeOriginal, if available)
+#
+# find /mnt/media/photos -mindepth 1 -maxdepth 1 -type d -exec ./set-image-timestamps-to-exif "{}" \;
+
+IMAGES_DIR="$1"
+
+START_DIR=$(pwd)
+
+shopt -s nullglob
+
+echo
+
+# Check if we were passed a directory
+if [ $# -eq 0 ]; then
+    echo -e "No images directory specified, exiting\n"
+    exit 1
+fi
+
+# Check if directory exists, exit if not
+if [ ! -d "${IMAGES_DIR}" ]; then
+    echo -e "Missing images directory ${IMAGES_DIR}, exiting\n"
+    exit 1
+fi
+
+echo -e "Processing images directory ${IMAGES_DIR}\n"
+
+# Check if we have any images to process
+cd "${IMAGES_DIR}"
+set -- *.jpg
+
+if [ "$#" -gt 0 ]; then
+# if [ ! -e "${IMAGES_DIR}" ]; then
+    echo -e "  Found $# images\n"
+else
+    echo -e "  No images found to process, exiting\n"
+    exit 1
+fi
+
+# update timestamps
+for f in *.jpg ; do
+        echo "  Processing ${f}"
+        ORIG_TIMESTAMP=$(exiftool -m -p '$DateTimeOriginal' -d "%FT%T%z" "${f}" 2>/dev/null)
+        if [ ! -z  ${ORIG_TIMESTAMP} ]; then
+            echo "    Updating image timestamp"
+            touch -d "${ORIG_TIMESTAMP}" "${f}"
+        else
+            echo "    Missing timestamp in image"
+        fi
+done
+
+cd ${START_DIR}
+echo
+exit 0
