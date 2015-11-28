@@ -5,7 +5,7 @@
 "   https://github.com/knowledgejunkie/dotfiles/blob/master/vim/vimrc
 "
 " (originally based on Steve Losh's comprehensive vimrc file)
-"   https://github.com/sjl/dotfiles/blob/master/vim/vimrc
+"   https://bitbucket.org/sjl/dotfiles
 "
 " Additional snippets referenced where possible.
 "
