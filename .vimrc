@@ -1300,11 +1300,6 @@ nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gci :Gcommit -v<cr>
 nnoremap <Leader>gb :Gblame<cr>
 
-" FIXME - sync with .gitconfig
-nnoremap <Leader>gl :Shell git gl -18<cr>:wincmd \|<cr>
-
-" FIXME
-"   add %{fugitive#statusline()} to statusline
 "   }}}
 "   Gundo {{{
 "     https://github.com/sjl/gundo.vim
