@@ -124,7 +124,7 @@ Plug 'rstacruz/sparkup'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --system-boost' }
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
