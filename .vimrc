@@ -110,17 +110,13 @@ Plug 'kien/ctrlp.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'svermeulen/vim-easyclip'
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/goyo.vim'
 Plug 'sjl/gundo.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'elzr/vim-json'
-Plug 'junegunn/limelight.vim'
 Plug 'jwhitley/vim-matchit'
 Plug 'Valloric/MatchTagAlways'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'myusuf3/numbers.vim'
 Plug 'duff/vim-scratch'
-Plug 'rstacruz/sparkup'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 
@@ -135,17 +131,14 @@ Plug 'knowledgejunkie/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
 " }}}
 " Disabled {{{
-" Plug 'tpope/vim-sensible'
-" Plug 'scrooloose/nerdcommenter'
 " Plug 'chrisbra/csv.vim'
-" Plug 'dansomething/vim-eclim'
-" Plug 'ervandew/eclim'
-" Plug 'mhinz/vim-signify'
-" Plug 'edkolev/promptline.vim'
-" Plug 'millermedeiros/vim-statline'
 " Plug 'junegunn/vim-easy-align'
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'godlygeek/csapprox'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
+" Plug 'edkolev/promptline.vim'
+" Plug 'tpope/vim-sensible'
+" Plug 'mhinz/vim-signify'
+" Plug 'rstacruz/sparkup'
 " }}}
 
 call plug#end()
@@ -422,13 +415,6 @@ if &term =~ "xterm\\|rxvt"
   " au VimLeave * silent !echo -ne "\033]112\007"
   au VimLeave * silent !echo -ne "\033]12;gray\007"
 endif
-"   }}}
-"   Alternate line highlighting {{{
-"     http://stackoverflow.com/a/219693
-
-" Highlight every other line (may need to update match string if
-" using very-magic matching)
-map <Leader>ho :set hls<CR>/\n.*\n/<CR>
 "   }}}
 " }}}
 " Convenience mappings ---------------------------------------------------- {{{
@@ -1206,7 +1192,7 @@ endfunction
 
 call MakeSpacelessIabbrev('gh/', 'http://github.com/knowledgejunkie/')
 
-iabbrev kjat knowledgejunkie@gmail.com
+iabbrev kj@ knowledgejunkie@gmail.com
 
 " }}}
 " Plugin settings --------------------------------------------------------- {{{
@@ -1324,11 +1310,6 @@ let g:gitgutter_sign_column_always=1
 noremap  <F3> :GitGutterToggle<cr>
 inoremap <F3> <esc>:GitGutterToggle<cr>
 "   }}}
-"   NERDCommenter (disabled) {{{
-"     http://github.com/scrooloose/nerdcommenter
-"
-"   Using defaults e.g. <Leader>c<Space> and <Leader>cc
-"   }}}
 "   NERDTree {{{
 "     http://github.com/scrooloose/nerdtree
 
@@ -1349,13 +1330,6 @@ let NERDTreeDirArrows = 1
 let NERDChristmasTree = 1
 let NERDTreeChDirMode = 2
 let NERDTreeMapJumpFirstChild = 'gK'
-
-"   }}}
-"   NERDTreeTabs {{{
-"     https://github.com/jistr/vim-nerdtree-tabs
-"
-nnoremap <F2> :NERDTreeTabsToggle<cr>
-inoremap <F2> <esc>:NERDTreeTabsToggle<cr>
 
 "   }}}
 "   Numbers {{{
@@ -1425,18 +1399,10 @@ nnoremap <silent> <Leader><tab> :ScratchToggle<cr>
 "   }}}
 "   Sparkup (disabled) {{{
 "     https://github.com/rstacruz/sparkup (general)
-"     https://github.com/tristen/vim-sparkup (vim-specific)
 
 "let g:sparkupNextMapping = '<C-s>'
 
 "  }}}
-"   Statline {{{
-"     https://github.com/millermedeiros/vim-statline
-"
-let g:statline_filename_relative = 1
-" let g:statline_show_charcode = 1
-
-"   }}}
 "   Surround {{{
 "     https://github.com/tpope/vim-surround
 "
