@@ -919,13 +919,13 @@ augroup END
 "   JSON {{{
 
 augroup ft_json
-    autocmd!
-    autocmd FileType json setlocal autoindent
-    autocmd FileType json setlocal formatoptions=tcq2l
-    autocmd FileType json setlocal textwidth=78 shiftwidth=2
-    autocmd FileType json setlocal softtabstop=2 tabstop=8
-    autocmd FileType json setlocal expandtab
-    autocmd FileType json setlocal foldmethod=syntax
+    au!
+    au FileType json setlocal autoindent
+    au FileType json setlocal formatoptions=tcq2l
+    au FileType json setlocal textwidth=78 shiftwidth=2
+    au FileType json setlocal softtabstop=2 tabstop=8
+    au FileType json setlocal expandtab
+    au FileType json setlocal foldmethod=syntax
 
     " tidy/pretty-print via json_pp
     nnoremap <Leader>jt :%!json_pp<cr>
@@ -937,8 +937,8 @@ augroup END
 " from http://colinnewell.wordpress.com/2007/05/07/vim-settings-for-whitespace/
 augroup ft_makefile
     au!
-    autocmd FileType make setlocal noexpandtab shiftwidth=8
-    autocmd BufRead,BufNewFile Makefile setlocal noexpandtab shiftwidth=8
+    au FileType make setlocal noexpandtab shiftwidth=8
+    au BufRead,BufNewFile Makefile setlocal noexpandtab shiftwidth=8
 augroup END
 "   }}}
 "   Markdown {{{
