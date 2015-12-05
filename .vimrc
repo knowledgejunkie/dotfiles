@@ -235,9 +235,16 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 set smarttab
+
+inoremap <S-Tab> <C-V><Tab>
+
 set shiftwidth=4
 set shiftround
 set autoindent
+set smartindent cinwords=if,elif,else,for,foreach,while,until,try,catch,finally
+
+inoremap # X#
+
 set nowrap
 
 set formatoptions=qrn1
@@ -967,7 +974,8 @@ augroup END
 augroup ft_perl
     au!
     au BufNewFile,BufRead *.pl,*.pm,*.t,*.in set filetype=perl
-    " au FileType perl match ErrorMsg /^\t\+\|\s\+$/
+    au BufNewFile,BufRead *.tt  set filetype=tt2
+    au BufNewFile,BufRead *.tt2 set filetype=tt2
     " au FileType perl setlocal foldmethod=syntax
 
 " Perltidy support
