@@ -228,11 +228,6 @@ inoremap jj <Esc>
 " prevent switch to Replace mode if <Insert> pressed in Insert mode
 inoremap <Insert> <Nop>
 
-" Making it so ; works like : for commands. Saves typing and eliminates :W
-" style typos due to lazy holding shift
-" FIXME: shadows normal ; functionality
-" nnoremap ; :
-
 "   }}}
 "   Tabs/spaces/wrapping {{{
 
@@ -305,29 +300,6 @@ set synmaxcol=800
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
-
-"   }}}
-"   Trailing whitespace {{{
-" Only shown when not in insert mode so I don't go insane.
-
-" augroup trailing
-"     au!
-"     au InsertEnter * :set listchars-=trail:˽
-"     au InsertLeave * :set listchars+=trail:˽
-" augroup END
-
-" Clean trailing whitespace
-" function! TrimWhiteSpace()
-"     %s/\s\+$//e
-" endfunction
-
-" nnoremap <silent> <LocalLeader>w mz:call TrimWhiteSpace()<CR>'z
-
-" Remove trailing whitespace on save
-" autocmd FileType perl,python,java autocmd FileWritePre    * :call TrimWhiteSpace()
-" autocmd FileType perl,python,java autocmd FileAppendPre   * :call TrimWhiteSpace()
-" autocmd FileType perl,python,java autocmd FilterWritePre  * :call TrimWhiteSpace()
-" autocmd FileType perl,python,java autocmd BufWritePre     * :call TrimWhiteSpace()
 
 "   }}}
 "   Cursorline {{{
@@ -544,10 +516,6 @@ map <silent> <M-h> <C-w><
 map <silent> <M-j> <C-W>-
 map <silent> <M-k> <C-W>+
 map <silent> <M-l> <C-w>>
-
-" Maps Meta-[s.v] to horizontal and vertical split respectively
-map <silent> <M-s> :split<CR>
-map <silent> <M-v> :vsplit<CR>
 "   }}}
 "   Quick vimrc editing {{{
 
@@ -646,11 +614,6 @@ nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 vnoremap <Leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <Leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
-" Marks and Quotes
-"noremap ' `
-"noremap æ '
-"noremap ` <C-^>
-
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
@@ -664,10 +627,6 @@ command! -bang Wa wa<bang>
 command! -bang WA wa<bang>
 command! -bang Wq wq<bang>
 command! -bang WQ wq<bang>
-
-" I suck at typing.
-nnoremap <LocalLeader>= ==
-vnoremap - =
 
 " Toggle [i]nvisible characters
 nnoremap <Leader>i :set list!<cr>
