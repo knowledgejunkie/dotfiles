@@ -116,6 +116,7 @@ Plug 'elzr/vim-json'
 Plug 'jwhitley/vim-matchit'
 Plug 'Valloric/MatchTagAlways'
 Plug 'myusuf3/numbers.vim'
+Plug 'mannih/vim-perl-variable-highlighter'
 Plug 'duff/vim-scratch'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
@@ -1337,6 +1338,12 @@ let NERDTreeMapJumpFirstChild = 'gK'
 
 nnoremap <F6> :NumbersToggle<CR>
 inoremap <F6> <esc>:NumbersToggle<CR>
+
+"   }}}
+"   Perl Variable Highlighter {{{
+
+" highlight PerlVarHiLight ctermbg=black ctermfg=LightRed guibg=#000000 guifg=#ff0000 gui=bold
+highlight PerlVarHiLight term=standout cterm=standout ctermfg=9 gui=reverse
 
 "   }}}
 "   Python-Mode (disabled) {{{
