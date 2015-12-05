@@ -225,9 +225,6 @@ au FocusLost * :silent! wall
 " jj to quickly exit Insert mode
 inoremap jj <Esc>
 
-" prevent switch to Replace mode if <Insert> pressed in Insert mode
-inoremap <Insert> <Nop>
-
 "   }}}
 "   Tabs/spaces/wrapping {{{
 
@@ -1236,8 +1233,8 @@ let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
 let g:EasyClipPreserveCursorPositionAfterYank = 1
 let g:EasyClipAutoFormat = 1
 
-imap <C-v> <plug>EasyClipInsertModePaste
-cmap <C-v> <plug>EasyClipCommandModePaste
+imap <Insert> <Plug>EasyClipInsertModePaste
+cmap <Insert> <Plug>EasyClipCommandModePaste
 
 " So we don't clobber 'm', now 'x' takes a motion
 let g:EasyClipUseCutDefaults = 0
