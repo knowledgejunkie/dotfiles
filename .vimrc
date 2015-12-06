@@ -805,7 +805,7 @@ augroup ft_c
         if search('^\t', 'n', 150)
             setlocal shiftwidth=8
             setlocal noexpandtab
-        elsif
+        else
             setlocal shiftwidth=4
             setlocal expandtab
         endif
