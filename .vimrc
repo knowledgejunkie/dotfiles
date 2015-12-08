@@ -76,7 +76,7 @@
 " <F6>  Numbering toggle
 " <F7>  Show syntax stack
 " <F8>  Show highlight groups
-" <F9>
+" <F9>  Spelling toggle
 " <F10> Tagbar toggle
 " <F11> Mouse toggle
 "
@@ -277,7 +277,7 @@ set dictionary=/usr/share/dict/words
 set spellfile=~/.vim/custom-dictionary.utf-8.add
 
 " shortcut to toggle spelling
-nnoremap <Leader>s :setlocal spell! spelllang=en_gb<CR>
+nnoremap <F9> :setlocal spell! spelllang=en_gb<CR>
 
 "   }}}
 "   Editor decoration {{{
