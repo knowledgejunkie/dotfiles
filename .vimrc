@@ -419,6 +419,7 @@ vnoremap < <gv
 vnoremap > >gv
 "
 "     Shifting whole lines up/down with automatic indenting
+"     (this may indent the whole file from scratch, so beware)
 "       http://vimrcfu.com/snippet/77 (V-mode)
 nnoremap <C-Down> :m+1<CR>==
 nnoremap <C-Up> :m-2<CR>==
@@ -489,7 +490,11 @@ nnoremap Y y$
 
 " Make D behave
 nnoremap D d$
-"
+
+" Swap 0 and ^
+nnoremap 0 ^
+nnoremap ^ 0
+
 " Easier to type if you don't use the default behaviour.
 noremap H ^
 noremap L $
