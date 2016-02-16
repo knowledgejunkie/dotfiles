@@ -1,3 +1,34 @@
 QUILT_PATCHES=debian/patches
 QUILT_DIFF_ARGS="--no-timestamps --no-index -pab"
 QUILT_REFRESH_ARGS="--no-timestamps --no-index -pab"
+QUILT_DIFF_ARGS="--color=auto"
+
+# Workflow
+# https://wiki.debian.org/UsingQuilt
+#
+# 1. Apply all existing patches
+#
+# quilt push -a
+#
+#
+# 2. Create new patch
+#
+# quilt new $patchname
+# quilt add $filename
+# quilt refresh (as often as needed)
+#
+# quilt header -e --dep3
+#
+#
+# 3. Remove all patches to make source pristine
+#
+# quilt pop -a
+#
+#
+# 4. Add new patch(es) to git
+#
+# git add debian/patches/$patchname
+# git commit -m "Added patch $patchname..."
+#
+#
+# 5. Rinse and repeat
