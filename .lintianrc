@@ -1,0 +1,5 @@
+LINTIAN_PROFILE = pkg-perl
+display-info = yes
+display-experimental = yes
+pedantic = yes
+verbose = yes

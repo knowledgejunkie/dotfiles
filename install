@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) Nick Morrott 2015
+# Copyright (c) Nick Morrott 2016
 
 # Inspired by https://github.com/necolas/dotfiles/blob/master/bin/dotfiles
 # and https://github.com/kewah/dotfiles/blob/master/install
@@ -164,6 +164,7 @@ install_dotfiles() {
   link "${DOTFILES_DIRECTORY}/.gitk"              ".gitk"
   link "${DOTFILES_DIRECTORY}/.gitmessage"        ".gitmessage"
   link "${DOTFILES_DIRECTORY}/.inputrc"           ".inputrc"
+  link "${DOTFILES_DIRECTORY}/.lintianrc"         ".lintianrc"
   link "${DOTFILES_DIRECTORY}/.pentadactylrc"     ".pentadactylrc"
   link "${DOTFILES_DIRECTORY}/.quiltrc"           ".quiltrc"
   link "${DOTFILES_DIRECTORY}/.reportbugrc"       ".reportbugrc"
