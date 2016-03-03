@@ -17,8 +17,8 @@ PATH='/sys/class/power_supply/BAT0/uevent'
 rem, full, state, percentage = 10.0, 10.0, 'No battery', 10
 
 if path.isfile(PATH) and access(PATH, R_OK):
-    rem   = float(commands.getoutput("grep ^POWER_SUPPLY_ENERGY_NOW= "  + PATH + " | tr '=' ' ' | awk '{ print $2 }'"))
-    full  = float(commands.getoutput("grep ^POWER_SUPPLY_ENERGY_FULL= " + PATH + " | tr '=' ' ' | awk '{ print $2 }'"))
+    rem   = float(commands.getoutput("grep ^POWER_SUPPLY_CHARGE_NOW= "  + PATH + " | tr '=' ' ' | awk '{ print $2 }'"))
+    full  = float(commands.getoutput("grep ^POWER_SUPPLY_CHARGE_FULL= " + PATH + " | tr '=' ' ' | awk '{ print $2 }'"))
     state = commands.getoutput("cat /sys/class/power_supply/BAT0/status")
 else:
     sys.stdout.write('')
