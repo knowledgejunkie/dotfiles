@@ -1,0 +1,5 @@
+PDEBUILD_PBUILDER=cowbuilder
+OTHERMIRROR="deb [trusted=yes] file:///home/nick/dev/src/git/debian-packaging/build-area ./"
+BINDMOUNTS="/home/nick/dev/src/git/debian-packaging/build-area"
+HOOKDIR=/usr/lib/pbuilder/hooks
+EXTRAPACKAGES="apt-utils"
