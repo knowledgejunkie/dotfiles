@@ -27,3 +27,7 @@ viminfo
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi
 .xmonad/xmonad.o
+
+# Debian packaging
+.pc/
+!/debian
