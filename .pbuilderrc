@@ -3,3 +3,4 @@ OTHERMIRROR="deb [trusted=yes] file:///home/nick/dev/src/git/debian-packaging/bu
 BINDMOUNTS="/home/nick/dev/src/git/debian-packaging/build-area"
 HOOKDIR=/usr/lib/pbuilder/hooks
 EXTRAPACKAGES="apt-utils"
+COMPONENTS="main contrib non-free"
