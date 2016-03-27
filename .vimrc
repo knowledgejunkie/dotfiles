@@ -103,6 +103,7 @@ Plug 'scrooloose/syntastic'
 
 Plug 'mileszs/ack.vim'
 Plug 'bling/vim-airline'
+Plug 'vim-scripts/BufOnly.vim'
 Plug 'docunext/closetag.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ap/vim-css-color'
@@ -117,6 +118,7 @@ Plug 'jwhitley/vim-matchit'
 Plug 'Valloric/MatchTagAlways'
 Plug 'myusuf3/numbers.vim'
 Plug 'mannih/vim-perl-variable-highlighter'
+Plug 'airblade/vim-rooter'
 Plug 'duff/vim-scratch'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
@@ -1180,6 +1182,9 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+"   }}}
+"   BufOnly {{{
+nnoremap <Leader>bo :BufOnly<CR>
 "   }}}
 "   Ctrl-P {{{
 "     https://github.com/kien/ctrlp.vim
