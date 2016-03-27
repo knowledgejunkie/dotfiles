@@ -69,7 +69,7 @@
 " A quicklist of F-key bindings userd elsewhere in this file
 "
 " <F1>
-" <F2>  NERDTreeTabs toggle
+" <F2>  NERDTree toggle
 " <F3>  GitGutter toggle
 " <F4>  Run current file
 " <F5>  Gundo toggle
@@ -1283,8 +1283,8 @@ inoremap <F3> <esc>:GitGutterToggle<cr>
 "   NERDTree {{{
 "     http://github.com/scrooloose/nerdtree
 
-"noremap  <F2> :NERDTreeToggle<cr>
-"inoremap <F2> <esc>:NERDTreeToggle<cr>
+noremap  <F2> :NERDTreeToggle<cr>
+inoremap <F2> <esc>:NERDTreeToggle<cr>
 
 augroup ps_nerdtree
     au!
@@ -1294,7 +1294,7 @@ augroup ps_nerdtree
 augroup END
 
 let NERDTreeHighlightCursorline = 1
-let NERDTreeIgnore = ['\~$', '.*\.pyc$', '.*\.o$', 'db.db']
+let NERDTreeIgnore = ['\~$', '.*\.pyc$', '.*\.o$', '.*\.class$', 'db.db']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDChristmasTree = 1
