@@ -16,6 +16,8 @@ tags
 viminfo
 
 # Specific ignores
+.irssi/away.log
+.irssi/config
 .qt/.*.lock
 .vim/custom-dictionary.utf-8*
 .vim/plugged/

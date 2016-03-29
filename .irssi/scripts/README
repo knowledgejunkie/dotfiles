@@ -1,0 +1,17 @@
+irssi scripts
+=============
+
+Scripts should be symlinked into .irssi/scripts/autorun as necessary
+
+For proxy server:
+
+awayproxy.pl
+proxy_backlog.pl
+
+
+For proxy and regular client:
+
+adv_windowlist.pl
+hilightwin.pl
+trackbar.pl
+usercount.pl

@@ -137,6 +137,18 @@ configure_xmonad() {
   link "${DOTFILES_DIRECTORY}/.xmonad" ".xmonad"
 }
 
+#---------------------------------- irssi ------------------------------------
+
+configure_irssi() {
+    # Backup "real" irssi directory (not symlink)
+    # if [ -e "${HOME}/.irssi" ]; then
+    #   backup_dotfile "${HOME}/.irssi"
+    # fi
+
+    echo "  Configuring..."
+    link "${DOTFILES_DIRECTORY}/.irssi" ".irssi"
+}
+
 #--------------------------------- dotfiles ----------------------------------
 
 install_dotfiles() {
@@ -199,6 +211,10 @@ echo ""
 
 echo "[xmonad]"
 configure_xmonad
+echo ""
+
+echo "[irssi]"
+configure_irssi
 echo ""
 
 echo "[dotfiles]"
