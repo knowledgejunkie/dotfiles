@@ -65,7 +65,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # History grep ---------------------------------------------------------------
 
-hgrep () { 
+hgrep () {
     history 0 | grep -P --color=always "$@" | grep -P --color=always -v "hgrep $@"
 }
 
