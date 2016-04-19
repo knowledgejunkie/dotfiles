@@ -5,34 +5,26 @@ import math
 import subprocess
 import sys
 
-from os import path, access, R_OK
+from os import path
 
 # Update of script at https://github.com/seipherdj/zsh_linux_battery_status
-# for Debian GNU/Linux on Lenovo Thinkpad X60s
-
-# We can also call `acpi -b` to get the battery status via ACPI
-# http://pissedoffadmins.com/general/thinkpad-tmux-battery-status.html
+# for Debian GNU/Linux on Lenovo Thinkpad X60s/X200s/X201s using acpi
 
 PATH='/sys/class/power_supply/BAT0/uevent'
-rem, full, state, percentage = 10.0, 10.0, 'No battery', 10
+state, percentage = 'No battery', 10
 
-if path.isfile(PATH) and access(PATH, R_OK):
-    rem   = float(commands.getoutput("grep ^POWER_SUPPLY_CHARGE_NOW= "  + PATH + " | tr '=' ' ' | awk '{ print $2 }'"))
-    full  = float(commands.getoutput("grep ^POWER_SUPPLY_CHARGE_FULL= " + PATH + " | tr '=' ' ' | awk '{ print $2 }'"))
-    state = commands.getoutput("cat /sys/class/power_supply/BAT0/status")
-else:
+if not path.isfile(PATH):
     sys.stdout.write('')
     sys.exit()
 
-percentage = int((rem/full) * 10)
+# Status
+state = commands.getoutput("acpi -b | grep -E --only-matching 'Battery [0-9]: [[:alpha:]]+' | sed 's/^Battery [0-9]: //'")
+percentage = float(commands.getoutput("acpi -b | grep -E --only-matching '[0-9]{1,3}%' | sed 's/%//'"))
 
 # Output
-
-total_slots, slots = 10, []
-# filled = int(math.ceil(percentage * (total_slots / 10.0))) * u'▶'
-filled = int(math.ceil(percentage * (total_slots / 10.0))) * u'●'
-# empty  = (total_slots - len(filled)) * u'▷'
-empty  = (total_slots - len(filled)) * u'○'
+slots  = 10
+filled = int(math.ceil(percentage / 10.0)) * u'●'
+empty  = (slots - len(filled)) * u'○'
 out    = (filled + empty).encode('utf-8')
 
 charging =  (u'↯').encode('utf-8')
@@ -45,7 +37,7 @@ color_reset  = '%{[00m%}'
 
 color_out = (
     color_green if len(filled) > 4
-    else color_yellow if len(filled) > 2
+    else color_yellow if len(filled) > 1
     else color_red
 )
 
@@ -53,7 +45,7 @@ charging    = color_yellow + charging + color_reset
 charged     = color_green  + charged  + color_reset
 discharging = color_out    + out      + color_reset
 
-# Omit battery status if we can't find the required /sys node
+# Omit battery status if we don't understand current status
 if state == "No battery":
     sys.stdout.write('')
 elif state == "Full":
