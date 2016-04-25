@@ -49,22 +49,7 @@ export COMMAND_MODE=unix2003
 export DEBFULLNAME='Nick Morrott'
 export DEBEMAIL='knowledgejunkie@gmail.com'
 
-# xmonad/Java fixup ----------------------------------------------------------
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-# Vim... ---------------------------------------------------------------------
-
-# Restore Ctrl-r history search in vim mode
-#   http://zshwiki.org/home/zle/bindkeys
-# bindkey -M viins '^r' history-incremental-search-backward
-# bindkey -M vicmd '^r' history-incremental-search-backward
-
-# bindkey -a 'gg' beginning-of-buffer-or-history
-# bindkey -a u undo
-# bindkey -a '^R' redo
-
 # History grep ---------------------------------------------------------------
-
 hgrep () {
     history 0 | grep -P --color=always "$@" | grep -P --color=always -v "hgrep $@"
 }

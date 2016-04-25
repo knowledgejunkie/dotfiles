@@ -9,3 +9,10 @@
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+
+# xmonad/Java fixup ----------------------------------------------------------
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# xmonad/libreoffice fixup ---------------------------------------------------
+export SAL_USE_VCLPLUGIN=gen lowriter
