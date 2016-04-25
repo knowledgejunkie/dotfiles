@@ -1,34 +1,22 @@
 --
--- xmonad example config file.
+-- xmonad config
 --
--- A template showing all available configuration hooks,
--- and how to override the defaults in your own xmonad.hs conf file.
---
--- Normally, you'd only override those defaults you care about.
---
-
 import XMonad
 import System.Exit
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
-import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
-
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers (composeOne, isFullscreen, isDialog,  doFullFloat, doCenterFloat)
 import XMonad.Layout.Maximize
 import XMonad.Layout.NoBorders
+import XMonad.Util.Paste
 
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
+------------------------------------------------------------------------
+-- Key bindings:
 --
--- myTerminal = "xfce4-terminal" --
-myTerminal = "urxvt"
-
--- Width of the window border in pixels.
---
-myBorderWidth = 1
-
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt"). You may also consider using mod3Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
@@ -43,33 +31,14 @@ myModMask = mod4Mask
 -- You can find the numlock modifier by running "xmodmap" and looking for a
 -- modifier with Num_Lock bound to it:
 --
--- > $ xmodmap | grep Num
--- > mod2 Num_Lock (0x4d)
+-- $ xmodmap | grep Num
+-- mod2 Num_Lock (0x4d)
 --
 -- Set numlockMask = 0 if you don't have a numlock key, or want to treat
 -- numlock status separately.
 --
 myNumlockMask = mod2Mask
 
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
---
-myWorkspaces = ["web","email","music","4","5","6","7","8","9"]
-
--- Border colors for unfocused and focused windows, respectively.
---
-myNormalBorderColor = "#dddddd"
-myFocusedBorderColor = "#ff0000"
-
-------------------------------------------------------------------------
--- Key bindings. Add, modify or remove key bindings here.
---
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- launch a terminal
@@ -144,9 +113,18 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- Restart xmonad
     , ((modMask , xK_q ), restart "xmonad" True)
-    
+
     -- to hide/unhide the panel
     , ((modMask , xK_b), sendMessage ToggleStruts)
+
+    -- X-selection-paste buffer
+    -- https://wiki.archlinux.org/index.php/xmonad#X-Selection-Paste
+    , ((0 , xK_Insert), pasteSelection)
+
+    -- PrintScreen
+    -- https://wiki.haskell.org/Xmonad/Config_archive/John_Goerzen's_Configuration
+    , ((0, xK_Print), spawn "scrot")
+    , ((controlMask , xK_Print), spawn "sleep 0.2; scrot -s")
     ]
     ++
 
@@ -167,9 +145,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-
 ------------------------------------------------------------------------
--- Mouse bindings: default actions bound to mouse events
+-- Mouse bindings:
 --
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
@@ -187,7 +164,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 ------------------------------------------------------------------------
 -- Layouts:
-
+--
 -- You can specify and transform your layouts by modifying these values.
 -- If you change layout bindings be sure to use 'mod-shift-space' after
 -- restarting (with 'mod-q') to reset your layout state to the new
@@ -210,39 +187,71 @@ myLayout = maximize (tiled) ||| Mirror tiled ||| smartBorders Full
      -- Percent of screen to increment by when resizing panes
      delta = 3/100
 
+------------------------------------------------------------------------
+-- Workspaces:
+--
+-- The default number of workspaces (virtual screens) and their names.
+-- By default we use numeric strings, but any string may be used as a
+-- workspace name. The number of workspaces is determined by the length
+-- of this list.
+--
+-- A tagging example:
+--
+-- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
+--
+myWorkspaces = ["web","mail","gpodder","office","dev","xfer","files","avid","pjx"]
 
 ------------------------------------------------------------------------
 -- Window rules:
-
+--
 -- Execute arbitrary actions and WindowSet manipulations when managing
 -- a new window. You can use this to, for example, always float a
 -- particular program, or have a client always appear on a particular
 -- workspace.
 --
 -- To find the property name associated with a program, use
--- > xprop | grep WM_CLASS
+-- $ xprop | grep WM_CLASS
 -- and click on the client you're interested in.
 --
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll
-    [ className =? "Vlc" --> doFloat
-    , className =? "Icedove" --> doFloat
-    , className =? "Gimp" --> doFloat
-    , className =? "Xfce4-appfinder" --> doFloat
-    , className =? "Xfrun4" --> doFloat
-    , className =? "Xfce4-notifyd" --> doF W.focusDown
-    , resource =? "desktop_window" --> doIgnore
-    , resource =? "kdesktop" --> doIgnore ]
+-- https://bbs.archlinux.org/viewtopic.php?id=146781
+myManageHook = composeAll. concat $
+                [ [ className =? "Firefox" --> doShift "web" ]
+                , [ className =? "chromium" --> doShift "web" ]
+                , [ className =? "Icedove" --> doShift "mail" ]
+                , [ className =? "Gpodder" --> doShift "gpodder" ]
+                , [ className =? "URxvt" --> doShift "dev" ]
+                , [ className =? "Filezilla" --> doShift "xfer" ]
+                , [ className =? "Thunar" --> doShift "files" ]
+                , [ className =? "Avidemux3_qt4" --> doShift "avid" ]
+                , [ className =? "net-sourceforge-dvb-projectx-common-Start" --> doShift "pjx" ]
+                , [ className =? c --> doCenterFloat| c <- floats]
+                , [ resource =? r --> doIgnore | r <- ignore]
+                , [ isFullscreen --> doFullFloat]
+                , [ isDialog --> doCenterFloat] ]
+ where floats = ["Eog", "Vlc", "Xfce4-appfinder", "Xfrun4", "Xfce4-notifyd", "Dia", "Audacious", "Wine", "Gimp"]
+       ignore = []
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
-
+myFocusFollowsMouse = False
 
 ------------------------------------------------------------------------
--- Status bars and logging
+-- Borders:
+--
+-- Width of the window border in pixels.
+--
+myBorderWidth = 1
+
+-- Border colors for unfocused and focused windows, respectively.
+--
+myNormalBorderColor = "#dddddd"
+myFocusedBorderColor = "#ff0000"
+
+------------------------------------------------------------------------
+-- Status bars and logging:
 
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'DynamicLog' extension for examples.
@@ -254,8 +263,8 @@ myFocusFollowsMouse = True
 -- myLogHook = return ()
 
 ------------------------------------------------------------------------
--- Startup hook
-
+-- Startup hook:
+--
 -- Perform an arbitrary action each time xmonad starts or is restarted
 -- with mod-q. Used by, e.g., XMonad.Layout.PerWorkspace to initialize
 -- per-workspace layout choices.
@@ -264,17 +273,20 @@ myFocusFollowsMouse = True
 myStartupHook = return ()
 
 ------------------------------------------------------------------------
--- Now run xmonad with all the defaults we set up.
+-- The preferred terminal program, which is used in a binding below and by
+-- certain contrib modules.
+--
+-- myTerminal = "xfce4-terminal" --
+myTerminal = "urxvt"
 
--- Run xmonad with the settings you specify. No need to modify this.
+------------------------------------------------------------------------
+-- Now run xmonad with all the defaults we set up.
 --
 main = xmonad defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
--- 
--- No need to modify this.
 --
 defaults = defaultConfig {
       -- simple stuff
@@ -296,5 +308,6 @@ defaults = defaultConfig {
         layoutHook = avoidStruts $ smartBorders $ myLayout,
         manageHook = manageDocks <+> myManageHook,
         logHook = ewmhDesktopsLogHook,
-        startupHook = myStartupHook
+        startupHook = myStartupHook,
+        handleEventHook = fullscreenEventHook
     }
