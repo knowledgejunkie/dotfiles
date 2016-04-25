@@ -48,13 +48,16 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_d ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
     -- launch xfce4-launcher
-    , ((modMask, xK_p ), spawn "xfrun4")
+    , ((modMask, xK_o ), spawn "xfrun4")
 
     -- launch gmrun
-    , ((modMask .|. shiftMask, xK_p ), spawn "xfce4-appfinder")
+    , ((modMask .|. shiftMask, xK_o ), spawn "xfce4-appfinder")
+
+    -- launch Thunar
+    , ((modMask, xK_f ), spawn "thunar")
 
     -- close focused window
-    , ((modMask .|. shiftMask, xK_c ), kill)
+    , ((modMask, xK_c ), kill)
 
      -- Rotate through the available layout algorithms
     , ((modMask, xK_space ), sendMessage NextLayout)
@@ -99,32 +102,32 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_t ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
-    , ((modMask , xK_comma ), sendMessage (IncMasterN 1))
+    , ((modMask, xK_comma ), sendMessage (IncMasterN 1))
 
     -- Deincrement the number of windows in the master area
-    , ((modMask , xK_period), sendMessage (IncMasterN (-1)))
+    , ((modMask, xK_period), sendMessage (IncMasterN (-1)))
 
-    -- toggle the status bar gap
-    -- TODO, update this binding with avoidStruts , ((modMask , xK_b ),
-
-    -- Quit xmonad
-    , ((modMask .|. shiftMask, xK_q ), io (exitWith ExitSuccess))
-    {-, ((modMask .|. shiftMask, xK_q ), spawn "xfce4-session-logout")-}
+    -- Lock the screen
+    , ((modMask, xK_q), spawn "xscreensaver-command --lock")
 
     -- Restart xmonad
-    , ((modMask , xK_q ), restart "xmonad" True)
+    , ((modMask  .|. controlMask, xK_q ), spawn "xmonad --recompile; xmonad --restart")
+
+    -- Quit xmonad
+    -- , ((modMask .|. shiftMask, xK_q ), io (exitWith ExitSuccess))
+    -- , ((modMask .|. shiftMask, xK_q ), spawn "xfce4-session-logout")
 
     -- to hide/unhide the panel
-    , ((modMask , xK_b), sendMessage ToggleStruts)
+    , ((modMask, xK_b), sendMessage ToggleStruts)
 
     -- X-selection-paste buffer
     -- https://wiki.archlinux.org/index.php/xmonad#X-Selection-Paste
-    , ((0 , xK_Insert), pasteSelection)
+    , ((0, xK_Insert), pasteSelection)
 
     -- PrintScreen
     -- https://wiki.haskell.org/Xmonad/Config_archive/John_Goerzen's_Configuration
     , ((0, xK_Print), spawn "scrot")
-    , ((controlMask , xK_Print), spawn "sleep 0.2; scrot -s")
+    , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
     ]
     ++
 
