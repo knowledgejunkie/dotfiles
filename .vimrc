@@ -114,13 +114,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sjl/gundo.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'elzr/vim-json'
+Plug 'tommcdo/vim-lion'
 Plug 'jwhitley/vim-matchit'
 Plug 'Valloric/MatchTagAlways'
 Plug 'myusuf3/numbers.vim'
 Plug 'mannih/vim-perl-variable-highlighter'
 Plug 'airblade/vim-rooter'
 Plug 'duff/vim-scratch'
-Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --system-boost' }
@@ -1409,38 +1409,6 @@ let g:syntastic_auto_jump = 3
 let g:syntastic_loc_list_height = 5
 let g:syntastic_ignore_files = ['\m^/usr/']
 let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
-
-"   }}}
-"   Tabular {{{
-"   https://github.com/godlygeek/tabular
-"   https://github.com/emilyst/home
-
-nnoremap  <LocalLeader>aa        :Tabularize  argument_list<CR>
-vnoremap  <LocalLeader>aa        :Tabularize  argument_list<CR>
-
-nnoremap  <LocalLeader>a<Space> :Tabularize  / /<CR>
-vnoremap  <LocalLeader>a<Space> :Tabularize  / /<CR>
-
-nnoremap  <LocalLeader>a&       :Tabularize  /&<CR>
-vnoremap  <LocalLeader>a&       :Tabularize  /&<CR>
-
-nnoremap  <LocalLeader>a=       :Tabularize  /=<CR>
-vnoremap  <LocalLeader>a=       :Tabularize  /=<CR>
-
-nnoremap  <LocalLeader>a:       :Tabularize  /:<CR>
-vnoremap  <LocalLeader>a:       :Tabularize  /:<CR>
-
-nnoremap  <LocalLeader>a::      :Tabularize  /:\zs<CR>
-vnoremap  <LocalLeader>a::      :Tabularize  /:\zs<CR>
-
-nnoremap  <LocalLeader>a,       :Tabularize  /,<CR>
-vnoremap  <LocalLeader>a,       :Tabularize  /,<CR>
-
-nnoremap  <LocalLeader>a,,      :Tabularize  /,\zs<CR>
-vnoremap  <LocalLeader>a,,      :Tabularize  /,\zs<CR>
-
-nnoremap  <LocalLeader>a<Bar>   :Tabularize  /<Bar><CR>
-vnoremap  <LocalLeader>a<Bar>   :Tabularize  /<Bar><CR>
 
 "   }}}
 "   Tagbar {{{
