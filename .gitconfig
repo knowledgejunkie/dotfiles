@@ -14,7 +14,7 @@
 [core]
     editor = vim
     pager = less
-    symlinks = false
+    symlinks = true
     whitespace = trailing-space,space-before-tab
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
