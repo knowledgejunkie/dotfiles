@@ -104,14 +104,6 @@ The [YouCompleteMe][ycm] Vim plugin is compiled with clang semantic completion
 and configured to use system clang and boost libraries, instead of downloading
 them everytime the plugin is updated (which can take >30 minutes...)
 
-On Debian-based systems the YCM install script may not find the system clang
-library. It may be necessary (as root, or via sudo) to create a symlink to
-ensure libclang is detected when compiling YCM (adjust path to libclang.so as
-necessary):
-
-    # cd /usr/lib/llvm-3.5/lib
-    # ln -s libclang.so.1 libclang.so
-
 Vim and the TagBar plugin can use tags created by ctags (exuberant-ctags). A
 'git ctags' alias and hooks are provided to automatically update a Git project's
 tags file after a checkout/commit/merge/rebase.
