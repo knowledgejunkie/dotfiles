@@ -64,7 +64,7 @@ commands (as root, or via sudo) as required:
 
 #### vim
 
-    # aptitude install vim-gtk xml-twig-tools build-essential cmake python-dev libclang1 libboost-all-dev exuberant-ctags
+    # aptitude install vim-gtk xml-twig-tools build-essential cmake python-dev libclang-3.8-dev libboost-all-dev exuberant-ctags
 
 #### git
 
