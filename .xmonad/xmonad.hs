@@ -225,7 +225,6 @@ myManageHook = composeAll. concat $
                 , [ className =? "chromium" --> doShift "web" ]
                 , [ className =? "Icedove" --> doShift "mail" ]
                 , [ className =? "Gpodder" --> doShift "gpodder" ]
-                , [ className =? "URxvt" --> doShift "dev" ]
                 , [ className =? "Filezilla" --> doShift "xfer" ]
                 , [ className =? "Thunar" --> doShift "files" ]
                 , [ className =? "Avidemux3_qt4" --> doShift "avid" ]
