@@ -221,20 +221,32 @@ myWorkspaces = ["web","mail","gpodder","office","dev","xfer","files","avid","pjx
 --
 -- https://bbs.archlinux.org/viewtopic.php?id=146781
 myManageHook = composeAll. concat $
-                [ [ className =? "Firefox" --> doShift "web" ]
-                , [ className =? "chromium" --> doShift "web" ]
+                [ [ className =? "Icedove" <&&> role =? "Msgcompose" --> doCenterFloat]
+                , [ className =? "Icedove" <&&> role =? "alert" --> doIgnore]
+
+                , [ className =? w --> doShift "web" | w <- web]
                 , [ className =? "Icedove" --> doShift "mail" ]
                 , [ className =? "Gpodder" --> doShift "gpodder" ]
                 , [ className =? "Filezilla" --> doShift "xfer" ]
                 , [ className =? "Thunar" --> doShift "files" ]
                 , [ className =? "Avidemux3_qt4" --> doShift "avid" ]
                 , [ className =? "net-sourceforge-dvb-projectx-common-Start" --> doShift "pjx" ]
-                , [ className =? c --> doCenterFloat| c <- floats]
-                , [ resource =? r --> doIgnore | r <- ignore]
+
+                , [ className =? ccf --> doCenterFloat | ccf <- c_floats]
+                , [ role =? rcf --> doCenterFloat | rcf <- r_floats]
+
+                , [ className =? ci --> doIgnore | ci <- c_ignore]
+                , [ role =? ri --> doIgnore | ri <- r_ignore]
+
                 , [ isFullscreen --> doFullFloat]
                 , [ isDialog --> doCenterFloat] ]
- where floats = ["Eog", "Vlc", "Xfce4-appfinder", "Xfrun4", "Xfce4-notifyd", "Dia", "Audacious", "Wine", "Gimp"]
-       ignore = []
+
+ where web      = ["Firefox", "chromium"]
+       c_floats = ["Eog", "Vlc", "Xfce4-appfinder", "Xfrun4", "Dia", "Audacious", "Wine", "Gimp"]
+       r_floats = []
+       c_ignore = ["Xfce4-notifyd"]
+       r_ignore = []
+       role = stringProperty "WM_WINDOW_ROLE"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
