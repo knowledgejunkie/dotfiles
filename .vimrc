@@ -101,7 +101,7 @@ Plug 'tpope/vim-vividchalk'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 
-Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'docunext/closetag.vim'
@@ -694,14 +694,11 @@ nnoremap g, g,zz
 " Toggle "keep current line in the center of the screen" mode
 nnoremap <Leader>C :let &scrolloff=999-&scrolloff<cr>
 
-" replace the default grep program with ack
-set grepprg=ack
+" replace the default grep program with ag
+set grepprg=ag
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
-" Ack for the last search.
-nnoremap <silent> <Leader>/ :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
 " Visual star search (updated version from Practical Vim)
 function! s:VSetSearch()
@@ -1174,11 +1171,18 @@ iabbrev kj@ knowledgejunkie@gmail.com
 
 " }}}
 " Plugin settings --------------------------------------------------------- {{{
-"   Ack {{{
-"     https://github.com/mileszs/ack.vim
+"   Ag {{{
+"     https://github.com/rking/ag.vim
 
-let g:ackprg="ack -H --nocolor --nogroup --column"
-nnoremap <Leader>a :Ack!<space>
+let g:ag_prg="ag --vimgrep --hidden"
+let g:ag_working_path_mode="r"
+let g:ag_highlight=1
+let g:ag_mapping_message=0
+
+nnoremap <Leader>a :Ag!<space>
+
+" Ag for the last search.
+nnoremap <silent> <Leader>/ :AgFromSearch!<CR>
 
 "   }}}
 "   Airline {{{
@@ -1454,19 +1458,19 @@ let g:ycm_show_diagnostics_ui = 0
 "   }}}
 " }}}
 " Mini-plugins ------------------------------------------------------------ {{{
-"   Ack motions {{{
+"   Ag motions {{{
 
-" Motions to Ack for things.  Works with pretty much everything, including:
+" Motions to Ag for things.  Works with pretty much everything, including:
 "
 "   w, W, e, E, b, B, t*, f*, i*, a*, and custom text objects
 "
 " Awesome.
 "
-" Note: If the text covered by a motion contains a newline it won't work.  Ack
+" Note: If the text covered by a motion contains a newline it won't work.  Ag
 " searches line-by-line.
 
-nnoremap <silent> <Leader>A :set opfunc=<SID>AckMotion<CR>g@
-xnoremap <silent> <Leader>A :<C-U>call <SID>AckMotion(visualmode())<CR>
+nnoremap <silent> <Leader>A :set opfunc=<SID>AgMotion<CR>g@
+xnoremap <silent> <Leader>A :<C-U>call <SID>AgMotion(visualmode())<CR>
 
 function! s:CopyMotionForType(type)
     if a:type ==# 'v'
@@ -1476,12 +1480,12 @@ function! s:CopyMotionForType(type)
     endif
 endfunction
 
-function! s:AckMotion(type) abort
+function! s:AgMotion(type) abort
     let reg_save = @@
 
     call s:CopyMotionForType(a:type)
 
-    execute "normal! :Ack! --literal " . shellescape(@@) . "\<cr>"
+    execute "normal! :Ag! --literal " . shellescape(@@) . "\<cr>"
 
     let @@ = reg_save
 endfunction
