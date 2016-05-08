@@ -222,7 +222,7 @@ set hidden
 
 set clipboard=unnamed
 
-" Save when losing focus
+set autowrite
 au FocusLost * :silent! wall
 
 " jj to quickly exit Insert mode
