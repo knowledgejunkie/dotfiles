@@ -1290,6 +1290,13 @@ let g:gitgutter_sign_column_always=1
 
 noremap  <F3> :GitGutterToggle<cr>
 inoremap <F3> <esc>:GitGutterToggle<cr>
+
+nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>GitGutterPrevHunk
+
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterUndoHunk
+
 "   }}}
 "   NERDTree {{{
 "     http://github.com/scrooloose/nerdtree
