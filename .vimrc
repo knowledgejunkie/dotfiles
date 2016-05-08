@@ -204,8 +204,11 @@ let maplocalleader = "_"
 "   }}}
 "   Basic editor behaviour {{{
 
+set hidden
+
 set encoding=utf-8
 set fileformat=unix
+
 set modelines=0
 set backspace=indent,eol,start
 set matchtime=3
@@ -213,12 +216,9 @@ set viminfo='20,\"100,:100,%,n~/.vim/viminfo
 set shell=/bin/bash
 
 " Time out on key codes but not mappings.
-" Basically this makes terminal Vim work sanely.
 set notimeout
 set ttimeout
 set ttimeoutlen=10
-
-set hidden
 
 set clipboard=unnamed
 
@@ -300,8 +300,8 @@ set showbreak=↪
 set fillchars=diff:⣿,vert:│
 set title
 set laststatus=2
-set splitbelow
 set splitright
+set splitbelow
 set synmaxcol=800
 "set colorcolumn=+1
 
