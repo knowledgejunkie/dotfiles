@@ -123,6 +123,14 @@ Plug 'mannih/vim-perl-variable-highlighter'
 Plug 'airblade/vim-rooter'
 Plug 'duff/vim-scratch'
 Plug 'majutsushi/tagbar'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-datetime'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-fold'
+Plug 'kana/vim-textobj-function'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-lastpat'
+Plug 'kana/vim-textobj-line'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --system-boost' }
 
