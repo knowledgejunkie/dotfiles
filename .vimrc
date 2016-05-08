@@ -262,27 +262,13 @@ set formatoptions=qrn1
 
 "   }}}
 "   History/undo/backups {{{
-"     Probably want to add these to .gitignore if sharing dotfiles
 
 set history=1000
 
-set noswapfile                    " disable swapfile
+set noswapfile
+set nobackup
+set noundofile
 
-set undofile
-set undoreload=10000
-set undodir=~/.vim/tmp/undo//     " undo files
-if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
-endif
-
-set backup                        " enable backups
-set backupdir=~/.vim/tmp/backup// " backups
-if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
-endif
-
-" Make Vim able to edit crontab files again.
-set backupskip=/tmp/*
 "   }}}
 "   Dictionary/spelling {{{
 
