@@ -1135,6 +1135,7 @@ endfunction
 call MakeSpacelessIabbrev('gh/', 'http://github.com/knowledgejunkie/')
 
 iabbrev kj@ knowledgejunkie@gmail.com
+iabbrev nm@ Nick Morrott <knowledgejunkie@gmail.com>
 
 " }}}
 " Plugin settings --------------------------------------------------------- {{{
