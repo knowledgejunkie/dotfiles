@@ -299,7 +299,7 @@ set title
 set laststatus=2
 set splitright
 set splitbelow
-set synmaxcol=800
+set synmaxcol=300
 "set colorcolumn=+1
 
 " Resize splits when the window is resized
