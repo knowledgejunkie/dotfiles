@@ -509,8 +509,14 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
-" Quick vsplit
-noremap <Leader>v <C-w>v
+" Use | and _ to split windows (while preserving original behaviour of [count]bar and [count]_).
+"   https://github.com/airblade/dotvim/blob/master/vimrc
+nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
+nnoremap <expr><silent> _     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>normal! ".v:count."_<CR>"
+
+" Use tab and shift-tab to cycle through windows.
+nnoremap <Tab> <C-W>w
+nnoremap <S-Tab> <C-W>W
 
 " Meta-key fixups to handle terminals that send Escape sequences
 set <M-h>=h
