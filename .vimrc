@@ -69,6 +69,7 @@
 " A quicklist of F-key bindings userd elsewhere in this file
 "
 " <F1>
+" <F2>  Tasklist
 " <F3>  GitGutter toggle
 " <F4>  Run current file
 " <F5>  Gundo toggle
@@ -123,6 +124,7 @@ Plug 'airblade/vim-rooter'
 Plug 'duff/vim-scratch'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'majutsushi/tagbar'
+Plug 'jontrainor/TaskList.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-datetime'
 Plug 'kana/vim-textobj-entire'
@@ -1380,6 +1382,12 @@ let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
 nnoremap <F10> :TagbarToggle<CR>
 
 "   }}}
+"   Tasklist {{{
+
+map <F2> :TaskList<CR>
+let g:tlWindowPosition=0
+
+"   }}}
 "   UltiSnips {{{
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpForwardTrigger="<C-Space>"
@@ -1617,27 +1625,6 @@ let s:sid = substitute(maparg("<SID>xx"), 'xx$', '', '')
 unmap <SID>xx
 
 autocmd! QuickfixCmdPost * :Qfsort
-
-"   }}}
-"   Tasklist (currently unmapped) {{{
-"     http://juan.boxfi.com/vim-plugins/#comment-28
-
-let s:tasklist_open = 0
-function! s:ToggleTaskList()
-    if (s:tasklist_open == 1)
-        call s:Exit(0)
-        let s:tasklist_open = 0
-    else
-        call s:TaskList()
-        let s:tasklist_open = 1
-    endif
-endfunction
-
-command! ToggleTaskList call s:ToggleTaskList()
-
-" FIXME
-" Perhaps map this to an unbound F-key
-"map :ToggleTaskList
 
 "   }}}
 " }}}
