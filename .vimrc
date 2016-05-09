@@ -69,7 +69,6 @@
 " A quicklist of F-key bindings userd elsewhere in this file
 "
 " <F1>
-" <F2>  NERDTree toggle
 " <F3>  GitGutter toggle
 " <F4>  Run current file
 " <F5>  Gundo toggle
@@ -97,9 +96,9 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-vividchalk'
 
-Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 
 Plug 'rking/ag.vim'
@@ -194,13 +193,8 @@ call plug#end()
 " }}}
 " Vim startup ------------------------------------------------------------- {{{
 "
-" Open NERDTree if no files were given on command line
-"   http://blogs.perl.org/users/ovid/2011/04/nerdtree-on-startup.html
 
 " function! VimStartUp() " {{{
-"     if 0 == argc()
-"         NERDTreeTabsToggle
-"     end
 " endfunction " }}}
 
 " autocmd! VimEnter * call VimStartUp()
@@ -1296,28 +1290,6 @@ nmap [c <Plug>GitGutterPrevHunk
 
 nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterUndoHunk
-
-"   }}}
-"   NERDTree {{{
-"     http://github.com/scrooloose/nerdtree
-
-noremap  <F2> :NERDTreeToggle<cr>
-inoremap <F2> <esc>:NERDTreeToggle<cr>
-
-augroup ps_nerdtree
-    au!
-
-    au Filetype nerdtree setlocal nolist
-    " au Filetype nerdtree nnoremap <buffer> K :q<cr>
-augroup END
-
-let NERDTreeHighlightCursorline = 1
-let NERDTreeIgnore = ['\~$', '.*\.pyc$', '.*\.o$', '.*\.class$', 'db.db']
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDChristmasTree = 1
-let NERDTreeChDirMode = 2
-let NERDTreeMapJumpFirstChild = 'gK'
 
 "   }}}
 "   Numbers {{{
