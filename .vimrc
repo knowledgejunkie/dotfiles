@@ -77,7 +77,6 @@
 " <F8>  Show highlight groups
 " <F9>  Spelling toggle
 " <F10> Tagbar toggle
-" <F11> Mouse toggle
 "
 " }}}
 " Plugin Management ------------------------------------------------------- {{{
@@ -529,26 +528,6 @@ map <silent> <M-l> <C-w>>
 "   Quick vimrc editing {{{
 
 nnoremap <Leader>ev :edit $MYVIMRC<cr>
-"   }}}
-"   Mouse Toggle (Vim/terminal) {{{
-"     http://nvie.com/posts/how-i-boosted-my-vim/
-
-function! s:ToggleMouse()
-    if !exists("s:old_mouse")
-        let s:old_mouse = "a"
-    endif
-
-    if &mouse == ""
-        let &mouse = s:old_mouse
-        echo "Mouse is for Vim (" . &mouse . ")"
-    else
-        let s:old_mouse = &mouse
-        let &mouse=""
-        echo "Mouse is for terminal"
-    endif
-endfunction
-
-nnoremap <F11> :call ToggleMouse()<CR>
 "   }}}
 "   Registers {{{
 
@@ -1692,8 +1671,8 @@ else
     " assume 256 color terminal like rxvt-unicode-256color
     set t_Co=256
     " Mouse support
-    set mouse=a
-    set ttymouse=xterm2
+    " set mouse=a
+    " set ttymouse=urxvt
 endif
 
 " }}}
