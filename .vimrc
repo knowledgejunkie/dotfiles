@@ -1627,25 +1627,13 @@ autocmd! QuickfixCmdPost * :Qfsort
 " }}}
 " Environments (GUI/terminal) --------------------------------------------- {{{
 
-if has('gui_running')
-    " GUI Vim
+" Console Vim
+" assume 256 color terminal like rxvt-unicode-256color
+set t_Co=256
 
-    " Remove all the UI cruft
-    set guioptions-=T
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=R
-
-    highlight SpellBad term=underline gui=undercurl guisp=Orange
-else
-    " Console Vim
-    " assume 256 color terminal like rxvt-unicode-256color
-    set t_Co=256
-    " Mouse support
-    " set mouse=a
-    " set ttymouse=urxvt
-endif
+" Mouse support
+" set mouse=a
+" set ttymouse=urxvt
 
 " }}}
 " Local machine-specific .vimrc ------------------------------------------- {{{
