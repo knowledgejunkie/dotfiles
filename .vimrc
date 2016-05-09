@@ -575,13 +575,6 @@ map <silent> <Leader>m :make<CR>:cw<CR>
 " Execute current file
 map <F4> <Esc>:w<CR>:!%:p<CR>
 "    }}}
-"   Easy filetype switching {{{
-
-nnoremap _md :set ft=markdown<CR>
-nnoremap _js :set ft=javascript<CR>
-nnoremap _d  :set ft=diff<CR>
-nnoremap _pl :set ft=perl<CR>
-"   }}}
 "   Insert Mode Completion {{{
 
 inoremap <C-f> <C-x><C-f>
