@@ -73,7 +73,6 @@
 " <F4>  Run current file
 " <F5>  Gundo toggle
 " <F6>  Numbering toggle
-" <F7>  Show syntax stack
 " <F8>  Show highlight groups
 " <F9>  Spelling toggle
 " <F10> Tagbar toggle
@@ -1618,17 +1617,6 @@ let s:sid = substitute(maparg("<SID>xx"), 'xx$', '', '')
 unmap <SID>xx
 
 autocmd! QuickfixCmdPost * :Qfsort
-
-"   }}}
-"   Synstack {{{
-
-" Show the stack of syntax hilighting classes affecting whatever is under the
-" cursor.
-function! SynStack()
-    echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
-endfunc
-
-nnoremap <F7> :call SynStack()<CR>
 
 "   }}}
 "   Tasklist (currently unmapped) {{{
