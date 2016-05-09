@@ -1022,10 +1022,7 @@ augroup END
 augroup ft_vim
     au!
     au FileType vim setlocal foldmethod=marker
-    " Automatically source the .vimrc file whenver it is saved
-    " FIXME for some reason I need to force the filetype once the file is
-    " resourced otherwise folding is broken
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc source $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif | setlocal filetype=vim
+    au BufWritePost .vimrc,vimrc source % | setlocal filetype=vim
 augroup END
 "   }}}
 "   XML {{{
