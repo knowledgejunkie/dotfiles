@@ -1656,3 +1656,5 @@ if filereadable(glob("~/.vimrc.local"))
 endif
 
 " }}}
+
+" vim:filetype=vim:foldmethod=marker:fileformat=unix:
