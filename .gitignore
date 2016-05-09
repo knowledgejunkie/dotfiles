@@ -19,6 +19,7 @@ viminfo
 .irssi/away.log
 .irssi/config
 .qt/.*.lock
+.vim/.netrwhist
 .vim/custom-dictionary.utf-8*
 .vim/plugged/
 .vim/tags/*.ctags
