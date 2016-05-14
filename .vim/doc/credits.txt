@@ -1,0 +1,11 @@
+" Maintainer:
+" Nick Morrott <knowledgejunkie@gmail.com>
+"   https://github.com/knowledgejunkie/dotfiles/blob/master/vim/vimrc
+"
+" (originally based on Steve Losh's comprehensive vimrc file)
+"   https://bitbucket.org/sjl/dotfiles
+"
+" (reorganisation based on wincent's dotfiles repo vim layout)
+"   https://github.com/wincent/wincent
+"
+" Additional snippets referenced where possible.

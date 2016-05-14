@@ -1,0 +1,11 @@
+" A quicklist of F-key bindings userd elsewhere in this file
+"
+" <F1>
+" <F2>  Tasklist
+" <F3>  GitGutter toggle
+" <F4>  Run current file
+" <F5>  Gundo toggle
+" <F6>  Numbering toggle
+" <F7>  Spelling toggle
+" <F8>  Show highlight groups
+" <F10> Tagbar toggle

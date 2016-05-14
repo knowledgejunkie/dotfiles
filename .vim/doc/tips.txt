@@ -1,0 +1,50 @@
+" Display ordering of loaded Vimscripts
+" :scriptnames
+"
+" Display current settings
+" :verbose set
+"
+" Debug particular settings (e.g. cindent)
+" :verbose set cindent?
+"
+" Display default vim keybindings
+" :help index
+"
+" Display current key mappings
+" :verbose map
+" :verbose map!
+"
+" Display current key mapping for particular key (e.g. <Leader>)
+" :verbose map <Leader>
+"
+" Display current highlighting settings:
+" :hi
+"
+" Display available colours in vim
+" http://vim.wikia.com/wiki/VimTip634
+"
+" Write out a file via sudo
+" :w !sudo tee %
+"
+" Use vim as a hex editor
+" :%!xxd
+" :%!xxd -r
+"
+" Capture standard output of external command to buffer
+" :read !{cmd}
+"
+" Pass buffer as standard input to external command
+" :write !{cmd}
+"
+" Execute Perl/Ruby one-liners (if support compiled in) over file or selection
+" :perldo ...
+" :rubydo ...
+"
+" Execute an Ex command for all buffers listed in :ls
+" :bufdo {cmd}
+"
+" Execute an Ex command for all arguments listed in :args
+" :argdo {cmd}
+"
+" To retab a buffer when changing tab settings (e.g. set noexpandtab)
+" :retab
