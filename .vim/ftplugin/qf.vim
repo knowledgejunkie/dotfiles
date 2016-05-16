@@ -1,1 +1,5 @@
-au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap tw=0
+setlocal colorcolumn=0
+setlocal nolist
+setlocal nocursorline
+setlocal nowrap
+setlocal tw=0

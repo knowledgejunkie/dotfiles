@@ -1,9 +1,11 @@
-au FileType json setlocal autoindent
-au FileType json setlocal formatoptions=tcq2l
-au FileType json setlocal textwidth=78 shiftwidth=2
-au FileType json setlocal softtabstop=2 tabstop=8
-au FileType json setlocal expandtab
-au FileType json setlocal foldmethod=syntax
+setlocal autoindent
+setlocal formatoptions=tcq2l
+setlocal textwidth=78
+setlocal shiftwidth=2
+setlocal softtabstop=2
+setlocal tabstop=8
+setlocal expandtab
+setlocal foldmethod=syntax
 
 " tidy/pretty-print via json_pp
 nnoremap <Leader>jt :%!json_pp<cr>

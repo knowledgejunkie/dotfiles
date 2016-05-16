@@ -3,7 +3,7 @@
 
 let python_highlight_all=1
 
-au FileType python setlocal foldmethod=indent
+setlocal foldmethod=indent
 
-au BufRead,BufNewFile *.py,*.pyw setlocal expandtab tabstop=8 textwidth=79 shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw match ErrorMsg /^\t\+\|\s\+$/
+setlocal expandtab tabstop=8 textwidth=79 shiftwidth=4
+match ErrorMsg /^\t\+\|\s\+$/

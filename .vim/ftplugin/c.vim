@@ -1,20 +1,21 @@
-au FileType c setlocal foldmethod=syntax
-au FileType c setlocal omnifunc=ccomplete#Complete
+setlocal foldmethod=syntax
+setlocal omnifunc=ccomplete#Complete
 
-au BufRead,BufNewFile *.c,*.h setlocal tabstop=8
-au BufRead,BufNewFile *.c,*.h setlocal textwidth=79
-au BufRead,BufNewFile *.c,*.h setlocal formatoptions-=c formatoptions-=o formatoptions-=r
+setlocal textwidth=79
+setlocal formatoptions-=c formatoptions-=o formatoptions-=r
 
 function! Select_c_style()
     if search('^\t', 'n', 150)
         setlocal shiftwidth=8
         setlocal noexpandtab
+        setlocal tabstop=8
     else
         setlocal shiftwidth=4
         setlocal expandtab
+        setlocal tabstop=4
     endif
 endfunction
-au BufRead,BufNewFile *.c,*.h call Select_c_style()
+call Select_c_style()
 
 " abbreviations for c programming
 " http://stackoverflow.com/a/789284
@@ -27,4 +28,4 @@ function! LoadCAbbrevs()
     iabbr #d #define
     iabbr #i #include
 endfunction
-au FileType c,cpp call LoadCAbbrevs()
+call LoadCAbbrevs()

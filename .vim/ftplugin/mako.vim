@@ -1,1 +1,1 @@
-au FileType mako setlocal omnifunc=htmlcomplete#CompleteTags
+setlocal omnifunc=htmlcomplete#CompleteTags

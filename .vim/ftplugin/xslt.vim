@@ -1,2 +1,5 @@
-au Filetype xslt setlocal foldmethod=syntax
-au FileType xslt setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+setlocal foldmethod=syntax
+setlocal expandtab
+setlocal shiftwidth=2
+setlocal tabstop=2
+setlocal softtabstop=2

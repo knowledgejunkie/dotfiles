@@ -1,3 +1,3 @@
-au FileType vim setlocal foldmethod=marker
+setlocal foldmethod=marker
 
 au BufWritePost .vimrc source %

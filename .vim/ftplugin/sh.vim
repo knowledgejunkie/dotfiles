@@ -5,4 +5,7 @@ let g:is_posix=1
 
 let g:sh_fold_enabled=1
 
-au FileType sh setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+setlocal expandtab
+setlocal shiftwidth=4
+setlocal tabstop=8
+setlocal softtabstop=4
