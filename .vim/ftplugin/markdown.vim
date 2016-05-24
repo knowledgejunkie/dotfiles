@@ -1,4 +1,4 @@
-call functions#plaintext()
+call functions#Plaintext()
 
 " Use <LocalLeader>1/2/3 to add headings.
 nnoremap <buffer> <LocalLeader>1 yypVr=

@@ -28,7 +28,7 @@ function! functions#MyFoldText() abort
 endfunction
 
 " Switch to plaintext mode with: call functions#plaintext()
-function! functions#plaintext() abort
+function! functions#Plaintext() abort
     setlocal nolist
     setlocal spell
     setlocal textwidth=0
