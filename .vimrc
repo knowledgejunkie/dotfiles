@@ -24,7 +24,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-vividchalk'
 
 Plug 'scrooloose/syntastic'
 
