@@ -23,8 +23,8 @@ vnoremap / /\v
 " Space to toggle folds.
 vnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
-xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+xnoremap * :<C-u>call functions#VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call functions#VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
 " Include flags when repeating last substition
 xnoremap & :&&<CR>
