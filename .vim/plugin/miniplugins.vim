@@ -6,11 +6,21 @@
 "
 " Awesome.
 "
-" Note: If the text covered by a motion contains a newline it won't work.  Ag
-" searches line-by-line.
+" Note: If the text covered by a motion contains a newline it won't work.
+"       Ag searches line-by-line.
 
 "   Functions {{{2
-function! miniplugins#CopyMotionForType(type) abort
+function! s:AgMotion(type) abort
+    let reg_save = @@
+
+    call s:CopyMotionForType(a:type)
+
+    execute "normal! :Ag! --literal " . shellescape(@@) . "\<cr>"
+
+    let @@ = reg_save
+endfunction
+
+function! s:CopyMotionForType(type) abort
     if a:type ==# 'v'
         silent execute "normal! `<" . a:type . "`>y"
     elseif a:type ==# 'char'
@@ -18,18 +28,9 @@ function! miniplugins#CopyMotionForType(type) abort
     endif
 endfunction
 
-function! miniplugins#AgMotion(type) abort
-    let reg_save = @@
-
-    call miniplugins#CopyMotionForType(a:type)
-
-    execute "normal! :Ag! --literal " . shellescape(@@) . "\<cr>"
-
-    let @@ = reg_save
-endfunction
-
 "   Public interface {{{2
-command! -nargs=* -complete=command AgMotion call miniplugins#AgMotion(<q-args>)
+nnoremap <silent> <Plug>AgForMotion     :<C-U>set opfunc=<SID>AgMotion<CR>g@
+vnoremap <silent> <Plug>AgForSelection  :<C-U>call <SID>AgMotion(visualmode())<CR>
 
 " Quickfix Sort {{{1
 "   Documentation {{{2

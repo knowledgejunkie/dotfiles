@@ -61,8 +61,8 @@ nnoremap <Leader>z mzzMzvzz15<C-e>`z:Pulse<cr>
 map <silent> <Leader>m <Esc>:make<CR>:cw<CR>
 
 " Ag with motions
-nnoremap <silent> <Leader>a :set opfunc=miniplugins#AgMotion<CR>g@
-xnoremap <silent> <Leader>a :<C-U>call miniplugins#AgMotion(visualmode())<CR>
+nmap <silent> <Leader>a <Plug>AgForMotion
+vmap <silent> <Leader>a <Plug>AgForSelection
 
 " Highlight up to 6 different interesting words
 nmap <silent> <Leader>1 <Plug>HiInterestingWord1
