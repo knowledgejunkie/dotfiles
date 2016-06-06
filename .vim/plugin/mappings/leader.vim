@@ -65,9 +65,9 @@ nnoremap <silent> <Leader>a :set opfunc=miniplugins#AgMotion<CR>g@
 xnoremap <silent> <Leader>a :<C-U>call miniplugins#AgMotion(visualmode())<CR>
 
 " Highlight up to 6 different interesting words
-nnoremap <silent> <Leader>1 :call miniplugins#HiInterestingWord(1)<cr>
-nnoremap <silent> <Leader>2 :call miniplugins#HiInterestingWord(2)<cr>
-nnoremap <silent> <Leader>3 :call miniplugins#HiInterestingWord(3)<cr>
-nnoremap <silent> <Leader>4 :call miniplugins#HiInterestingWord(4)<cr>
-nnoremap <silent> <Leader>5 :call miniplugins#HiInterestingWord(5)<cr>
-nnoremap <silent> <Leader>6 :call miniplugins#HiInterestingWord(6)<cr>
+nmap <silent> <Leader>1 <Plug>HiInterestingWord1
+nmap <silent> <Leader>2 <Plug>HiInterestingWord2
+nmap <silent> <Leader>3 <Plug>HiInterestingWord3
+nmap <silent> <Leader>4 <Plug>HiInterestingWord4
+nmap <silent> <Leader>5 <Plug>HiInterestingWord5
+nmap <silent> <Leader>6 <Plug>HiInterestingWord6
