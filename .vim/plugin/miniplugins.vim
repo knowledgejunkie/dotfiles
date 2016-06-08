@@ -66,7 +66,7 @@ vnoremap <silent> <Plug>AgForSelection  :<C-U>call <SID>AgMotion(visualmode())<C
 "
 
 "   Functions {{{2
-function! miniplugins#Qfappend(command) abort
+function! s:Qfappend(command) abort
     let qflist = getqflist()
     exe a:command
     call extend(qflist, getqflist())
@@ -74,7 +74,7 @@ function! miniplugins#Qfappend(command) abort
     call setqflist(qflist)
 endfunction
 
-function! miniplugins#Qfprepend(command) abort
+function! s:Qfprepend(command) abort
     let qflist = getqflist()
     exe a:command
     call extend(qflist, getqflist(), 0)
@@ -82,7 +82,7 @@ function! miniplugins#Qfprepend(command) abort
     call setqflist(qflist)
 endfunction
 
-function! miniplugins#Qfsort(command) abort
+function! s:Qfsort(command) abort
     if a:command != ''
         " there's a quickfix-related command given, execute it first
         try
@@ -99,7 +99,7 @@ function! miniplugins#Qfsort(command) abort
     call setqflist(qflist)
 endfunction
 
-function! miniplugins#QfsortCompare(x, y) abort
+function! s:QfsortCompare(x, y) abort
     let x_name = bufname(a:x.bufnr)
     let y_name = bufname(a:y.bufnr)
 
@@ -112,10 +112,15 @@ function! miniplugins#QfsortCompare(x, y) abort
     else
 endfunction
 
+" Get this file's sid. Taken almost directly from rails.vim:
+map <SID>xx <SID>xx
+let s:sid = substitute(maparg("<SID>xx"), 'xx$', '', '')
+unmap <SID>xx
+
 "   Public interface {{{2
-command! -nargs=* -complete=command Qfappend call miniplugins#Qfappend(<q-args>)
-command! -nargs=* -complete=command Qfprepend call miniplugins#Qfprepend(<q-args>)
-command! -nargs=* -complete=command Qfsort call miniplugins#Qfsort(<q-args>)
+command! -nargs=* -complete=command Qfappend call s:Qfappend(<q-args>)
+command! -nargs=* -complete=command Qfprepend call s:Qfprepend(<q-args>)
+command! -nargs=* -complete=command Qfsort call s:Qfsort(<q-args>)
 
 " Pulse Line {{{1
 "   Function {{{2

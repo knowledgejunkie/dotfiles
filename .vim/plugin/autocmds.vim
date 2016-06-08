@@ -32,4 +32,4 @@ au InsertLeave * :set hlsearch
 "       \   call system('"'.b:git_dir.'/hooks/ctags" &') |
 "       \ endif
 
-au QuickfixCmdPost * :Qfsort
+au QuickfixCmdPost * Qfsort
