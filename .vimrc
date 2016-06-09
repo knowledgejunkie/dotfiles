@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'knowledgejunkie/vim-colors-solarized'
 
 Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
 
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-commentary'

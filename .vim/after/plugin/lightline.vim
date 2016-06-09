@@ -1,7 +1,10 @@
-" set showtabline=2
+set showtabline=2
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',
+      \ 'tabline': {
+      \   'left': [ ['bufferline'] ]
+      \ },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'spell' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -21,10 +24,12 @@ let g:lightline = {
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag',
       \   'readonly': 'LightLineReadOnly',
+      \   'bufferline': 'LightlineBufferline',
       \ },
       \ 'component_type': {
       \   'syntastic': 'error',
       \   'readonly': 'error',
+      \   'bufferline': 'tabsel',
       \ },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
@@ -52,6 +57,13 @@ endfunction
 
 function! LightLineGetRelativeFilename()
   return expand('%')
+endfunction
+
+" Sort of emulate vim-airline's buffer list using vim-bufferline
+" See https://github.com/itchyny/lightline.vim/issues/155
+function! LightlineBufferline()
+  call bufferline#refresh_status()
+  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
 endfunction
 
 " This is the "default" filename function provided in the github readme
