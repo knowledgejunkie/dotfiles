@@ -10,6 +10,8 @@ call plug#begin('~/.vim/plugged')
 " Enabled {{{2
 Plug 'knowledgejunkie/vim-colors-solarized'
 
+Plug 'itchyny/lightline.vim'
+
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -28,7 +30,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/syntastic'
 
 Plug 'rking/ag.vim'
-Plug 'bling/vim-airline'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'vim-scripts/BufOnly.vim'
