@@ -1,3 +1,5 @@
+" set showtabline=2
+
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
