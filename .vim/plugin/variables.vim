@@ -35,7 +35,7 @@ let g:ctrlp_prompt_mappings = {
             \ 'ToggleFocus()':        ['<C-tab>'],
             \ }
 
-let ctrlp_filter_greps = "".
+let g:ctrlp_filter_greps = "".
             \ "egrep -iv '\\.(" .
             \ "jar|class|log|so|o|pyc|jpe?g|png|gif|mo|po" .
             \ ")$' | " .
@@ -43,16 +43,16 @@ let ctrlp_filter_greps = "".
             \ ".git/|.hg/|.svn/|CVS/" .
             \ ")'"
 
-let my_ctrlp_user_command = "find %s '(' -type f -or -type l ')' | " . ctrlp_filter_greps
-let my_ctrlp_git_command = "cd %s && git ls-files | " . ctrlp_filter_greps
-let my_ctrlp_hg_command = "hg --cwd %s locate -I . | " . ctrlp_filter_greps
+let g:my_ctrlp_user_command = "find %s '(' -type f -or -type l ')' | " . g:ctrlp_filter_greps
+let g:my_ctrlp_git_command = "cd %s && git ls-files"
+let g:my_ctrlp_hg_command = "hg --cwd %s locate -I"
 
 let g:ctrlp_user_commanD = {
             \ 'types': {
-            \ 1: ['.git', my_ctrlp_git_command],
-            \ 2: ['.hg', my_ctrlp_hg_command],
+            \ 1: ['.git', g:my_ctrlp_git_command],
+            \ 2: ['.hg', g:my_ctrlp_hg_command],
             \ },
-            \ 'fallback': my_ctrlp_user_command
+            \ 'fallback': g:my_ctrlp_user_command
             \ }
 
 let g:gitgutter_sign_column_always = 1
