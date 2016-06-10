@@ -65,35 +65,40 @@ let g:gundo_preview_statusline = "Gundo Preview"
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'tabline': {
-      \   'left': [ ['bufferline'] ]
+      \   'left': [ ['bufferline'] ],
+      \   'right': [ [ ] ],
       \ },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'spell' ], [ 'syntastic', 'fugitive', 'filename' ], [ 'readonly'], ['ctrlpmark'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'left': [ [ 'mode', 'paste', 'spell' ], [ 'syntastic', 'fugitive', 'readonly', 'filename' ], [ 'ctrlpmark'] ],
+      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ],
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'filename' ] ],
+      \   'right': [ [ 'lineinfo' ] ],
       \ },
       \ 'component_visible_condition': {
-      \   'spell': '&spell',
       \ },
       \ 'component_function': {
+      \   'mode': 'LightLineMode',
       \   'fugitive': 'LightLineFugitive',
       \   'filename': 'LightLineRelativeFilename',
-      \   'fileformat': 'LightLineFileformat',
-      \   'filetype': 'LightLineFiletype',
-      \   'fileencoding': 'LightLineFileencoding',
-      \   'mode': 'LightLineMode',
       \   'ctrlpmark': 'CtrlPMark',
+      \   'fileformat': 'LightLineFileformat',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'filetype': 'LightLineFiletype',
       \ },
       \ 'component_expand': {
-      \   'syntastic': 'MySyntasticStatuslineFlag',
-      \   'readonly': 'LightLineReadOnly',
       \   'bufferline': 'LightlineBufferline',
+      \   'syntastic': 'MySyntasticStatuslineFlag',
+      \   'readonly': 'LightLineReadonly',
       \ },
       \ 'component_type': {
+      \   'bufferline': 'tabsel',
       \   'syntastic': 'error',
       \   'readonly': 'error',
-      \   'bufferline': 'tabsel',
       \ },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left':'', 'right': '' },
       \ }
 
 let g:pymode = 1

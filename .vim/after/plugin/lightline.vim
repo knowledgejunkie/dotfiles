@@ -12,7 +12,7 @@ function! LightLineModified()
 endfunction
 
 function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? 'RO' : ''
+  return &ft !~? 'help' && &readonly ? '' : ''
 endfunction
 
 function! LightLineGetAbsoluteFilename()
@@ -30,22 +30,19 @@ function! LightlineBufferline()
   return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
 endfunction
 
-" This is the "working" version of the function to tweak things
 function! LightLineRelativeFilename()
   let fname = expand('%:t')
   return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
         \ fname == '__Tagbar__' ? g:lightline.fname :
         \ fname =~ '__Gundo' ? '' :
         \ &ft == 'help' ? fname :
-        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ ('' != fname ? LightLineGetRelativeFilename() : '[No Name]') .
-        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+        \ ('' != fname ? LightLineGetRelativeFilename() : '[No Name]')
 endfunction
 
 function! LightLineFugitive()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo' && exists('*fugitive#head')
-      let mark = ''  " edit here for cool mark
+      let mark = ''  " edit here for cool mark
       let branch = fugitive#head()
       return branch !=# '' ? mark.branch : ''
     endif
