@@ -3,8 +3,6 @@
 " Set the sign column background to black (update jellybeans colorscheme)
 " exec "hi SignColumn ctermbg=".g:jellybeans_background_color_256
 
-let g:gitgutter_sign_column_always = 1
-
 noremap  <F3> :GitGutterToggle<cr>
 inoremap <F3> <esc>:GitGutterToggle<cr>
 

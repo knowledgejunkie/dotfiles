@@ -1,7 +1,5 @@
 " https://github.com/rhysd/conflict-marker.vim
 
-let g:conflict_marker_enable_mappings = 0
-
 " The default ]x and [x are provided by vim-unimpaired
 " using the ]n and [n pairwise mappings
 

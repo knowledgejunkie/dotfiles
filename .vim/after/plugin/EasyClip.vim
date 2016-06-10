@@ -1,10 +1,5 @@
 " https://github.com/svermeulen/vim-easyclip
 
-let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
-let g:EasyClipPreserveCursorPositionAfterYank = 1
-let g:EasyClipAutoFormat = 1
-let g:EasyClipUseCutDefaults = 0
-
 imap <Insert> <Plug>EasyClipInsertModePaste
 cmap <Insert> <Plug>EasyClipCommandModePaste
 

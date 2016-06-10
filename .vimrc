@@ -4,14 +4,10 @@ let mapleader = ","
 let maplocalleader = "_"
 
 " Plugin Management ------------------------------------------------------ {{{1
-
 call plug#begin('~/.vim/plugged')
 
 " Enabled {{{2
 Plug 'knowledgejunkie/vim-colors-solarized'
-
-Plug 'itchyny/lightline.vim'
-Plug 'bling/vim-bufferline'
 
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-commentary'
@@ -74,6 +70,9 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'knowledgejunkie/vim-xmltvfixup'
+
+Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
 
 " Disabled {{{2
 " Plug 'nanotech/jellybeans.vim'

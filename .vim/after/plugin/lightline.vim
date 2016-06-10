@@ -1,47 +1,11 @@
 set showtabline=2
 
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'tabline': {
-      \   'left': [ ['bufferline'] ]
-      \ },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'spell' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'component_visible_condition': {
-      \   'spell': '&spell',
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
-      \   'filename': 'LightLineRelativeFilename',
-      \   'fileformat': 'LightLineFileformat',
-      \   'filetype': 'LightLineFiletype',
-      \   'fileencoding': 'LightLineFileencoding',
-      \   'mode': 'LightLineMode',
-      \   'ctrlpmark': 'CtrlPMark',
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \   'readonly': 'LightLineReadOnly',
-      \   'bufferline': 'LightlineBufferline',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \   'readonly': 'error',
-      \   'bufferline': 'tabsel',
-      \ },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
-
 " As most of my work is in git repos, I try to present the filename and path
 " relative to the repo root, instead of just the filename.
 "
 " Note that the vim-rooter plugin sets the cwd to the repo root automatically.
 "
 " Also see https://github.com/itchyny/lightline.vim/issues/87
-"
-" \   'filename': 'LightLineFilename',
 
 function! LightLineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -159,11 +123,21 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(0)
 endfunction
 
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
+" If syntastic is loaded, call lightline#update after SyntasticCheck
+if g:loaded_syntastic_plugin
+    function! s:syntastic() abort
+        SyntasticCheck
+        call lightline#update()
+    endfunction
+
+    autocmd BufRead * call s:syntastic()
+    autocmd BufWritePost * call s:syntastic()
+
+    function! MySyntasticStatuslineFlag()
+        return SyntasticStatuslineFlag()
+    endfunction
+else
+    function! MySyntasticStatuslineFlag()
+        return ""
+    endfunction
+endif " }}}
