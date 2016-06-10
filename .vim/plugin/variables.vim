@@ -18,7 +18,7 @@ let g:ag_mapping_message = 0
 
 let g:conflict_marker_enable_mappings = 0
 
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_map = '<Leader>f'
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_by_filename = 1
@@ -43,16 +43,12 @@ let g:ctrlp_filter_greps = "".
             \ ".git/|.hg/|.svn/|CVS/" .
             \ ")'"
 
-let g:my_ctrlp_user_command = "find %s '(' -type f -or -type l ')' | " . g:ctrlp_filter_greps
-let g:my_ctrlp_git_command = "cd %s && git ls-files"
-let g:my_ctrlp_hg_command = "hg --cwd %s locate -I"
-
-let g:ctrlp_user_commanD = {
+let g:ctrlp_user_command = {
             \ 'types': {
-            \ 1: ['.git', g:my_ctrlp_git_command],
-            \ 2: ['.hg', g:my_ctrlp_hg_command],
+            \ 1: ['.git','cd %s && git ls-files -co --exclude-standard'],
+            \ 2: ['.hg', 'hg --cwd %s locate -I'],
             \ },
-            \ 'fallback': g:my_ctrlp_user_command
+            \ 'fallback': "find %s -type f | " . g:ctrlp_filter_greps
             \ }
 
 let g:gitgutter_sign_column_always = 1
