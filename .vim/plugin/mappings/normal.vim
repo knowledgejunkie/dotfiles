@@ -90,3 +90,7 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 " cursor happens to be.
 nnoremap zO zCzO
 
+" [z and ]z already jump to start/end of open fold, so let [Z and ]Z do the
+" same for closed folds. zj/zk to move between folds.
+nnoremap [Z zo[z
+nnoremap ]Z zo]z
