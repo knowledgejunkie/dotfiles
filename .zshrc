@@ -36,6 +36,8 @@ alias cdcvs="cd ~/dev/src/cvs/"
 alias cdsvn="cd ~/dev/src/svn/"
 alias cdhg="cd ~/dev/src/hg/"
 
+alias cddot="cd ~/.dotfiles/"
+
 # Environment variables ------------------------------------------------------
 export PATH="$HOME/.bin:${PATH}"
 
@@ -44,10 +46,14 @@ export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTCONTROL=erasedups
 export COMMAND_MODE=unix2003
+export LESSCHARSET=UTF-8
 
 # Debian ---------------------------------------------------------------------
 export DEBFULLNAME='Nick Morrott'
 export DEBEMAIL='knowledgejunkie@gmail.com'
+
+alias cddeb="cd ~/dev/src/git/debian-packaging"
+alias cdpkg="cd ~/dev/src/git/debian-packaging/pkg-perl/packages"
 
 # History grep ---------------------------------------------------------------
 hgrep () {
