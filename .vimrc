@@ -89,7 +89,7 @@ Plug 'bling/vim-bufferline'
 
 call plug#end()
 
-" Color scheme ------------------------------------------------------------{{{1
+" Color scheme ----------------------------------------------------------- {{{1
 
 syntax on
 colorscheme solarized
