@@ -14,7 +14,7 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 set autowriteall
 
@@ -100,8 +100,6 @@ set virtualedit+=block
 set grepprg=ag
 
 set foldlevelstart=0
-
-set foldtext=functions#MyFoldText()
 
 set completeopt=longest,menuone,preview
 
