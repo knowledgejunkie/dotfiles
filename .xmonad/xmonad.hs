@@ -108,7 +108,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_period), sendMessage (IncMasterN (-1)))
 
     -- Lock the screen
-    , ((modMask, xK_q), spawn "xscreensaver-command --lock")
+    , ((modMask, xK_q), spawn "light-locker-command -l")
 
     -- Restart xmonad
     , ((modMask  .|. controlMask, xK_q ), spawn "xmonad --recompile; xmonad --restart")
