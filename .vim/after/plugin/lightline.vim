@@ -42,9 +42,10 @@ endfunction
 function! LightLineFugitive()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo' && exists('*fugitive#head')
+      let repodir = fnamemodify(getcwd(), ":t")
       let mark = ''  " edit here for cool mark
       let branch = fugitive#head()
-      return branch !=# '' ? mark.branch : ''
+      return branch !=# '' ? repodir . ' ' . mark . branch : ''
     endif
   catch
   endtry
