@@ -70,6 +70,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'knowledgejunkie/vim-xmltvfixup'
+Plug 'knowledgejunkie/vim-xmltvconfig'
 
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
