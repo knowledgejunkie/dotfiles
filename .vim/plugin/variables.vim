@@ -69,7 +69,7 @@ let g:lightline = {
       \ },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'spell' ], [ 'syntastic', 'fugitive', 'readonly', 'filename' ], [ 'ctrlpmark'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ],
+      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'filetype', 'fileencoding', 'fileformat' ] ],
       \ },
       \ 'inactive': {
       \   'left': [ [ 'filename' ] ],
