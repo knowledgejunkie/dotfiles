@@ -1,7 +1,7 @@
 " Leader/LocalLeader------------------------------------------------------ {{{1
 
 let mapleader = ","
-let maplocalleader = "_"
+let maplocalleader = ","
 
 " Plugin Management ------------------------------------------------------ {{{1
 call plug#begin('~/.vim/plugged')
