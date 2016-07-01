@@ -6,7 +6,7 @@ vnoremap <Leader>s :!sort<cr>
 nnoremap <Leader>V V`]
 
 " Quickly edit your vimrc
-nnoremap <Leader>ev :edit $MYVIMRC<cr>
+nnoremap <Leader>v :edit $MYVIMRC<cr>
 
 " Show the registers from things cut/yanked
 nnoremap <Leader>r :registers<CR>
