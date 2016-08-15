@@ -1,6 +1,6 @@
 #
 # A theme based on Steve Losh's Extravagant Prompt and steeef with vcs_info
-# integration and battery charge status information.
+# integration.
 #
 # Authors:
 #   Steve Losh <steve@stevelosh.com>
@@ -13,12 +13,6 @@
 # Screenshots:
 #   TODO
 #
-
-BAT_CHARGE=~/.bin/thinkpad-battery-status.py
-
-function battery_charge {
-    echo `$BAT_CHARGE` 2>/dev/null
-}
 
 function prompt_knowledgejunkie_precmd {
   # Check for untracked files or updated submodules since vcs_info does not.
@@ -96,7 +90,6 @@ function prompt_knowledgejunkie_setup {
   PROMPT="
 ${_prompt_knowledgejunkie_colors[3]}%n%f on ${_prompt_knowledgejunkie_colors[2]}%m%f in ${_prompt_knowledgejunkie_colors[5]}%~%f "'${vcs_info_msg_0_}'"
 "'$python_info[virtualenv]'"$ "
-  RPROMPT='$(battery_charge)'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
