@@ -125,6 +125,15 @@ configure_vim_plugins() {
   fi
 }
 
+#----------------------------------- tmux ------------------------------------
+
+configure_tmux() {
+  echo "  Configuring..."
+
+  link "${DOTFILES_DIRECTORY}/.tmux.conf"   ".tmux.conf"
+  link "${DOTFILES_DIRECTORY}/.tmuxinator"  ".tmuxinator"
+}
+
 #---------------------------------- xmonad -----------------------------------
 
 configure_xmonad() {
@@ -184,7 +193,6 @@ install_dotfiles() {
   link "${DOTFILES_DIRECTORY}/.pentadactylrc"     ".pentadactylrc"
   link "${DOTFILES_DIRECTORY}/.quiltrc"           ".quiltrc"
   link "${DOTFILES_DIRECTORY}/.reportbugrc"       ".reportbugrc"
-  link "${DOTFILES_DIRECTORY}/.tmux.conf"         ".tmux.conf"
   link "${DOTFILES_DIRECTORY}/.xbindkeysrc"       ".xbindkeysrc"
   link "${DOTFILES_DIRECTORY}/.xinitrc"           ".xinitrc"
   link "${DOTFILES_DIRECTORY}/.xinitrc.xfce4"     ".xinitrc.xfce4"
@@ -207,6 +215,10 @@ echo ""
 echo "[vim]"
 configure_vim
 configure_vim_plugins
+echo ""
+
+echo "[tmux]"
+configure_tmux
 echo ""
 
 echo "[xmonad]"

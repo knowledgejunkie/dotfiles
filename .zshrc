@@ -23,12 +23,22 @@ fi
 
 # Useful aliases -------------------------------------------------------------
 alias c="clear"
+alias g="git"
+alias q="quilt"
+
+alias t="tmux"
+alias tls="tmux ls"
+alias ta="tmux attach"
+alias tat="tmux attach -t"
+alias tns="tmux new-session -s"
+alias tmi="tmuxinator"
+
+alias v="vim"
+
 alias collapse="sed -e 's/\s+/ /g'"
 alias count="sort | uniq -c | sort -n"
 alias cuts="cut -d' '"
-alias g="git"
 alias grep="grep --color=auto"
-alias v="vim"
 alias vi="vim -u NONE -N"
 
 alias cdgit="cd ~/dev/src/git/"
