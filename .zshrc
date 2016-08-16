@@ -70,5 +70,26 @@ hgrep () {
     history 0 | grep -P --color=always "$@" | grep -P --color=always -v "hgrep $@"
 }
 
+# Refresh vars for tmux ------------------------------------------------------
+#   https://babushk.in/posts/renew-environment-tmux.html
+#
+#   (See https://chrisdown.name/2013/08/02/fixing-stale-ssh-sockets-in-tmux.html
+#   and https://blog.bennycornelissen.nl/dotfile-magic-terminal-multiplexers-and-ssh-agents/
+#   for alternative approaches)
+#
+if [ -n "$TMUX" ]; then
+  function refresh {
+    export $(tmux show-environment | grep "^SSH_AUTH_SOCK")
+    export $(tmux show-environment | grep "^DISPLAY")
+  }
+else
+  function refresh { }
+fi
+
+# preexec hook (runs befor every command) ------------------------------------
+function preexec {
+    refresh
+}
+
 # Local Settings -------------------------------------------------------------
 if [[ -s $HOME/.zshrc_local ]] ; then source $HOME/.zshrc_local ; fi
