@@ -54,6 +54,8 @@ Plug 'duff/vim-scratch'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'majutsushi/tagbar'
 Plug 'jontrainor/TaskList.vim'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-datetime'

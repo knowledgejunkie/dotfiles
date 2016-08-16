@@ -32,10 +32,11 @@ noremap H ^
 noremap L $
 
 " Easy buffer navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+" - clashes with vim-tmux-navigator
+" noremap <C-h> <C-w>h
+" noremap <C-j> <C-w>j
+" noremap <C-k> <C-w>k
+" noremap <C-l> <C-w>l
 
 " Use | and _ to split windows (while preserving original behaviour of [count]bar and [count]_).
 "   https://github.com/airblade/dotvim/blob/master/vimrc
