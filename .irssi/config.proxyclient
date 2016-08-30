@@ -142,7 +142,8 @@ channels = (
     autojoin = "Yes";
   },
   { name = "#debian-perl"; chatnet = "proxy-OFTC"; autojoin = "Yes"; },
-  { name = "#debian"; chatnet = "proxy-OFTC"; autojoin = "Yes"; }
+  { name = "#debian"; chatnet = "proxy-OFTC"; autojoin = "Yes"; },
+  { name = "#debian-uk"; chatnet = "proxy-OFTC"; autojoin = "Yes"; }
 );
 
 aliases = {

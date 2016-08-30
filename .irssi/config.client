@@ -106,7 +106,8 @@ channels = (
   { name = "#mythtv"; chatnet = "FreeNode"; autojoin = "Yes"; },
   { name = "#mythtv-users"; chatnet = "FreeNode"; autojoin = "Yes"; },
   { name = "#debian-perl"; chatnet = "OFTC"; autojoin = "Yes"; },
-  { name = "#debian"; chatnet = "OFTC"; autojoin = "Yes"; }
+  { name = "#debian"; chatnet = "OFTC"; autojoin = "Yes"; },
+  { name = "#debian-uk"; chatnet = "OFTC"; autojoin = "Yes"; }
 );
 
 aliases = {
