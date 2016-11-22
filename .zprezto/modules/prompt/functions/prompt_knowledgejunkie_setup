@@ -46,11 +46,11 @@ function prompt_knowledgejunkie_setup {
   # Use extended color palette if available.
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     _prompt_knowledgejunkie_colors=(
-      "%F{6}" # was Turquoise
-      "%F{9}"  # was Orange
-      "%F{13}" # was Purple
-      "%F{1}"  # was Hotpink
-      "%F{2}"  # was Limegreen
+      "%F{6}"
+      "%F{9}"
+      "%F{13}"
+      "%F{1}"
+      "%F{2}"
     )
   else
     _prompt_knowledgejunkie_colors=(
@@ -70,7 +70,7 @@ function prompt_knowledgejunkie_setup {
   #   %R - repository path
   #   %S - path in the repository
   local branch_format="(${_prompt_knowledgejunkie_colors[1]}%b%f%u%c)"
-  local action_format="(${_prompt_knowledgejunkie_colors[5]}%a%f)"
+  local action_format="(${_prompt_knowledgejunkie_colors[4]}%a%f)"
   local unstaged_format="${_prompt_knowledgejunkie_colors[2]}●%f"
   local staged_format="${_prompt_knowledgejunkie_colors[5]}●%f"
 
