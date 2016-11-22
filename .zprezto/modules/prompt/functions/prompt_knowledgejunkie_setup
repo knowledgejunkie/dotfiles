@@ -46,11 +46,11 @@ function prompt_knowledgejunkie_setup {
   # Use extended color palette if available.
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     _prompt_knowledgejunkie_colors=(
-      "%F{81}"  # Turquoise
-      "%F{166}" # Orange
-      "%F{135}" # Purple
-      "%F{161}" # Hotpink
-      "%F{118}" # Limegreen
+      "%F{6}" # was Turquoise
+      "%F{9}"  # was Orange
+      "%F{13}" # was Purple
+      "%F{1}"  # was Hotpink
+      "%F{2}"  # was Limegreen
     )
   else
     _prompt_knowledgejunkie_colors=(

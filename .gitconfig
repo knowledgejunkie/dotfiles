@@ -131,29 +131,29 @@
 
 [color]
     ui = auto
-    diff = auto
-;   status = auto
+    ; diff = auto
+    ; status = auto
     branch = auto
     interactive = auto
 
-; [color "diff"]
-;     meta = yellow
-;     frag = magenta
-;     old  = red
-;     new  = green
+[color "diff"]
+    meta = 3
+    frag = 13
+    old  = 1
+    new  = 2
 
 [color "status"]
-;     header =
-    added     = green
-    changed   = cyan
-    untracked = red
-;     branch =
-;     nobranch =
+    ; header =
+    added     = 2
+    changed   = 9
+    untracked = 1
+    ; branch =
+    ; nobranch =
 
 ; [color "branch"]
-;     current = yellow reverse
-;     local = yellow
-;     remote = green
+    ; current = 3 reverse
+    ; local = 3
+    ; remote = 2
 
 [include]
     path = .gitconfig.user
