@@ -186,6 +186,7 @@ install_dotfiles() {
   link "${DOTFILES_DIRECTORY}/.gitk"              ".gitk"
   link "${DOTFILES_DIRECTORY}/.gitmessage"        ".gitmessage"
   link "${DOTFILES_DIRECTORY}/.inputrc"           ".inputrc"
+  link "${DOTFILES_DIRECTORY}/.lessfilter"        ".lessfilter"
   link "${DOTFILES_DIRECTORY}/.lintianrc"         ".lintianrc"
   link "${DOTFILES_DIRECTORY}/.mrconfig"          ".mrconfig"
   link "${DOTFILES_DIRECTORY}/.mrtrust"           ".mrtrust"
