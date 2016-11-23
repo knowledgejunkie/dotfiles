@@ -78,6 +78,11 @@
     root = rev-parse --show-toplevel
     currentbranch = rev-parse --abbrev-ref HEAD
 
+    merged-local-branches = branch --merged
+    merged-remote-branches = branch -r --merged
+    unmerged-local-branches = branch --no-merged
+    unmerged-remote-branches = branch -r --no-merged
+
     delete-local-branch = branch -D
     delete-remote-branch = push origin --delete
     delete-local-reference-to-remote-branch = branch -rd
