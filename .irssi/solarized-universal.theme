@@ -369,30 +369,31 @@ abstracts = {
 formats = {
   "fe-common/core" = {
     daychange = "           %g-----%w-%W-%n Day changed to %%D %W-%w-%g-----%n";
+    pubmsg = "{pubmsgnick $2 {pubnick \00304$0}}$1";
   };
   "Irssi::Script::adv_windowlist" = {
-  # https://github.com/huyz/irssi-colors-solarized
-  # awl_display_key = "$Q%K|%n$H$C$S";
-  # awl_display_key_visible = "%2$Q${cumode_space}$H$C$S";
-  # awl_display_key_active = "%1$Q${cumode_space}$H$C$S";
-  # awl_display_nokey = "$N${cumode_space}$H$C$S";
-  # awl_display_nokey_visible = "%2$N${cumode_space}$H$C$S";
-  # awl_display_nokey_active = "%1$N${cumode_space}$H$C$S";
-  # https://github.com/huyz/irssi-colors-solarized
-  # awl_display_key_active = "%k%2[$Q=$N:$C]%n";
-  # awl_display_nokey_active = "%k%2[$N:$C]%n";
-  # awl_display_key = "[$Q:$H$C$S]";
-  # awl_display_nokey = "[$N:$H$C$S]";
-  # https://github.com/marczuo/irssi-colors-solarized
-  awl_display_key = "%0%B$N $H$C$S%n";
-  awl_display_key_active = "%4%w$N $H$C$S%n%b%0%n";
-  awl_display_key_visible = "%3%w$N $H$C$S%n%y%0%n";
-  awl_display_nokey = "  %0$N  %U$C%U  %n";
-  awl_display_nokey_active = "%k%4 %w$N %k %U$C%U %8%8%n";
-  awl_display_nokey_visible = "%k%3 %w$N %k %U$C%U %8%8%n";
-  awl_display_header = "";
+    # https://github.com/huyz/irssi-colors-solarized
+    # awl_display_key = "$Q%K|%n$H$C$S";
+    # awl_display_key_visible = "%2$Q${cumode_space}$H$C$S";
+    # awl_display_key_active = "%1$Q${cumode_space}$H$C$S";
+    # awl_display_nokey = "$N${cumode_space}$H$C$S";
+    # awl_display_nokey_visible = "%2$N${cumode_space}$H$C$S";
+    # awl_display_nokey_active = "%1$N${cumode_space}$H$C$S";
+    # https://github.com/huyz/irssi-colors-solarized
+    # awl_display_key_active = "%k%2[$Q=$N:$C]%n";
+    # awl_display_nokey_active = "%k%2[$N:$C]%n";
+    # awl_display_key = "[$Q:$H$C$S]";
+    # awl_display_nokey = "[$N:$H$C$S]";
+    # https://github.com/marczuo/irssi-colors-solarized
+    awl_display_key = "%0%B$N $H$C$S%n";
+    awl_display_key_active = "%4%w$N $H$C$S%n%b%0%n";
+    awl_display_key_visible = "%3%w$N $H$C$S%n%y%0%n";
+    awl_display_nokey = "  %0$N  %U$C%U  %n";
+    awl_display_nokey_active = "%k%4 %w$N %k %U$C%U %8%8%n";
+    awl_display_nokey_visible = "%k%3 %w$N %k %U$C%U %8%8%n";
+    awl_display_header = "";
 
-  # https://github.com/huyz/irssi-colors-solarized
-  trackbar_style = "%B";
+    # https://github.com/huyz/irssi-colors-solarized
+    trackbar_style = "%B";
   };
 };
