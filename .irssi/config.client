@@ -281,6 +281,13 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
+    awl_1 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 
@@ -308,9 +315,11 @@ settings = {
   };
 };
 logs = { };
+ignores = ( { level = "JOINS PARTS QUITS"; } );
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = {
+  2 = { name = "hilight"; sticky = "yes"; };
+  3 = {
     items = (
       {
         type = "CHANNEL";
@@ -320,7 +329,7 @@ windows = {
       }
     );
   };
-  3 = {
+  4 = {
     items = (
       {
         type = "CHANNEL";
@@ -330,7 +339,7 @@ windows = {
       }
     );
   };
-  4 = {
+  5 = {
     items = (
       {
         type = "CHANNEL";
@@ -340,7 +349,7 @@ windows = {
       }
     );
   };
-  5 = {
+  6 = {
     items = (
       {
         type = "CHANNEL";
@@ -350,9 +359,38 @@ windows = {
       }
     );
   };
-  6 = { name = "hilight"; sticky = "yes"; };
+  7 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#debian-uk";
+        tag = "OFTC";
+      }
+    );
+  };
+  8 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#debexpo";
+        tag = "OFTC";
+      }
+    );
+  };
+  9 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#debian-mentors";
+        tag = "OFTC";
+      }
+    );
+  };
 };
 mainwindows = {
-  4 = { first_line = "8"; lines = "47"; };
-  6 = { first_line = "1"; lines = "7"; };
+  1 = { first_line = "7"; lines = "31"; };
+  2 = { first_line = "1"; lines = "6"; };
 };
