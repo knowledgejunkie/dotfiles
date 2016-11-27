@@ -33,4 +33,4 @@ viminfo
 
 # Debian packaging
 .pc/
-!/debian
+!/debian/**
