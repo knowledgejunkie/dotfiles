@@ -281,13 +281,6 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
-    awl_1 = {
-      items = {
-        barstart = { priority = "100"; };
-        awl_1 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
   };
 };
 
@@ -315,7 +308,7 @@ settings = {
   };
 };
 logs = { };
-ignores = ( { level = "JOINS PARTS QUITS"; } );
+ignores = ( { level = "CTCPS JOINS PARTS QUITS DCC"; } );
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
   2 = { name = "hilight"; sticky = "yes"; };
