@@ -69,6 +69,7 @@ chatnets = {
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
+    autosendcmd = "MODE knowledgejunkie +g-G+i";
   };
   GameSurge = {
     type = "IRC";
@@ -99,6 +100,7 @@ chatnets = {
     nick = "knowledgejunkie";
     username = "knowledgejunkie";
     realname = "Nick Morrott";
+    autosendcmd = "MODE knowledgejunkie +g-G+i";
   };
 };
 
@@ -358,26 +360,6 @@ windows = {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "#debian-uk";
-        tag = "OFTC";
-      }
-    );
-  };
-  8 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#debexpo";
-        tag = "OFTC";
-      }
-    );
-  };
-  9 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#debian-mentors";
         tag = "OFTC";
       }
     );

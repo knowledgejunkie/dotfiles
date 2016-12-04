@@ -103,12 +103,17 @@ chatnets = {
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
+    autosendcmd = "MODE knowledgejunkie +g-G+i";
   };
   OFTC = {
     type = "IRC";
     nick = "knowledgejunkie";
     realname = "Nick Morrott";
     username = "knowledgejunkie";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+    autosendcmd = "MODE knowledgejunkie +g-G+i";
   };
 };
 
@@ -281,6 +286,11 @@ statusbar = {
     };
   };
 };
+
+hilights = (
+  { text = "knowledgejunkie"; color = "%M"; nick = "yes"; word = "yes"; }
+);
+
 settings = {
   core = {
     real_name = "Nick Morrott";
@@ -288,11 +298,80 @@ settings = {
     nick = "knowledgejunkie";
   };
   "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = {
+    term_charset = "utf-8";
+    # Solarized
+    theme = "solarized-universal";
+    hilight_color = "= %R";
+  };
+  "perl/core/scripts" = {
+    awl_shared_sbar = "OFF";
+    awl_block = "-18";
+    awl_viewer = "no";
+  };
   proxy = {
     irssiproxy_password = "irssi";
     irssiproxy_ports = "FreeNode=7001 OFTC=7002";
     irssiproxy_bind = "192.168.1.1";
   };
-  "fe-common/core" = { term_charset = "utf-8"; };
 };
 logs = { };
+ignores = ( { level = "CTCPS JOINS PARTS QUITS DCC"; } );
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = { name = "hilight"; sticky = "yes"; };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#mythtv";
+        tag = "FreeNode";
+      }
+    );
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#mythtv-users";
+        tag = "FreeNode";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#debian-perl";
+        tag = "OFTC";
+      }
+    );
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#debian";
+        tag = "OFTC";
+      }
+    );
+  };
+  7 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#debian-uk";
+        tag = "OFTC";
+      }
+    );
+  };
+};
+mainwindows = {
+  1 = { first_line = "7"; lines = "31"; };
+  2 = { first_line = "1"; lines = "6"; };
+};
