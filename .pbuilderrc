@@ -2,7 +2,10 @@ PDEBUILD_PBUILDER=cowbuilder
 BASEPATH=/var/cache/pbuilder/base-sid.cow
 BUILDRESULT=/home/nick/dev/src/git/debian-packaging/build-area
 OTHERMIRROR="deb [trusted=yes] file:///home/nick/dev/src/git/debian-packaging/build-area ./"
-BINDMOUNTS="/home/nick/dev/src/git/debian-packaging/build-area"
+BINDMOUNTS="/home/nick/dev/src/git/debian-packaging/build-area /var/cache/pbuilder/ccache"
 HOOKDIR=/usr/lib/pbuilder/hooks
-EXTRAPACKAGES="apt-utils"
+EXTRAPACKAGES="apt-utils ccache"
 COMPONENTS="main contrib non-free"
+
+export CCACHE_DIR="/var/cache/pbuilder/ccache"
+export PATH="/usr/lib/ccache:${PATH}"
