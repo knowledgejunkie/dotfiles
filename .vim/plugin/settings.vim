@@ -16,8 +16,6 @@ set ttimeoutlen=10
 
 set clipboard=unnamed,unnamedplus
 
-set autowriteall
-
 set tabstop=4
 set softtabstop=4
 set expandtab
