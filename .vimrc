@@ -24,7 +24,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-vinegar'
 " Disabled for patched version: see
-" https://github.com/tpope/vim-vinegar/issues/65
+" https://github.com/tpope/vim-vinegar/issues/66
 " https://github.com/tpope/vim-vinegar/issues/74
 Plug 'manasthakur/vim-vinegar'
 
