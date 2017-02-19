@@ -20,7 +20,7 @@ pre: sudo -E cowbuilder --update --basepath=/var/cache/pbuilder/base-sid.cow --o
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-startup_window: irssi
+startup_window: vim
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
@@ -44,7 +44,7 @@ windows:
   - irssi:
       layout: main-vertical
       panes:
-        - irssi
+        - #empty
   - my-pkgs:
       layout: main-vertical
       panes:
