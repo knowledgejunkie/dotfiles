@@ -114,14 +114,14 @@ chatnets = {
     autosendcmd = "MODE knowledgejunkie +g-G+i";
   };
   OFTC = {
-      type = "IRC";
-      nick = "knowledgejunkie";
-      username = "knowledgejunkie";
-      realname = "Nick Morrott";
-      max_kicks = "1";
-      max_msgs = "3";
-      max_whois = "30";
-      autosendcmd = "MODE knowledgejunkie +g-G+i";
+    type = "IRC";
+    nick = "knowledgejunkie";
+    username = "knowledgejunkie";
+    realname = "Nick Morrott";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+    autosendcmd = "MODE knowledgejunkie +g-G+i";
   };
   "proxy-FreeNode" = {
     type = "IRC";
