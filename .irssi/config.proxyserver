@@ -303,6 +303,8 @@ settings = {
     # Solarized
     theme = "solarized-universal";
     hilight_color = "= %R";
+    autolog = "yes";
+    autolog_path = "/var/log/irssi/$tag/$0/%Y-%m-%d.log";
   };
   "perl/core/scripts" = {
     awl_shared_sbar = "OFF";
