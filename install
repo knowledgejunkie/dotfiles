@@ -134,6 +134,13 @@ configure_tmux() {
   link "${DOTFILES_DIRECTORY}/.tmuxinator"  ".tmuxinator"
 }
 
+configure_tmux_plugins() {
+  echo "  Configuring plugins..."
+
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  ~/.tmux/plugins/tpm/bin/install_plugins
+
+}
 #---------------------------------- xmonad -----------------------------------
 
 configure_xmonad() {
@@ -221,6 +228,7 @@ echo ""
 
 echo "[tmux]"
 configure_tmux
+configure_tmux_plugins
 echo ""
 
 echo "[xmonad]"
