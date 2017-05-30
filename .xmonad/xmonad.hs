@@ -221,11 +221,11 @@ myWorkspaces = ["web","mail","gpodder","office","dev","xfer","files","avid","pjx
 --
 -- https://bbs.archlinux.org/viewtopic.php?id=146781
 myManageHook = composeAll. concat $
-                [ [ className =? "Icedove" <&&> role =? "Msgcompose" --> doCenterFloat]
-                , [ className =? "Icedove" <&&> role =? "alert" --> doIgnore]
+                [ [ className =? "Thunderbird" <&&> role =? "Msgcompose" --> doCenterFloat]
+                , [ className =? "Thunderbird" <&&> role =? "alert" --> doIgnore]
 
                 , [ className =? w --> doShift "web" | w <- web]
-                , [ className =? "Icedove" --> doShift "mail" ]
+                , [ className =? "Thunderbird" --> doShift "mail" ]
                 , [ className =? "Gpodder" --> doShift "gpodder" ]
                 , [ className =? "Filezilla" --> doShift "xfer" ]
                 , [ className =? "Thunar" --> doShift "files" ]
