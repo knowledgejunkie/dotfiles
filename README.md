@@ -155,6 +155,15 @@ This repository includes a udev rules file to remap the key to use keycodes
 
     # cp ~/.dotfiles/etc/udev/rules.d/95-keymaps.rules /etc/udev/rules.d
 
+### X11 config for Evoluent VM4L mouse
+
+The included 90-evoluent.conf file disables the thumb buttons, which I
+usually manage to trigger by accident whenever grabbing the mouse.
+
+To install:
+
+    # cp ~/.dotfiles/etc/X11/xorg.conf.d/90-evoluent.conf /etc/X11/xorg.conf.d/90-evoluent.conf
+
 
 ## Fetching remote updates
 
