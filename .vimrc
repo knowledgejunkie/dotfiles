@@ -93,6 +93,7 @@ Plug 'bling/vim-bufferline'
 " Plug 'tpope/vim-sensible'
 " Plug 'mhinz/vim-signify'
 " Plug 'rstacruz/sparkup'
+" Plug 'guns/xterm-color-table.vim'
 " }}}
 
 call plug#end()
