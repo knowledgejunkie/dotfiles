@@ -26,17 +26,23 @@
 !-------------------------------------------------------------------------------
 
 Xft.dpi: 96
-Xft.antialias: 1
-! Xft.rgba: rgb
-Xft.rgba: none
-Xft.hinting: 1
-Xft.autohint: 1
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.autohint: false
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
 !-------------------------------------------------------------------------------
+
+! Fonts
+URxvt.font: xft:MesloLGS\ Nerd\ Font:pixelsize=16
+URxvt.boldFont: xft:MesloLGS\ Nerd\ Font:pixelsize=16:Bold
+URxvt.allow_bold: true
+URxvt.skipBuiltinGlyphs: True
+URxvt.letterSpace: -1
 
 !URxvt.termName: rxvt-unicode
 URxvt.imLocale: en_GB.UTF-8
@@ -55,15 +61,6 @@ URxvt.saveLines: 10000
 URxvt.internalBorder: -1
 URxvt.externalBorder: -1
 URxvt.lineSpace: 0
-
-! Fonts
-URxvt.font: xft:Inconsolata\ for\ Powerline:pixelsize=18
-URxvt.boldFont: xft:Inconsolata\ for\ Powerline:pixelsize=18:Bold
-URxvt.italicFont: xft:Inconsolata\ for\ Powerline:pixelsize18:Italic
-URxvt.bolditalicFont: xft:Inconsolata\ for\ Powerline:pixelsize=18:Bold:Italic
-URxvt.allow_bold: true
-URxvt.skipBuiltinGlyphs: True
-URxvt.letterSpace: -1
 
 ! Scrollbar
 URxvt.scrollBar: True

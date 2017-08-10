@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Copyright (c) Nick Morrott 2016
+# Copyright (c) Nick Morrott 2016-17
 
 # Inspired by https://github.com/necolas/dotfiles/blob/master/bin/dotfiles
 # and https://github.com/kewah/dotfiles/blob/master/install
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
-POWERLINE_FONTS_DIRECTORY="${HOME}/.powerline-fonts"
+FONTS_DIRECTORY="${HOME}/.local/share/fonts"
 PREZTO_DIRECTORY="${HOME}/.zprezto"
 
 # DATE=`date +%Y%m%d-%H%M%S`
@@ -38,25 +38,18 @@ backup_dotfile() {
   mv ${1} ${BACKUP_DIRECTORY} >/dev/null
 }
 
-#-------------------------------- powerline-fonts ----------------------------
-install_powerline() {
-  if [ ! -e "${POWERLINE_FONTS_DIRECTORY}" ]; then
-    # Clone the upstream Powerline patched fonts repo
-    echo "  Cloning upstream 'powerline-fonts' repository..."
-    git clone https://github.com/powerline/fonts.git "${POWERLINE_FONTS_DIRECTORY}" >/dev/null
-  else
-    # Update the upstream Powerline patched fonts repo if we already have it
-    echo "  Updating upstream 'powerline-fonts' repository..."
-    cd ${POWERLINE_FONTS_DIRECTORY}
-    git pull >/dev/null
-  fi
+#----------------------------------- fonts -----------------------------------
+install_fonts() {
+    mkdir -p ${FONTS_DIRECTORY}
+    echo "  Copying font files into local font cache..."
+    find "${DOTFILES_DIRECTORY}/.local/share/fonts" -name '*.[o,t]tf' -type f -print0 | xargs -0 -I % cp "%" "${FONTS_DIRECTORY}/"
 }
 
-configure_powerline() {
-  # Setup powerline-fonts
-  echo "  Configuring..."
-  cd ${POWERLINE_FONTS_DIRECTORY}
-  ./install.sh >/dev/null
+configure_fonts() {
+  if command -v fc-cache @>/dev/null ; then
+    echo "  Resetting font cache..."
+    fc-cache -f ${FONTS_DIRECTORY}
+  fi
 }
 
 #-------------------------------- zsh/prezto ---------------------------------
@@ -210,9 +203,9 @@ install_dotfiles() {
 
 #-----------------------------------------------------------------------------
 
-echo "[powerline-fonts]"
-install_powerline
-configure_powerline
+echo "[fonts]"
+install_fonts
+configure_fonts
 echo ""
 
 echo "[zsh/prezto]"
