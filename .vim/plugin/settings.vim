@@ -3,7 +3,8 @@ set nohidden
 set encoding=utf-8
 set fileformat=unix
 
-set modelines=0
+set modeline
+set modelines=5
 set backspace=indent,eol,start
 set matchtime=3
 set viminfo='20,\"100,:100,%,n~/.vim/viminfo
