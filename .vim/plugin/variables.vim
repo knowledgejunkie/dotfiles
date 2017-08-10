@@ -60,6 +60,9 @@ let g:gundo_debug = 1
 let g:gundo_preview_bottom = 1
 let g:gundo_tree_statusline = "Gundo"
 let g:gundo_preview_statusline = "Gundo Preview"
+if has('python3')
+    let g:gundo_prefer_python3 = 1
+endif
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',
