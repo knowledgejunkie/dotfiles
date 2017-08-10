@@ -68,36 +68,42 @@ let g:lightline = {
       \   'right': [ [ ] ],
       \ },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'spell' ], [ 'syntastic', 'fugitive', 'readonly', 'filename' ], [ 'ctrlpmark'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'filetype', 'fileencoding', 'fileformat' ] ],
+      \   'left': [ [ 'mode' ], [ 'git_repo', 'git_branch' ], [ 'filename', 'syntastic', 'ctrlpmark', 'paste', 'spell' ] ],
+      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileencoding', 'fileformat', 'filetype', 'readonly' ] ],
       \ },
       \ 'inactive': {
       \   'left': [ [ 'filename' ] ],
       \   'right': [ [ 'lineinfo' ] ],
       \ },
+      \ 'component': {
+      \   'lineinfo': ' %-2v',
+      \ },
       \ 'component_visible_condition': {
       \ },
       \ 'component_function': {
-      \   'mode': 'LightLineMode',
-      \   'fugitive': 'LightLineFugitive',
-      \   'filename': 'LightLineRelativeFilename',
-      \   'ctrlpmark': 'CtrlPMark',
-      \   'fileformat': 'LightLineFileformat',
-      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode' : 'LightLineMode',
+      \   'filename': 'LightLineFilename',
       \   'filetype': 'LightLineFiletype',
+      \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'component_expand': {
       \   'bufferline': 'LightlineBufferline',
-      \   'syntastic': 'MySyntasticStatuslineFlag',
+      \   'syntastic': 'LightLineSyntasticStatus',
       \   'readonly': 'LightLineReadonly',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'fileformat': 'LightLineFileformat',
+      \   'git_repo': 'LightLineGitRepo',
+      \   'git_branch': 'LightLineGitBranch',
       \ },
       \ 'component_type': {
       \   'bufferline': 'tabsel',
       \   'syntastic': 'error',
       \   'readonly': 'error',
+      \   'fileencoding' : 'warning',
+      \   'fileformat' : 'warning',
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left':'', 'right': '' },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left':'', 'right': '' },
       \ }
 
 let g:pymode = 1

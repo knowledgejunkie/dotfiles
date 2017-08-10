@@ -7,6 +7,13 @@ set showtabline=2
 "
 " Also see https://github.com/itchyny/lightline.vim/issues/87
 
+" Sort of emulate vim-airline's buffer list using vim-bufferline
+" See https://github.com/itchyny/lightline.vim/issues/155
+function! LightlineBufferline()
+  call bufferline#refresh_status()
+  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
+endfunction
+
 function! LightLineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
@@ -20,17 +27,10 @@ function! LightLineGetAbsoluteFilename()
 endfunction
 
 function! LightLineGetRelativeFilename()
-  return expand('%')
+  return fnamemodify(expand('%'), ':~:.')
 endfunction
 
-" Sort of emulate vim-airline's buffer list using vim-bufferline
-" See https://github.com/itchyny/lightline.vim/issues/155
-function! LightlineBufferline()
-  call bufferline#refresh_status()
-  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
-endfunction
-
-function! LightLineRelativeFilename()
+function! LightLineFilename()
   let fname = expand('%:t')
   return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
         \ fname == '__Tagbar__' ? g:lightline.fname :
@@ -39,21 +39,34 @@ function! LightLineRelativeFilename()
         \ ('' != fname ? LightLineGetRelativeFilename() : '[No Name]')
 endfunction
 
-function! LightLineFugitive()
+function! LightLineGitRepo()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo' && exists('*fugitive#head')
-      let repodir = fnamemodify(getcwd(), ":t")
-      let mark = ''  " edit here for cool mark
-      let branch = fugitive#head()
-      return branch !=# '' ? repodir . ' ' . mark . branch : ''
+      return fnamemodify(getcwd(), ":t")
     endif
   catch
   endtry
   return ''
 endfunction
 
-function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
+function! LightLineGitBranch()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let branch = fugitive#head()
+      return branch !=# '' ? mark . ' ' . branch : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! LightLineGitGutter()
+  if exists('*GitGutterGetHunkSummary')
+    let [ added, modified, removed ] = GitGutterGetHunkSummary()
+    return printf('+%d ~%d -%d', added, modified, removed)
+  endif
+  return ''
 endfunction
 
 function! LightLineFiletype()
@@ -61,7 +74,11 @@ function! LightLineFiletype()
 endfunction
 
 function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+  return winwidth(0) > 70 ? (&fenc !=# '' && &fenc !=# 'utf-8' ? &fenc : '') : ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? (&fileformat !=# 'unix' ? &fileformat : '') : ''
 endfunction
 
 function! LightLineMode()
@@ -117,11 +134,11 @@ if g:loaded_syntastic_plugin
     autocmd BufRead * call s:syntastic()
     autocmd BufWritePost * call s:syntastic()
 
-    function! MySyntasticStatuslineFlag()
+    function! LightLineSyntasticStatus()
         return SyntasticStatuslineFlag()
     endfunction
 else
-    function! MySyntasticStatuslineFlag()
+    function! LightLineSyntasticStatus()
         return ""
     endfunction
 endif " }}}
