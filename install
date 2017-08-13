@@ -92,7 +92,6 @@ set_default_shell_to_zsh() {
 }
 
 #----------------------------------- vim -------------------------------------
-
 configure_vim() {
   echo "  Configuring..."
 
@@ -119,7 +118,6 @@ configure_vim_plugins() {
 }
 
 #----------------------------------- tmux ------------------------------------
-
 configure_tmux() {
   echo "  Configuring..."
 
@@ -134,8 +132,8 @@ configure_tmux_plugins() {
   ~/.tmux/plugins/tpm/bin/install_plugins
 
 }
-#---------------------------------- xmonad -----------------------------------
 
+#---------------------------------- xmonad -----------------------------------
 configure_xmonad() {
   # Backup "real" xmonad directory (not symlink)
   # if [ -e "${HOME}/.xmonad" ]; then
@@ -147,7 +145,6 @@ configure_xmonad() {
 }
 
 #---------------------------------- irssi ------------------------------------
-
 configure_irssi() {
     # Backup "real" irssi directory (not symlink)
     # if [ -e "${HOME}/.irssi" ]; then
@@ -159,7 +156,6 @@ configure_irssi() {
 }
 
 #--------------------------------- dotfiles ----------------------------------
-
 install_dotfiles() {
   # Scripts dir setup (provided .zshrc prepends this dir to $PATH)
   echo "  Configuring scripts directory..."
