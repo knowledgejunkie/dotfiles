@@ -2,19 +2,29 @@
 
 # Copyright (c) Nick Morrott 2016-17
 
-# Inspired by https://github.com/necolas/dotfiles/blob/master/bin/dotfiles
-# and https://github.com/kewah/dotfiles/blob/master/install
+DATE=`date +%s`
 
+#----------------------- installation locations ------------------------------
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 FONTS_DIRECTORY="${HOME}/.local/share/fonts"
 PREZTO_DIRECTORY="${HOME}/.zprezto"
 I3BLOCKS_DIRECTORY="${HOME}/.i3blocks-contrib"
-
-# DATE=`date +%Y%m%d-%H%M%S`
-DATE=`date +%s`
 BACKUP_DIRECTORY="${HOME}/.dotfiles-backup/${DATE}"
 
+#---------------------------- available modules ------------------------------
+available_modules=("i3" "prezto" "tmux" "vim" "irssi" "fonts" "dotfiles")
+
+#---------------------------- requested modules ------------------------------
+requested_modules="$@"
+
 #------------------------------- general subs --------------------------------
+is_installable() {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
+
 link() {
   if [ -h "${HOME}/${2}" ]; then
     echo "    Deleting symlink ${HOME}/${2}"
@@ -25,7 +35,6 @@ link() {
     backup_dotfile "${HOME}/${2}"
   fi
 
-  # Create the symlink.
   echo "    Creating symlink ${HOME}/${2}"
   ln -s "${1}" "${HOME}/${2}"
 }
@@ -40,13 +49,13 @@ backup_dotfile() {
 }
 
 #----------------------------------- fonts -----------------------------------
-install_fonts() {
+copy_fonts() {
     mkdir -p ${FONTS_DIRECTORY}
     echo "  Copying font files into local font cache..."
     find "${DOTFILES_DIRECTORY}/.local/share/fonts" -name '*.[o,t]tf' -type f -print0 | xargs -0 -I % cp "%" "${FONTS_DIRECTORY}/"
 }
 
-configure_fonts() {
+reset_font_cache() {
   if command -v fc-cache @>/dev/null ; then
     echo "  Resetting font cache..."
     fc-cache -f ${FONTS_DIRECTORY}
@@ -54,7 +63,7 @@ configure_fonts() {
 }
 
 #-------------------------------- zsh/prezto ---------------------------------
-install_prezto() {
+download_prezto() {
   if [ ! -e "${PREZTO_DIRECTORY}" ]; then
     # Clone the upstream Prezto repo
     echo "  Cloning upstream 'prezto' repository..."
@@ -96,23 +105,15 @@ set_default_shell_to_zsh() {
 configure_vim() {
   echo "  Configuring..."
 
-  # Backup "real" vim directory (not symlink)
-  # if [ -e "${HOME}/.vim" ]; then
-  #   backup_dotfile "${HOME}/.vim"
-  # fi
-
   link "${DOTFILES_DIRECTORY}/.vim"   ".vim"
   link "${DOTFILES_DIRECTORY}/.vimrc" ".vimrc"
 }
 
 configure_vim_plugins() {
-  # Plugins
   if [ ! -e "${DOTFILES_DIRECTORY}/.vim/plugged" ]; then
     echo "  Installing plugins..."
-    # Install if it looks like we haven't already run PlugInstall
     vim +PlugInstall +qall now
   else
-    # Otherwise update
     echo "  Updating plugins..."
     vim +PlugUpdate +qall now
   fi
@@ -131,17 +132,14 @@ configure_tmux_plugins() {
 
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   ~/.tmux/plugins/tpm/bin/install_plugins
-
 }
 
 #------------------------------------ i3 -------------------------------------
-install_i3blocks() {
+download_i3blocks_contrib() {
   if [ ! -e "${I3BLOCKS_DIRECTORY}" ]; then
-    # Clone the upstream i3blocks-contrib repo
     echo "  Cloning upstream 'i3blocks-contrib' repository..."
     git clone https://github.com/vivien/i3blocks-contrib "${I3BLOCKS_DIRECTORY}" >/dev/null
   else
-    # Update the upstream repo if we already have it
     echo "  Updating upstream 'i3blocks-contrib' repository..."
     cd ${I3BLOCKS_DIRECTORY}
     git pull >/dev/null
@@ -156,37 +154,24 @@ configure_i3() {
 
 #---------------------------------- xmonad -----------------------------------
 configure_xmonad() {
-  # Backup "real" xmonad directory (not symlink)
-  # if [ -e "${HOME}/.xmonad" ]; then
-  #   backup_dotfile "${HOME}/.xmonad"
-  # fi
-
   echo "  Configuring..."
   link "${DOTFILES_DIRECTORY}/.xmonad" ".xmonad"
 }
 
 #---------------------------------- irssi ------------------------------------
 configure_irssi() {
-    # Backup "real" irssi directory (not symlink)
-    # if [ -e "${HOME}/.irssi" ]; then
-    #   backup_dotfile "${HOME}/.irssi"
-    # fi
-
     echo "  Configuring..."
     link "${DOTFILES_DIRECTORY}/.irssi" ".irssi"
 }
 
 #--------------------------------- dotfiles ----------------------------------
-install_dotfiles() {
-  # Scripts dir setup (provided .zshrc prepends this dir to $PATH)
-  echo "  Configuring scripts directory..."
+symlink_dotfiles() {
+  echo "  Configuring user scripts directory..."
   link "${DOTFILES_DIRECTORY}/bin"                ".bin"
 
-  # git template/hooks dir setup
   echo "  Configuring git template/hooks directory..."
   link "${DOTFILES_DIRECTORY}/.git_template"      ".git_template"
 
-  # Remaining dotfiles setup
   echo "  Configuring symlinks"
   link "${DOTFILES_DIRECTORY}/.Xresources"        ".Xresources"
   link "${DOTFILES_DIRECTORY}/.abcde.conf"        ".abcde.conf"
@@ -214,48 +199,78 @@ install_dotfiles() {
   link "${DOTFILES_DIRECTORY}/.reportbugrc"       ".reportbugrc"
   link "${DOTFILES_DIRECTORY}/.xbindkeysrc"       ".xbindkeysrc"
   link "${DOTFILES_DIRECTORY}/.xinitrc"           ".xinitrc"
-  link "${DOTFILES_DIRECTORY}/.xinitrc.xfce4"     ".xinitrc.xfce4"
   link "${DOTFILES_DIRECTORY}/.ycm_extra_conf.py" ".ycm_extra_conf.py"
+}
+
+#-------------------------------- installers ---------------------------------
+install_fonts() {
+    copy_fonts
+    reset_font_cache
+}
+
+install_prezto() {
+    download_prezto
+    configure_prezto
+    set_default_shell_to_zsh
+}
+
+install_vim() {
+    configure_vim
+    configure_vim_plugins
+}
+
+install_tmux() {
+    configure_tmux
+    configure_tmux_plugins
+}
+
+install_i3() {
+    download_i3blocks_contrib
+    configure_i3
+}
+
+install_xmonad() {
+    configure_xmonad
+}
+
+install_irssi() {
+    configure_irssi
+}
+
+install_dotfiles() {
+    symlink_dotfiles
+}
+
+do_finished() {
+    echo "Finished!"
+    echo ""
+}
+
+install() {
+    aref=$1[@]
+    modules=("${!aref}")
+    echo ""
+    echo "Installing dotfiles:" "${modules[@]}"
+    echo ""
+    for mod in "${modules[@]}"
+    do
+        echo "[$mod]"
+        if is_installable "$mod" "${modules[@]}"; then
+            install_$mod
+            echo ""
+        else
+            echo "  Module $mod not found, skipping..."
+            echo ""
+        fi
+    done
+
+    do_finished
 }
 
 #-----------------------------------------------------------------------------
 
-echo "[fonts]"
-install_fonts
-configure_fonts
-echo ""
-
-echo "[zsh/prezto]"
-install_prezto
-configure_prezto
-set_default_shell_to_zsh
-echo ""
-
-echo "[vim]"
-configure_vim
-configure_vim_plugins
-echo ""
-
-echo "[tmux]"
-configure_tmux
-configure_tmux_plugins
-echo ""
-
-echo "[i3]"
-install_i3blocks
-configure_i3
-echo ""
-
-# echo "[xmonad]"
-# configure_xmonad
-# echo ""
-
-echo "[irssi]"
-configure_irssi
-echo ""
-
-echo "[dotfiles]"
-install_dotfiles
-echo ""
-
-echo "Finished!"
+if [[ $# -eq 0 ]] ; then
+    install available_modules
+else
+    install requested_modules
+fi
