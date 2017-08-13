@@ -8,6 +8,7 @@
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 FONTS_DIRECTORY="${HOME}/.local/share/fonts"
 PREZTO_DIRECTORY="${HOME}/.zprezto"
+I3BLOCKS_DIRECTORY="${HOME}/.i3blocks-contrib"
 
 # DATE=`date +%Y%m%d-%H%M%S`
 DATE=`date +%s`
@@ -133,6 +134,26 @@ configure_tmux_plugins() {
 
 }
 
+#------------------------------------ i3 -------------------------------------
+install_i3blocks() {
+  if [ ! -e "${I3BLOCKS_DIRECTORY}" ]; then
+    # Clone the upstream i3blocks-contrib repo
+    echo "  Cloning upstream 'i3blocks-contrib' repository..."
+    git clone https://github.com/vivien/i3blocks-contrib "${I3BLOCKS_DIRECTORY}" >/dev/null
+  else
+    # Update the upstream repo if we already have it
+    echo "  Updating upstream 'i3blocks-contrib' repository..."
+    cd ${I3BLOCKS_DIRECTORY}
+    git pull >/dev/null
+  fi
+}
+
+configure_i3() {
+  echo "  Configuring..."
+  link "${DOTFILES_DIRECTORY}/.config/i3" ".config/i3"
+  link "${DOTFILES_DIRECTORY}/.config/i3blocks" ".config/i3blocks"
+}
+
 #---------------------------------- xmonad -----------------------------------
 configure_xmonad() {
   # Backup "real" xmonad directory (not symlink)
@@ -220,9 +241,14 @@ configure_tmux
 configure_tmux_plugins
 echo ""
 
-echo "[xmonad]"
-configure_xmonad
+echo "[i3]"
+install_i3blocks
+configure_i3
 echo ""
+
+# echo "[xmonad]"
+# configure_xmonad
+# echo ""
 
 echo "[irssi]"
 configure_irssi

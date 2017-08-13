@@ -1,0 +1,239 @@
+# i3 config
+#
+# See http://i3wm.org/docs/userguide.html for a complete reference
+
+# Modifier keys {{{1
+#
+# Set modkey to the Super key, alt to left Alt
+set $mod Mod4
+set $alt Mod1
+
+# Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Font {{{1
+
+font pango:DejaVu Sans Mono 8
+
+# Colourscheme {{{1
+
+# Solarized : http://ethanschoonover.com/solarized
+
+# dark backgorund tones
+set $base03    #002b36
+set $base02    #073642
+
+# content tones
+set $base01    #586e75
+set $base00    #657b83
+set $base0     #839496
+set $base1     #93a1a1
+
+# light background tones
+set $base2     #eee8d5
+set $base3     #fdf6e3
+
+# accent colours
+set $yellow    #b58900
+set $orange    #cb4b16
+set $red       #dc322f
+set $magenta   #d33682
+set $violet    #6c71c4
+set $blue      #268bd2
+set $cyan      #2aa198
+set $green     #859900
+
+# focus/urgency
+#                       border    bg        text     indicator
+client.focused          $base03   $base01   $base3   $blue
+client.focused_inactive $base03   $base02   $base0   $base02
+client.unfocused        $base03   $base02   $base0   $base02
+client.urgent           $base03   $red      $base3   $base03
+
+# Hide window title
+new_window 1pixel
+
+# smart borders
+hide_edge_borders smart
+
+# Bindings {{{1
+
+bindsym $mod+Return exec urxvt
+bindsym $mod+d exec rofi -show run
+
+bindsym $mod+Shift+c config reload
+bindsym $mod+Shift+r restart i3
+
+bindsym $mod+q exec "light-locker-command -l"
+bindsym $mod+Shift+q exec "~/.config/i3blocks/shutdown_menu -p rofi"
+
+# Workspace management {{{1
+#
+# names
+set $WS1 1:
+set $WS2 2:
+set $WS3 3:
+set $WS4 4:
+set $WS5 5:
+set $WS6 6:
+set $WS7 7:
+set $WS8 8:
+set $WS9 9:
+set $WS10 10:
+
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS10
+
+# workspace 1 output HDMI-0
+# workspace 2 output DVI-0
+
+# Workspace assignments {{{1
+#
+assign [class="Firefox"] $WS1
+assign [class="Chromium"] $WS1
+assign [class="Thunderbird"] $WS2
+assign [class="Gpodder"] $WS3
+assign [class="Audacious"] $WS4
+assign [class="Quodlibet"] $WS4
+assign [class="Filezilla"] $WS6
+assign [class="Thunar"] $WS7
+assign [class="Avidemux3_qt4"] $WS8
+assign [class="net-sourceforge-dvb-projectx-common-Start"] $WS9
+
+# Window management {{{1
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split vertically
+bindsym $mod+minus split v
+
+# split horizontally
+bindsym $mod+backslash split h
+
+# kill focused window
+bindsym $mod+c kill
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+z layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+space layout toggle split
+
+# toggle tiling/floating
+bindsym $mod+t floating toggle
+
+# change focus between tiling/floating windows
+bindsym $mod+Shift+t focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+# focus the child container
+bindsym $mod+Shift+a focus child
+
+bindsym $mod+x [urgent=latest] focus
+
+# Window resizing {{{1
+
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        bindsym r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Floating window assignments {{{1
+
+for_window [class="Preferences$"] floating enable
+for_window [class="I3-exit" instance="i3-exit"] floating enable
+for_window [class="Eog"] floating enable
+for_window [class="Vlc"] floating enable
+for_window [class="Dia"] floating enable
+for_window [class="Audacious"] floating enable
+for_window [class="Wine"] floating enable
+for_window [class="Gimp"] floating enable
+for_window [class="Skype"] floating enable
+for_window [class="net-sourceforge-dvb-projectx-common-Start"] floating enable
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# PrintScreen {{{1
+
+bindsym --release Print exec --no-startup-id scrot
+bindsym --release Ctrl+Print exec --no-startup-id scrot -s
+
+# Audio control {{{1
+
+bindsym $mod+bracketleft  exec amixer -q sset Master 5%-    && pkill -RTMIN+1 i3blocks
+bindsym $mod+bracketright exec amixer -q sset Master 5%+    && pkill -RTMIN+1 i3blocks
+bindsym $mod+numbersign   exec amixer -q sset Master toggle && pkill -RTMIN+1 i3blocks
+
+# Backlight control {{{1
+
+bindsym XF86MonBrightnessUp   exec "xbacklight -inc 5"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
+
+# Startup applications {{{1
+
+exec --no-startup-id light-locker
+exec --no-startup-id xautolock -time 60 -locker "light-locker-command -l" -corners ---- -cornersize 100
+exec --no-startup-id compton -f
+
+# xmodmap {{{1
+
+exec_always xmodmap -e "clear lock"
+exec_always xmodmap -e "keysym Caps_Lock = Escape"
+
+# i3blocks {{{1
+bar {
+    position bottom
+    status_command CONTRIB_SCRIPT_DIR=~/.i3blocks-contrib i3blocks
+    colors {
+        background $base03
+        statusline $base0
+        separator  $base01
+        #                  border    bg        text
+        focused_workspace  $blue     $blue     $base03
+        active_workspace   $base01   $base01   $base03
+        inactive_workspace $base02   $base03   $base0
+        urgent_workspace   $red      $red      $base3
+    }
+}
+
+# vim: set foldmethod=marker foldlevel=0:

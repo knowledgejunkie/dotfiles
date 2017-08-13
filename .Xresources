@@ -63,7 +63,7 @@ URxvt.externalBorder: -1
 URxvt.lineSpace: 0
 
 ! Scrollbar
-URxvt.scrollBar: True
+URxvt.scrollBar: False
 URxvt.scrollBar_right : True
 URxvt.scrollBar_floating : True
 URxvt.scrollstyle : plain
@@ -362,3 +362,19 @@ URxvt*cursorColor: #657b83
 *URxvt*keysym.S-M-C-Down:       \033[1;8B
 *URxvt*keysym.S-M-C-Right:      \033[1;8C
 *URxvt*keysym.S-M-C-Left:       \033[1;8D
+
+! rofi
+rofi.lines: 3
+rofi.eh: 2
+rofi.fullscreen: true
+rofi.padding: 300
+rofi.opacity: 85
+rofi.font: DejaVu\ Sans\ Mono\ 12
+
+! State:           ´bg´,     ´fg´,     ´bgalt´,  ´hlbg´,   ´hlfg´
+rofi.color-normal: S_base03,  S_base0,  S_base03,  S_base01,  S_base03
+rofi.color-urgent: S_base03,  S_red,    S_base03,  S_red,     S_base03
+rofi.color-active: S_base03,  S_blue,   S_base03,  S_blue,    S_base03
+
+!                  ´background´, ´border´, ´separator´
+rofi.color-window: S_base03,      S_base03,  S_base03

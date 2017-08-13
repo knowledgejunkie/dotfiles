@@ -1,0 +1,86 @@
+# i3blocks config file
+#
+# See `man i3blocks` for a complete reference
+#
+# https://github.com/vivien/i3blocks
+# https://github.com/vivien/i3blocks-contrib
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+command=/usr/share/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+# Media player
+#
+# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+# Must install playerctl and enable MPRIS support in player
+[mediaplayer]
+label= 
+command=$CONTRIB_SCRIPT_DIR/mediaplayer/mediaplayer
+instance=quodlibet
+interval=5
+signal=10
+
+# Pulseaudio control
+[volume-pulseaudio]
+command=~/.config/i3blocks/volume_pulseaudio -F3 -d
+interval=5
+signal=1
+
+# Monitor management
+[monitors]
+command=$CONTRIB_SCRIPT_DIR/monitor_manager/monitor_manager
+interval=once
+
+# Network interface monitoring
+#
+# If the instance is not specified, use the interface used for default route.
+# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
+# [iface]
+# instance=wlan0
+# color=#00FF00
+# interval=10
+
+# [wifi]
+# instance=wlp3s0
+# interval=10
+
+# Battery indicator
+#
+[battery]
+command=$CONTRIB_SCRIPT_DIR/battery/battery
+markup=pango
+interval=30
+
+# Date Time
+#
+[time]
+command=date '+%d %b %H:%M'
+interval=5
+
+# Shutdown button
+[shutdown_menu]
+# If you are using FontAwesome, we recommend the power-off icon:
+# http://fontawesome.io/icon/power-off/
+full_text=
+command=~/.config/i3blocks/shutdown_menu -c; echo Quit
