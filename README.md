@@ -5,14 +5,18 @@
 This repository installs and customises the following applications available on
 [Debian GNU/Linux][debian] to my liking:
 
-- [xmonad][xmonad]
+- [i3][i3]
 - [urxvt][urxvt]
+- [tmux][tmux]
 - [zsh][zsh] with [prezto][prezto]
 - [vim][vim] with several plugins
+- [irssi][irssi]
 - [git][git] with ctags hooks
 
 Configurations for several other Debian-specific and general development tools
 and utilities are also provided.
+
+Colorschemes use [Solarized][solarized] where possible.
 
 Scripts that I've found useful are installed into ~/.bin and $PATH is updated
 to reflect this. (Yes, it's hidden. Yes, it contains binaries.)
@@ -20,6 +24,7 @@ to reflect this. (Yes, it's hidden. Yes, it contains binaries.)
 In addition, this repository includes customisation for the following hardware:
 
 - [Microsoft Natural Ergonomic Keyboard 4000][ergo4000]
+- [Evoluent VM4L mouse][vm4l]
 
 Installation of thees dotfiles is a two-step process:
 
@@ -42,17 +47,16 @@ section below).
 To install all software and dependencies via the meta-package, change to the
 checkout directory and run (as root, or via sudo):
 
-    # dpkg --install knowledgejunkie-dotfiles-deps.deb
-    # apt-get -f install
+    # gdebi knowledgejunkie-dotfiles-deps.deb
 
 ### Manual
 
 To install each application and its dependencies separately, run the following
 commands (as root, or via sudo) as required:
 
-#### xmonad
+#### i3
 
-    # aptitude install xmonad
+    # aptitude install i3 i3blocks rofi compton xautolock
 
 #### zsh
 
@@ -61,6 +65,10 @@ commands (as root, or via sudo) as required:
 #### urxvt
 
     # aptitude install rxvt-unicode-256color
+
+#### tmux
+
+    # aptitude install tmux tmuxinator
 
 #### vim
 
@@ -88,12 +96,19 @@ commands (as root, or via sudo) as required:
 
 In addition to installing symlinks for the dotfiles provided in this
 repository, the installation script also clones the upstream repositories for
-Prezto and Powerline fonts for customising zsh and vim respectively.
+Prezto and i3blocks contributed blocklets.
 
 The installation script attempts to handle situations where dotfiles (or
 symlinks to them) already exist. Existing files/directories will be
 automatically backed up into an epoch-dated subdirectory within
 ~/.dotfiles-backup. Existing symlinks to dotfiles/directories will be removed.
+
+### i3 dependencies
+
+In order for "now playing" music information to be displayed in i3blocks, it is
+necessary to manually download and install the [playerctl][playerctl] utility. 
+Not yet available in the Debian repos, a deb file of the current release should be
+available [here][playerctl]
 
 ### Vim dependencies
 
@@ -133,15 +148,6 @@ newly-created Git repositories after installation.
 
 A 'git ctags' alias and hooks are provided to automatically update a
 Git project's tags file after a checkout/commit/merge/rebase.
-
-### xinitrc for XFCE4
-
-If you're using XFCE (with/without xmonad) you can install an updated `xinitrc`
-file which enables parsing of cpp directives in the included `.Xresources`
-file. This is disabled by default.
-
-    $ cd ~/.config/xfce4
-    $ ln -s ~/.xinitrc.xfce4 xinitrc
 
 ### udev rule for MS Natural Ergonomic Keyboard 4000
 
@@ -183,20 +189,27 @@ practitioner extraordinaire [Steve Losh][sjl-blog].
 In addition to his [blog][sjl-blog] it's worth checking out his own
 comprehensive [dotfiles repo][sjl-dotfiles].
 
+
+## Follow me
+
 Feel free to follow me on [GitHub][nm-github] and [Twitter][nm-twitter].
 
 [debian]: http://www.debian.org/
-[xmonad]: http://xmonad.org/
+[i3]: https://i3wm.org/
+[playerctl]: https://github.com/acrisci/playerctl/releases/latest
 [zsh]: http://zsh.sourceforge.net/
 [prezto]: https://github.com/sorin-ionescu/prezto
 [urxvt]: http://software.schmorp.de/pkg/rxvt-unicode.html
+[tmux]: https://github.com/tmux/tmux/wiki
 [vim]: http://www.vim.org/
 [vim-plug]: https://github.com/junegunn/vim-plug
 [ycm]: https://github.com/Valloric/YouCompleteMe
 [git]: http://git-scm.com/
+[irssi]: https://irssi.org/
+[solarized]: https://github.com/altercation/solarized
 [ergo4000]: http://www.microsoft.com/hardware/en-us/p/natural-ergonomic-keyboard-4000
+[vm4l]: https://evoluent.com/products/vm4l/
 [sjl-blog]: http://stevelosh.com/
 [sjl-dotfiles]: http://bitbucket.org/sjl/dotfiles
-[sjl-twitter]: http://twitter.com/dotvimrc
 [nm-github]: https://github.com/knowledgejunkie
 [nm-twitter]: http://twitter.com/nickmorrott
