@@ -178,6 +178,7 @@ symlink_dotfiles() {
   link "${DOTFILES_DIRECTORY}/.ackrc"             ".ackrc"
   link "${DOTFILES_DIRECTORY}/.agignore"          ".agignore"
   link "${DOTFILES_DIRECTORY}/.bash_aliases"      ".bash_aliases"
+  link "${DOTFILES_DIRECTORY}/.caffrc"            ".caffrc"
   link "${DOTFILES_DIRECTORY}/.ctags"             ".ctags"
   link "${DOTFILES_DIRECTORY}/.dircolors"         ".dircolors"
   link "${DOTFILES_DIRECTORY}/.dpt.conf"          ".dpt.conf"

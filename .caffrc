@@ -1,0 +1,3 @@
+$CONFIG{'owner'} = q{Nick Morrott};
+$CONFIG{'email'} = q{knowledgejunkie@gmail.com};
+$CONFIG{'keyid'} = [ qw{3E9B59AC6EC2D359} ];
