@@ -11,8 +11,11 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
 fi
 
 
-# xmonad/Java fixup ----------------------------------------------------------
+# i3/Java fixup ----------------------------------------------------------
 export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
+export JAVA_FONTS=/usr/share/fonts/truetype
 
-# xmonad/libreoffice fixup ---------------------------------------------------
-export SAL_USE_VCLPLUGIN=gen lowriter
+# i3/libreoffice fixup ---------------------------------------------------
+# export SAL_USE_VCLPLUGIN=gen lowriter
+export SAL_USE_VCLPLUGIN=gtk3 lowriter
