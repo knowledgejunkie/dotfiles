@@ -88,6 +88,8 @@ let g:lightline = {
       \   'filename': 'LightLineFilename',
       \   'filetype': 'LightLineFiletype',
       \   'ctrlpmark': 'CtrlPMark',
+      \   'git_repo': 'LightLineGitRepo',
+      \   'git_branch': 'LightLineGitBranch',
       \ },
       \ 'component_expand': {
       \   'bufferline': 'LightlineBufferline',
@@ -95,8 +97,6 @@ let g:lightline = {
       \   'readonly': 'LightLineReadonly',
       \   'fileencoding': 'LightLineFileencoding',
       \   'fileformat': 'LightLineFileformat',
-      \   'git_repo': 'LightLineGitRepo',
-      \   'git_branch': 'LightLineGitBranch',
       \ },
       \ 'component_type': {
       \   'bufferline': 'tabsel',
