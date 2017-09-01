@@ -93,6 +93,15 @@ configure_prezto() {
     echo "    Directory ${HOME}/.zfunctions already exists, so we'll use it"
   fi
   link "${DOTFILES_DIRECTORY}/.zprezto/modules/prompt/functions/prompt_knowledgejunkie_setup" ".zfunctions/prompt_knowledgejunkie_setup"
+
+  echo "  Installing custom completions..."
+  if [ ! -e "${HOME}/.zfunctions" ]; then
+    mkdir "${HOME}/.zfunctions"
+  else
+    echo "    Directory ${HOME}/.zfunctions already exists, so we'll use it"
+  fi
+  link "${DOTFILES_DIRECTORY}/.zprezto/modules/completion/_beet" ".zfunctions/_beet"
+  link "${DOTFILES_DIRECTORY}/.zprezto/modules/completion/_docker" ".zfunctions/_docker"
 }
 
 set_default_shell_to_zsh() {
