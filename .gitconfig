@@ -131,6 +131,11 @@
 [diff]
     algorithm = patience
 
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
+
 [push]
     default = current
 
@@ -141,7 +146,7 @@
     branch = auto
     interactive = auto
 
-[color "diff"]
+[Color "diff"]
     meta = 3
     frag = 13
     old  = 1
