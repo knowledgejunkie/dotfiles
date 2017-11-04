@@ -179,6 +179,19 @@ bindsym $mod+r mode "resize"
 
 # Floating window assignments {{{1
 
+# http://mindspill.net/computing/linux-notes/get-window-properties-and-information/
+#
+# To find the property name associated with a program, use:
+#
+#   $ xprop |awk '/WM_CLASS/{print $4}'
+#
+# and click on the client you're interested in. If $4 is not defined,
+# (it usually is for WM_CLASS) try $3.
+#
+#   $ xprop
+#
+# on its own will list all properties associated with the window
+
 for_window [class="Preferences$"] floating enable
 for_window [class="I3-exit" instance="i3-exit"] floating enable
 for_window [class="Eog"] floating enable
@@ -192,6 +205,8 @@ for_window [class="net-sourceforge-dvb-projectx-common-Start"] floating enable
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+
+for_window [title="Warning!"] floating enable
 
 # PrintScreen {{{1
 
