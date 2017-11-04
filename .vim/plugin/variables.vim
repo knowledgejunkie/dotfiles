@@ -54,8 +54,6 @@ let g:ctrlp_user_command = {
             \ 'fallback': "find %s -type f | " . g:ctrlp_filter_greps
             \ }
 
-let g:gitgutter_sign_column_always = 1
-
 let g:gundo_debug = 1
 let g:gundo_preview_bottom = 1
 let g:gundo_tree_statusline = "Gundo"

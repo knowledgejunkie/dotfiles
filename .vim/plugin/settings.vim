@@ -25,7 +25,7 @@ set smarttab
 set shiftwidth=4
 set shiftround
 set autoindent
-set smartindent cinwords=if,elif,else,for,foreach,while,until,try,catch,finally
+set smartindent cinwords=if,elif,elsif,elseif,else,for,foreach,do,while,until,try,catch,finally
 
 set nowrap
 
@@ -67,6 +67,7 @@ set splitright
 set splitbelow
 set synmaxcol=300
 "set colorcolumn=+1
+set signcolumn=yes
 
 set wildmenu
 set wildmode=list:full
