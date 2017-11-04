@@ -1,4 +1,4 @@
-setlocal foldmethod=manual
+setlocal foldmethod=syntax
 setlocal omnifunc=htmlcomplete#CompleteTags
 
 " Use <LocalLeader>f to fold the current tag.
