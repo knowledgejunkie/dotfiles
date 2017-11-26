@@ -56,7 +56,7 @@ commands (as root, or via sudo) as required:
 
 #### i3
 
-    # aptitude install i3 i3blocks rofi compton xautolock
+    # aptitude install i3 i3blocks rofi compton xautolock lightdm light-locker
 
 #### zsh
 
@@ -169,6 +169,15 @@ usually manage to trigger by accident whenever grabbing the mouse.
 To install:
 
     # cp ~/.dotfiles/etc/X11/xorg.conf.d/90-evoluent.conf /etc/X11/xorg.conf.d/90-evoluent.conf
+
+
+### X11 config for Intel GPUs
+
+The included 20-intel.conf file should help eliminate tearing on Intel GPUs.
+
+To install:
+
+# cp ~/.dotfiles/etc/X11/xorg.conf.d/20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
 
 
 ## Fetching remote updates
