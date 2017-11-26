@@ -1,0 +1,35 @@
+# ~/.tmuxinator/xmltv.yml
+
+name: xmltv
+root: ~/dev/src/git/xmltv-cvs
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: cvs
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t dpkg
+
+windows:
+  - cvs:
+      root: ~/dev/src/cvs/xmltv-cvs
+      layout: main-vertical
+      panes:
+        - la
+  - git:
+      root: ~/dev/src/git/xmltv-cvs
+      layout: main-vertical
+      panes:
+        - la
+  - testing:
+      root: ~/dev/src/git/xmltv-tester-debian
+      layout: main-vertical
+      panes:
+        - tree
+  - packaging:
+      root: ~/dev/src/git/debian-packaging/xmltv
+      layout: main-vertical
+      panes:
+        - git l
