@@ -1,0 +1,30 @@
+# ~/.tmuxinator/dotfiles.yml
+
+name: dotfiles
+root: ~/.dotfiles
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: dotfiles
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t dpkg
+
+windows:
+  - dotfiles:
+      root: ~/.dotfiles
+      layout: main-vertical
+      panes:
+        - la
+  - dotfiles-pkg:
+      root: ~/dev/src/git/debian-packaging/knowledgejunkie-dotfiles-deps
+      layout: main-vertical
+      panes:
+        - #empty
+  - packaging-pkg:
+      root: ~/dev/src/git/debian-packaging/knowledgejunkie-packaging-deps
+      layout: main-vertical
+      panes:
+        - #empty
