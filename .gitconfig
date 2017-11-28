@@ -128,6 +128,9 @@
 
     ctags = !.git/hooks/ctags
 
+    authors = shortlog -sne --all
+    committers = shortlog -snce --all
+
 [diff]
     algorithm = patience
 
