@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) Nick Morrott 2016-17
+# Copyright (c) Nick Morrott 2016-2018
 
 DATE=`date +%s`
 
@@ -10,6 +10,7 @@ FONTS_DIRECTORY="${HOME}/.local/share/fonts"
 PREZTO_DIRECTORY="${HOME}/.zprezto"
 I3BLOCKS_DIRECTORY="${HOME}/.i3blocks-contrib"
 BACKUP_DIRECTORY="${HOME}/.dotfiles-backup/${DATE}"
+XDG_CONFIG_DIRECTORY="${HOME}/.config"
 
 #---------------------------- available modules ------------------------------
 available_modules=("i3" "prezto" "tmux" "vim" "irssi" "fonts" "dotfiles")
@@ -157,6 +158,7 @@ download_i3blocks_contrib() {
 
 configure_i3() {
   echo "  Configuring..."
+  mkdir -p ${XDG_CONFIG_DIRECTORY}
   link "${DOTFILES_DIRECTORY}/.config/i3" ".config/i3"
   link "${DOTFILES_DIRECTORY}/.config/i3blocks" ".config/i3blocks"
 }
