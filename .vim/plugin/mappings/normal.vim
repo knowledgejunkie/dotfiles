@@ -95,3 +95,6 @@ nnoremap zO zCzO
 " same for closed folds. zj/zk to move between folds.
 nnoremap [Z zo[z
 nnoremap ]Z zo]z
+
+" Disable default help binding
+nnoremap <F1> <Nop>

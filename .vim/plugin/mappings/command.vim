@@ -7,4 +7,3 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
-

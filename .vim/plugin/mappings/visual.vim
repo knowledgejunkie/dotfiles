@@ -33,3 +33,5 @@ xnoremap & :&&<CR>
 vnoremap ir i[
 vnoremap ar a[
 
+" Disable default help binding
+vnoremap <F1> <Nop>
