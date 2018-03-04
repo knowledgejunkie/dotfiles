@@ -226,8 +226,12 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
 
 # Startup applications {{{1
 
+exec --no-startup-id xset dpms 0 0 0
+exec --no-startup-id xset -dpms
+exec --no-startup-id xset s off
+exec --no-startup-id setterm -blank 0
 exec --no-startup-id light-locker
-exec --no-startup-id xautolock -time 60 -locker "light-locker-command -l" -corners ---- -cornersize 100
+exec --no-startup-id xautolock
 exec --no-startup-id compton -f
 
 # xmodmap {{{1
