@@ -120,12 +120,13 @@ menu=(
   [Halt]="systemctl halt"
   [Lock]="${LOCKSCRIPT:-i3lock --color=${BG_COLOR#"#"}}"
   [Logout]="i3-msg exit"
+  [Switch]="dm-tool switch-to-greeter"
   [Cancel]=""
 )
 menu_nrows=${#menu[@]}
 
 # Menu entries that may trigger a confirmation message
-menu_confirm="Shutdown Reboot Hibernate Suspend Halt Logout"
+menu_confirm="Shutdown Reboot Hibernate Suspend Halt Logout Switch"
 
 launcher_exe=""
 launcher_options=""
