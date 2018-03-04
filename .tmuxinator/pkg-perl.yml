@@ -23,7 +23,7 @@ pre: sudo -E cowbuilder --update --basepath=/var/cache/pbuilder/base-sid.cow --o
 startup_window: vim
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
-# attach: false
+attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t dpkg

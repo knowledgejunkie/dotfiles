@@ -1,10 +1,10 @@
-# ~/.tmuxinator/dotfiles.yml
+# ~/.tmuxinator/insidethex.yml
 
-name: dotfiles
-root: ~/.dotfiles
+name: insidethex
+root: ~/media/insidethex
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-startup_window: dotfiles
+startup_window: transcrp
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 attach: false
@@ -13,18 +13,18 @@ attach: false
 # post: tmux -CC attach -t dpkg
 
 windows:
-  - dotfiles:
-      root: ~/.dotfiles
+  - transcrp:
+      root: ~/media/insidethex
       layout: main-vertical
       panes:
         - la
-  - dotfiles-pkg:
-      root: ~/dev/src/git/debian-packaging/knowledgejunkie-dotfiles-deps
+  - plugin:
+      root: ~/dev/src/git/vim-iwanttobelieve
       layout: main-vertical
       panes:
-        - #empty
-  - packaging-pkg:
-      root: ~/dev/src/git/debian-packaging/knowledgejunkie-packaging-deps
+        - tree
+  - dotfiles:
+      root: ~/.dotfiles
       layout: main-vertical
       panes:
         - #empty
