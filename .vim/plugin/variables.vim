@@ -105,6 +105,19 @@ let g:lightline = {
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left':'', 'right': '' },
+      \ 'mode_map': {
+      \   'n' : 'N',
+      \   'i' : 'I',
+      \   'R' : 'R',
+      \   'v' : 'V',
+      \   'V' : 'V-LINE',
+      \   "\<C-v>": 'V-BLOCK',
+      \   'c' : 'C',
+      \   's' : 'S',
+      \   'S' : 'S-LINE',
+      \   "\<C-s>": 'S-BLOCK',
+      \   't': 'TERM',
+      \ },
       \ }
 
 let g:pymode = 1
