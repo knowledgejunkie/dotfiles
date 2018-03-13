@@ -15,8 +15,6 @@ nnoremap VaB vaBV
 nnoremap <C-Down> :m+1<CR>==
 nnoremap <C-Up> :m-2<CR>==
 
-nnoremap <C-u> gUiw
-
 " Yank from the cursor to the end of the line
 nnoremap Y y$
 
@@ -31,13 +29,6 @@ nnoremap ^ 0
 noremap H ^
 noremap L $
 
-" Easy buffer navigation
-" - clashes with vim-tmux-navigator
-" noremap <C-h> <C-w>h
-" noremap <C-j> <C-w>j
-" noremap <C-k> <C-w>k
-" noremap <C-l> <C-w>l
-
 " Use | and _ to split windows (while preserving original behaviour of [count]bar and [count]_).
 "   https://github.com/airblade/dotvim/blob/master/vimrc
 nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
@@ -47,8 +38,8 @@ nnoremap <expr><silent> _     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>norma
 nnoremap <Tab> <C-W>w
 nnoremap <S-Tab> <C-W>W
 
-" Formatting, TextMate-style
-nnoremap Q gqip
+" Apply macro stored in register q
+nnoremap Q @q
 
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
@@ -63,9 +54,6 @@ nnoremap / /\v
 " Remap comma (used as <Leader>) to preserve reverse char search
 nnoremap \ ,
 
-" Avoid Caps Lock errors
-nnoremap ZZ zz
-
 " Don't move on *
 nnoremap * *<C-o>
 
@@ -76,6 +64,10 @@ nnoremap N Nzzzv
 " Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
+
+" Same when jumping between empty lines
+nnoremap } }zz
+nnoremap { {zz
 
 " gi already moves to "last place you exited insert mode", so we'll map gI to
 " something similar: move to last change
@@ -98,3 +90,11 @@ nnoremap ]Z zo]z
 
 " Disable default help binding
 nnoremap <F1> <Nop>
+
+" Tab handling
+nnoremap <C-t> :tabnew<CR>
+nnoremap ]w :tabnext<CR>
+nnoremap [w :tabprev<CR>
+
+" Visually select the text that was last edited/pasted
+nnoremap gV `[v`]
