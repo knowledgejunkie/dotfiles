@@ -14,8 +14,8 @@ vnoremap ~ y:call setreg('', CycleCase(@"), getregtype(''))<CR>gv""Pgv
 " Easier to type if you don't use the default behaviour.
 vnoremap L g_
 
-" Formatting, TextMate-style
-vnoremap Q gq
+" Play macro across visual selection
+vnoremap Q :norm @q<CR>
 
 " Use sane regexes.
 vnoremap / /\v
@@ -35,3 +35,6 @@ vnoremap ar a[
 
 " Disable default help binding
 vnoremap <F1> <Nop>
+
+" Duplicate a selection
+vnoremap D y'>p
