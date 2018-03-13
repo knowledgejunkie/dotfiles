@@ -50,7 +50,7 @@ set spellfile=~/.vim/custom-dictionary.utf-8.add
 
 set ttyfast
 set lazyredraw
-set showmode
+set noshowmode
 set showcmd
 set visualbell
 set noerrorbells
