@@ -69,7 +69,17 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'tabline': {
       \   'left': [ ['bufferline'] ],
-      \   'right': [ [ ] ],
+      \   'right': [ ['tabs'] ],
+      \ },
+      \ 'tab_component_function': {
+      \   'tabnum': 'lightline#tab#tabnum',
+      \   'tabname': 'LightLineTabName',
+      \   'modified': 'lightline#tab#modified',
+      \   'readonly': 'lightline#tab#readonly',
+      \ },
+      \ 'tab': {
+      \   'active': [ 'tabnum', 'tabname', 'modified' ],
+      \   'inactive': [ 'tabnum', 'tabname', 'modified' ],
       \ },
       \ 'active': {
       \   'left': [ [ 'mode' ], [ 'git_repo', 'git_branch' ], [ 'filename', 'syntastic', 'ctrlpmark', 'paste', 'spell' ] ],
@@ -101,6 +111,7 @@ let g:lightline = {
       \ },
       \ 'component_type': {
       \   'bufferline': 'tabsel',
+      \   'tabs': 'tabsel',
       \   'syntastic': 'error',
       \   'readonly': 'error',
       \   'fileencoding' : 'warning',
