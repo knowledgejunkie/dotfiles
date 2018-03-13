@@ -1,3 +1,10 @@
+" Quick quit
+" noremap <Leader>q :q<cr>
+
+" Quick save
+nnoremap <Leader>w :w<cr>
+inoremap <Leader>w <C-c>:w<cr>
+
 " Sort lines
 nnoremap <Leader>s vip:!sort<cr>
 vnoremap <Leader>s :!sort<cr>
