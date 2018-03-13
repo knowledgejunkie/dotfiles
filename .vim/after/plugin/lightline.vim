@@ -90,6 +90,10 @@ function! LightLineMode()
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+function! LightLineTabName(n) abort
+  return fnamemodify(getcwd(tabpagewinnr(a:n), a:n), ':t')
+endfunction
+
 function! CtrlPMark()
   if expand('%:t') =~ 'ControlP' && has_key(g:lightline, 'ctrlp_item')
     call lightline#link('iR'[g:lightline.ctrlp_regex])
