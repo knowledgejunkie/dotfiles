@@ -67,8 +67,8 @@ interval=once
 
 # Battery indicator
 #
-[battery]
-command=$CONTRIB_SCRIPT_DIR/battery/battery
+[battery-ignoremissing]
+command=~/.config/i3blocks/battery
 markup=pango
 interval=30
 
