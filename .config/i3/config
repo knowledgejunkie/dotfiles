@@ -233,6 +233,7 @@ exec --no-startup-id setterm -blank 0
 exec --no-startup-id light-locker
 exec --no-startup-id xautolock
 exec --no-startup-id compton -f
+exec --no-startup-id udiskie -t
 
 # xmodmap {{{1
 
