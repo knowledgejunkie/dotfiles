@@ -36,8 +36,8 @@ markup=none
 # Must install playerctl and enable MPRIS support in player
 [mediaplayer]
 label= 
-command=$CONTRIB_SCRIPT_DIR/mediaplayer/mediaplayer
-instance=quodlibet
+command=~/.config/i3blocks/mediaplayer
+instance=
 interval=5
 signal=10
 
