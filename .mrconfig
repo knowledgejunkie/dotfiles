@@ -1,3 +1,4 @@
 [dev/src/git/debian-packaging/pkg-perl]
 chain = true
-checkout = git clone ssh://git.debian.org/git/pkg-perl/meta.git pkg-perl
+order = 9
+checkout = git clone git@salsa.debian.org:perl-team/modules/meta.git
