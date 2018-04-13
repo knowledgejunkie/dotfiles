@@ -11,6 +11,7 @@ PREZTO_DIRECTORY="${HOME}/.zprezto"
 I3BLOCKS_DIRECTORY="${HOME}/.i3blocks-contrib"
 BACKUP_DIRECTORY="${HOME}/.dotfiles-backup/${DATE}"
 XDG_CONFIG_DIRECTORY="${HOME}/.config"
+FZF_DIRECTORY="${HOME}/.fzf"
 
 #---------------------------- available modules ------------------------------
 available_modules=("i3" "prezto" "tmux" "vim" "irssi" "fonts" "dotfiles")
@@ -163,6 +164,26 @@ configure_i3() {
   link "${DOTFILES_DIRECTORY}/.config/i3blocks" ".config/i3blocks"
 }
 
+#----------------------------------- fzf -------------------------------------
+
+download_fzf() {
+  if [ ! -e "${FZF_DIRECTORY}" ]; then
+    echo "  Cloning upstream 'fzf' repository..."
+    git clone https://github.com/junegunn/fzf.git "${FZF_DIRECTORY}" >/dev/null
+  else
+    echo "  Updating upstream 'fzf' repository..."
+    cd ${FZF_DIRECTORY}
+    git pull https://github.com/junegunn/fzf.git >/dev/null
+  fi
+}
+
+configure_fzf() {
+  echo "  Configuring..."
+  ${FZF_DIRECTORY}/install --bin
+  link "${DOTFILES_DIRECTORY}/.fzf.zsh" ".fzf.zsh"
+
+}
+
 #---------------------------------- xmonad -----------------------------------
 configure_xmonad() {
   echo "  Configuring..."
@@ -239,6 +260,11 @@ install_tmux() {
 install_i3() {
     download_i3blocks_contrib
     configure_i3
+}
+
+install_fzf() {
+    download_fzf
+    configure_fzf
 }
 
 install_xmonad() {
