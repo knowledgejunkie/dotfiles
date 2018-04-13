@@ -1,0 +1,2 @@
+# deb file:/home/nick/dev/src/git/debian-packaging/build-area unstable main contrib non-free
+deb     [allow-insecure=yes] file:/home/nick/dev/src/git/debian-packaging/build-area ./
