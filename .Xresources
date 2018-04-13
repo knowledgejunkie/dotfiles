@@ -26,10 +26,10 @@
 !-------------------------------------------------------------------------------
 
 Xft.dpi: 96
-Xft.antialias: true
+Xft.antialias: True
 Xft.rgba: rgb
-Xft.hinting: true
-Xft.autohint: false
+Xft.hinting: True
+Xft.autohint: False
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 
@@ -40,23 +40,23 @@ Xft.lcdfilter: lcddefault
 ! Fonts
 URxvt.font: xft:MesloLGS\ Nerd\ Font:pixelsize=16
 URxvt.boldFont: xft:MesloLGS\ Nerd\ Font:pixelsize=16:Bold
-URxvt.allow_bold: true
+URxvt.allow_bold: True
 URxvt.skipBuiltinGlyphs: True
 URxvt.letterSpace: -1
 
 !URxvt.termName: rxvt-unicode
 URxvt.imLocale: en_GB.UTF-8
 URxvt.cutchars: ",;@&*=|?()<>[]{}`'"
-URxvt.pastableTabs: true
+URxvt.pastableTabs: True
 
-URxvt.buffered: true
+URxvt.buffered: True
 URxvt.depth: 24
 URxvt.geometry: 90x30
-URxvt.transparent: false
+URxvt.transparent: False
 URxvt.fading: 40
-URxvt.urgentOnBell: true
-URxvt.visualBell: true
-URxvt.loginShell: true
+URxvt.urgentOnBell: True
+URxvt.visualBell: True
+URxvt.loginShell: True
 URxvt.saveLines: 10000
 URxvt.internalBorder: -1
 URxvt.externalBorder: -1
@@ -81,11 +81,11 @@ URxvt.matcher.button: 1
 URxvt.urlLauncher: firefox
 
 ! Cursor
-URxvt.cursorBlink: false
-URxvt.cursorUnderline: false
+URxvt.cursorBlink: False
+URxvt.cursorUnderline: False
 
 ! Pointer
-URxvt.pointerBlank: true
+URxvt.pointerBlank: True
 
 ! Colours
 #ifdef use_custom_colors
@@ -366,7 +366,7 @@ URxvt*cursorColor: #657b83
 ! rofi
 rofi.lines: 3
 rofi.eh: 2
-rofi.fullscreen: true
+rofi.fullscreen: True
 rofi.padding: 300
 rofi.opacity: 85
 rofi.font: DejaVu\ Sans\ Mono\ 12
