@@ -53,7 +53,7 @@ URxvt.buffered: True
 URxvt.depth: 24
 URxvt.geometry: 90x30
 URxvt.transparent: False
-URxvt.fading: 40
+URxvt.fading: 65
 URxvt.urgentOnBell: True
 URxvt.visualBell: True
 URxvt.loginShell: True
