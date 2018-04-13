@@ -43,6 +43,7 @@ URxvt.boldFont: xft:MesloLGS\ Nerd\ Font:pixelsize=16:Bold
 URxvt.allow_bold: True
 URxvt.skipBuiltinGlyphs: True
 URxvt.letterSpace: -1
+URxvt.lineSpace: 0
 
 !URxvt.termName: rxvt-unicode
 URxvt.imLocale: en_GB.UTF-8
@@ -60,7 +61,6 @@ URxvt.loginShell: True
 URxvt.saveLines: 1000
 URxvt.internalBorder: -1
 URxvt.externalBorder: -1
-URxvt.lineSpace: 0
 
 ! Scrollbar
 URxvt.scrollBar: False
