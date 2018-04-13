@@ -21,11 +21,20 @@ servers = (
   { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
   { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
   { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
-  { 
+  {
+    address = "irc.oftc.net";
+    chatnet = "OFTC";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  {
     address = "chat.freenode.net";
     chatnet = "FreeNode";
-    port = "6667";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_cert = "~/.irssi/certs/freenode.pem";
+    ssl_verify = "no";
+    autoconnect = "yes";
   }
 );
 
@@ -107,6 +116,7 @@ chatnets = {
 channels = (
   { name = "#mythtv"; chatnet = "FreeNode"; autojoin = "Yes"; },
   { name = "#mythtv-users"; chatnet = "FreeNode"; autojoin = "Yes"; },
+  { name = "#xmltv"; chatnet = "FreeNode"; autojoin = "Yes"; },
   { name = "#debian-perl"; chatnet = "OFTC"; autojoin = "Yes"; },
   { name = "#debian"; chatnet = "OFTC"; autojoin = "Yes"; },
   { name = "#debian-uk"; chatnet = "OFTC"; autojoin = "Yes"; }
@@ -283,6 +293,13 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
+    awl_1 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 
@@ -296,14 +313,14 @@ settings = {
     user_name = "knowledgejunkie";
     nick = "knowledgejunkie";
   };
-  "fe-text" = { actlist_sort = "refnum"; };
+  "fe-text" = { actlist_sort = "refnum"; paste_verify_line_count = "0"; };
   "fe-common/core" = {
     term_charset = "utf-8";
     # Solarized
     theme = "solarized-universal";
     hilight_color = "= %R";
-    autolog = "yes";
     autolog_path = "/var/log/irssi/$tag/$0/%Y-%m-%d.log";
+    autolog = "yes";
   };
   "perl/core/scripts" = {
     awl_shared_sbar = "OFF";
@@ -341,12 +358,22 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
+        name = "#xmltv";
+        tag = "FreeNode";
+      }
+    );
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
         name = "#debian-perl";
         tag = "OFTC";
       }
     );
   };
-  6 = {
+  7 = {
     items = (
       {
         type = "CHANNEL";
@@ -356,7 +383,7 @@ windows = {
       }
     );
   };
-  7 = {
+  8 = {
     items = (
       {
         type = "CHANNEL";

@@ -17,6 +17,7 @@ viminfo
 
 # Specific ignores
 .irssi/away.log
+.irssi/certs/
 .irssi/config
 .qt/.*.lock
 .vim/.netrwhist
