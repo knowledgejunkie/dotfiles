@@ -100,6 +100,9 @@ let g:lightline = {
       \ },
       \ }
 
+let g:LoupeClearHighlightMap=0
+let g:LoupeHighlightGroup='IncSearch'
+
 let g:pymode = 1
 let g:pymode_doc = 1
 let g:pymode_doc_key = '<LocalLeader>ds'

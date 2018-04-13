@@ -44,7 +44,7 @@ vnoremap <Leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <Leader>i :set list!<cr>
 
 " Clear match highlighting
-nnoremap <silent> <Leader><space> :noh<cr>:call clearmatches()<cr>
+nmap <silent> <Leader><space> <Plug>(LoupeClearHighlight)
 
 " Toggle "keep current line in the center of the screen" mode
 nnoremap <Leader>C :let &scrolloff=999-&scrolloff<cr>
