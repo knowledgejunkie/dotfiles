@@ -159,6 +159,9 @@ bindsym $mod+f fullscreen toggle
 
 # toggle tiling/floating
 bindsym $mod+t floating toggle
+#
+# toggle sticky mode for the focused container
+bindsym $mod+s sticky toggle
 
 # Window layout {{{1
 
