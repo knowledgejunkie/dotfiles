@@ -121,7 +121,7 @@ assign [class="Thunar"] $WS7
 assign [class="Avidemux3_qt4"] $WS8
 assign [class="net-sourceforge-dvb-projectx-common-Start"] $WS9
 
-# Window management {{{1
+# Window focus {{{1
 
 # change focus
 bindsym $mod+h focus left
@@ -129,11 +129,22 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# change focus between tiling/floating windows
+bindsym $mod+Shift+t focus mode_toggle
+
+# focus the parent/child/most urgent container
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+bindsym $mod+x [urgent=latest] focus
+
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+
+# kill focused window
+bindsym $mod+c kill
 
 # split vertically
 bindsym $mod+minus split v
@@ -141,29 +152,20 @@ bindsym $mod+minus split v
 # split horizontally
 bindsym $mod+backslash split h
 
-# kill focused window
-bindsym $mod+c kill
+# Window toggles {{{1
 
-# enter fullscreen mode for the focused container
+# toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+
+# toggle tiling/floating
+bindsym $mod+t floating toggle
+
+# Window layout {{{1
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+z layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+space layout toggle split
-
-# toggle tiling/floating
-bindsym $mod+t floating toggle
-
-# change focus between tiling/floating windows
-bindsym $mod+Shift+t focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-# focus the child container
-bindsym $mod+Shift+a focus child
-
-bindsym $mod+x [urgent=latest] focus
 
 # Window resizing {{{1
 
