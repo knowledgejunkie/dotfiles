@@ -196,6 +196,7 @@ for_window [class="Preferences$"] floating enable
 for_window [class="I3-exit" instance="i3-exit"] floating enable
 for_window [class="Eog"] floating enable
 for_window [class="Vlc"] floating enable
+for_window [class="mpv"] floating enable
 for_window [class="Dia"] floating enable
 for_window [class="Audacious"] floating enable
 for_window [class="Wine"] floating enable
