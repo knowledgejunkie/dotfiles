@@ -24,39 +24,6 @@ let g:ag_mapping_message = 0
 
 let g:conflict_marker_enable_mappings = 0
 
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_map = '<Leader>f'
-let g:ctrlp_extensions = ['tag']
-let g:ctrlp_by_filename = 1
-let g:ctrlp_switch_buffer = 'E'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_height = 20
-let g:ctrlp_show_hidden = 0
-
-let g:ctrlp_prompt_mappings = {
-            \ 'PrtSelectMove("j")':   ['<C-j>', '<down>'],
-            \ 'PrtSelectMove("k")':   ['<C-k>', '<up>'],
-            \ 'PrtHistory(-1)':       ['<C-n>'],
-            \ 'PrtHistory(1)':        ['<C-p>'],
-            \ 'ToggleFocus()':        ['<C-tab>'],
-            \ }
-
-let g:ctrlp_filter_greps = "".
-            \ "egrep -iv '\\.(" .
-            \ "jar|class|log|so|o|pyc|jpe?g|png|gif|mo|po" .
-            \ ")$' | " .
-            \ "egrep -v '^(\\./)?(" .
-            \ ".git/|.hg/|.svn/|CVS/" .
-            \ ")'"
-
-let g:ctrlp_user_command = {
-            \ 'types': {
-            \ 1: ['.git','cd %s && git ls-files -co --exclude-standard'],
-            \ 2: ['.hg', 'hg --cwd %s locate -I'],
-            \ },
-            \ 'fallback': "find %s -type f | " . g:ctrlp_filter_greps
-            \ }
-
 let g:gundo_debug = 1
 let g:gundo_preview_bottom = 1
 let g:gundo_tree_statusline = "Gundo"
@@ -82,7 +49,7 @@ let g:lightline = {
       \   'inactive': [ 'tabnum', 'tabname', 'modified' ],
       \ },
       \ 'active': {
-      \   'left': [ [ 'mode' ], [ 'git_repo', 'git_branch' ], [ 'filename', 'syntastic', 'ctrlpmark', 'paste', 'spell' ] ],
+      \   'left': [ [ 'mode' ], [ 'git_repo', 'git_branch' ], [ 'filename', 'syntastic', 'paste', 'spell' ] ],
       \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileencoding', 'fileformat', 'filetype', 'readonly' ] ],
       \ },
       \ 'inactive': {
@@ -98,7 +65,6 @@ let g:lightline = {
       \   'mode' : 'LightLineMode',
       \   'filename': 'LightLineFilename',
       \   'filetype': 'LightLineFiletype',
-      \   'ctrlpmark': 'CtrlPMark',
       \   'git_repo': 'LightLineGitRepo',
       \   'git_branch': 'LightLineGitBranch',
       \ },
