@@ -89,13 +89,25 @@ Plug 'bling/vim-bufferline'
 " Disabled {{{2
 " Plug 'nanotech/jellybeans.vim'
 "
+" Plug 'w0rp/ale'
 " Plug 'chrisbra/csv.vim'
 " Plug 'junegunn/vim-easy-align'
+"
 " Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
+"
+" Plug 'mhinz/vim-grepper'
+" Plug 'haya14busa/incsearch.vim'
+" Plug 'jceb/vim-orgmode'
+" Plug 'reedes/vim-pencil'
+" Plug 'sheerun/vim-polyglot'
 " Plug 'edkolev/promptline.vim'
+" Plug 'tpope/vim-rhubarb'
+" Plug 'google/vim-searchindex'
 " Plug 'tpope/vim-sensible'
 " Plug 'mhinz/vim-signify'
+" Plug 'thalesmello/vim-slasher'
+" Plug 'tpope/vim-sleuth'
 " Plug 'rstacruz/sparkup'
 " Plug 'guns/xterm-color-table.vim'
 " }}}
