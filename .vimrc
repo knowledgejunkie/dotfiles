@@ -43,6 +43,8 @@ Plug 'tianon/vim-docker'
 Plug 'svermeulen/vim-easyclip'
 Plug 'duggiefresh/vim-easydir'
 Plug 'int3/vim-extradite'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sjl/gundo.vim'
 Plug 'nathanaelkane/vim-indent-guides'
