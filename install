@@ -14,7 +14,7 @@ XDG_CONFIG_DIRECTORY="${HOME}/.config"
 FZF_DIRECTORY="${HOME}/.fzf"
 
 #---------------------------- available modules ------------------------------
-available_modules=("i3" "prezto" "tmux" "vim" "irssi" "fonts" "dotfiles" "ranger")
+available_modules=("i3" "prezto" "tmux" "vim" "irssi" "fonts" "dotfiles" "ranger" "fzf")
 
 #---------------------------- requested modules ------------------------------
 requested_modules="$@"
@@ -188,7 +188,6 @@ configure_fzf() {
   echo "  Configuring..."
   ${FZF_DIRECTORY}/install --bin
   link "${DOTFILES_DIRECTORY}/.fzf.zsh" ".fzf.zsh"
-
 }
 
 #---------------------------------- xmonad -----------------------------------
