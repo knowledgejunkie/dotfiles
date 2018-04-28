@@ -35,6 +35,8 @@ alias tmi="tmuxinator"
 
 alias v="vim"
 
+alias rg="rg --smart-case --hidden -g '!.git'"
+
 alias collapse="sed -e 's/\s+/ /g'"
 alias count="sort | uniq -c | sort -n"
 alias cuts="cut -d' '"
