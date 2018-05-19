@@ -1,0 +1,15 @@
+# /etc/systemd/system/connman-resume.service
+# Install with `systemctl enable connman-resume.service`
+
+[Unit]
+Description=Restart connman on resume.
+After=suspend.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/bin/systemctl restart connman
+ExecStart=/bin/echo connman-resume: Successfully restarted connman
+
+[Install]
+WantedBy=suspend.target
