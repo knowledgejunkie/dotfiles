@@ -9,5 +9,5 @@ inoremap <F3> <esc>:GitGutterToggle<cr>
 nmap ]c <Plug>GitGutterNextHunk
 nmap [c <Plug>GitGutterPrevHunk
 
-nmap <Leader>hs <Plug>GitGutterStageHunk
-nmap <Leader>hu <Plug>GitGutterUndoHunk
+nmap <Leader>ghs <Plug>GitGutterStageHunk
+nmap <Leader>ghu <Plug>GitGutterUndoHunk
