@@ -144,7 +144,7 @@ let g:syntastic_check_on_wq = 0
 " Personal settings
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_auto_jump = 3
+let g:syntastic_auto_jump = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_ignore_files = ['\m^/usr/']
 let g:syntastic_stl_format = '[%E{Err: %e}%B{, }%W{Warn: %w}]'
