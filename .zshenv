@@ -13,7 +13,7 @@ fi
 
 # i3/Java fixup ----------------------------------------------------------
 export _JAVA_AWT_WM_NONREPARENTING=1
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
 export JAVA_FONTS=/usr/share/fonts/truetype
 
 # i3/libreoffice fixup ---------------------------------------------------
