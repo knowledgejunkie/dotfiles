@@ -20,6 +20,9 @@ export JAVA_FONTS=/usr/share/fonts/truetype
 # export SAL_USE_VCLPLUGIN=gen lowriter
 export SAL_USE_VCLPLUGIN=gtk3 lowriter
 
+# ranger
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 # fzf/fd
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude=.git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

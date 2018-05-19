@@ -26,6 +26,8 @@ alias c="clear"
 alias g="git"
 alias q="quilt"
 
+alias r="ranger"
+
 alias t="tmux"
 alias tls="tmux ls"
 alias ta="tmux attach"
