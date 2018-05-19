@@ -10,4 +10,4 @@ let g:syntastic_cpp_checkers = []
 
 " let g:syntastic_mode_map = {
 "     \ "mode": "active",
-"     \ "passive_filetypes": ["c", "cpp"] }
+"     \ "passive_filetypes": [ "c", "cpp", "java" ] }
