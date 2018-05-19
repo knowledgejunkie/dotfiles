@@ -41,7 +41,10 @@ nnoremap <Leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 vnoremap <Leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 
 " Toggle [i]nvisible characters
-nnoremap <Leader>i :set list!<cr>
+nnoremap <Leader>ic :set list!<cr>
+
+" Toggle indentLine
+nnoremap <Leader>ig :IndentLinesToggle<CR>
 
 " Clear match highlighting
 nmap <silent> <Leader><space> <Plug>(LoupeClearHighlight)

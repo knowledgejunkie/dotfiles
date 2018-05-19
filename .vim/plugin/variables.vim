@@ -32,6 +32,9 @@ if has('python3')
     let g:gundo_prefer_python3 = 1
 endif
 
+let g:indentLine_enabled = 0
+let g:indentLine_char = '│'
+
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'tabline': {
