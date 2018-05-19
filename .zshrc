@@ -98,6 +98,9 @@ export LESS_TERMCAP_se=$(printf '\e[0m')        # leave standout mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m')    # enter underline mode - cyan
 export LESS_TERMCAP_ue=$(printf '\e[0m')        # leave underline mode
 
+# Keybindings ----------------------------------------------------------------
+bindkey \^U backward-kill-line
+
 # Debian ---------------------------------------------------------------------
 export DEBFULLNAME='Nick Morrott'
 export DEBEMAIL='knowledgejunkie@gmail.com'
