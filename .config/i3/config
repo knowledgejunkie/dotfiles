@@ -123,6 +123,9 @@ assign [class="net-sourceforge-dvb-projectx-common-Start"] $WS9
 
 # Window focus {{{1
 
+# Mouse focus
+focus_follows_mouse no
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
