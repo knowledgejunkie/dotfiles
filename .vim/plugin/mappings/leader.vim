@@ -49,9 +49,6 @@ nnoremap <silent> <Leader><space> :noh<cr>:call clearmatches()<cr>
 " Toggle "keep current line in the center of the screen" mode
 nnoremap <Leader>C :let &scrolloff=999-&scrolloff<cr>
 
-" Open a Quickfix window for the last search.
-nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
 " "Focus" the current line.  Basically:
 "
 " 1. Close all folds.
