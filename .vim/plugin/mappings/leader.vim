@@ -43,12 +43,6 @@ vnoremap <Leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 " Toggle [i]nvisible characters
 nnoremap <Leader>ic :set list!<cr>
 
-" Toggle indentLine
-nnoremap <Leader>ig :IndentLinesToggle<CR>
-
-" Clear match highlighting
-nmap <silent> <Leader><space> <Plug>(LoupeClearHighlight)
-
 " Toggle "keep current line in the center of the screen" mode
 nnoremap <Leader>C :let &scrolloff=999-&scrolloff<cr>
 
