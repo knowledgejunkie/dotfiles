@@ -26,7 +26,7 @@ In addition, this repository includes customisation for the following hardware:
 - [Microsoft Natural Ergonomic Keyboard 4000][ergo4000]
 - [Evoluent VM4L mouse][vm4l]
 
-Installation of thees dotfiles is a two-step process:
+Installation of these dotfiles is a two-step process:
 
 - Installation of applications/dependencies
 - Installation of dotfiles/dependencies
@@ -64,7 +64,7 @@ commands (as root, or via sudo) as required:
 
 #### urxvt
 
-    # aptitude install rxvt-unicode-256color
+    # aptitude install rxvt-unicode
 
 #### tmux
 
