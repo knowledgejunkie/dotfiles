@@ -97,7 +97,7 @@ set sidescrolloff=10
 set virtualedit+=block
 
 " replace the default grep program with ag
-set grepprg=ag
+" set grepprg=ag
 
 set foldlevelstart=0
 

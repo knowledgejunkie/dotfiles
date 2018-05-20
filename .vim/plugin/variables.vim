@@ -17,7 +17,11 @@ let g:UltiSnipsJumpForwardTrigger = "<C-Space>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-C-Space>"
 let g:UltiSnipsEditSplit = "vertical"
 
-let g:ag_prg = "ag --vimgrep --hidden"
+if executable('rg')
+    let g:ag_prg = "rg --vimgrep --hidden -g '!.git' --no-heading"
+elseif executable('ag')
+    let g:ag_prg = "ag --vimgrep --hidden"
+endif
 let g:ag_working_path_mode = "r"
 let g:ag_highlight = 1
 let g:ag_mapping_message = 0

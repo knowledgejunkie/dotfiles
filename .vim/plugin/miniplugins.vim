@@ -15,7 +15,11 @@ function! s:AgMotion(type) abort
 
     call s:CopyMotionForType(a:type)
 
-    execute "normal! :Ag! --literal " . shellescape(@@) . "\<cr>"
+    if executable('rg')
+        execute "normal! :Ag! --fixed-strings " . shellescape(@@) . "\<cr>"
+    elseif executable('ag')
+        execute "normal! :Ag! --literal " . shellescape(@@) . "\<cr>"
+    endif
 
     let @@ = reg_save
 endfunction
