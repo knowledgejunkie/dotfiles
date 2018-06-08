@@ -5,9 +5,9 @@
 nnoremap <Leader>w :w<cr>
 inoremap <Leader>w <C-c>:w<cr>
 
-" Sort lines
-nnoremap <Leader>s vip:!sort<cr>
-vnoremap <Leader>s :!sort<cr>
+" Sort lines uniquely
+nnoremap <Leader>s vip:!sort -u<cr>
+vnoremap <Leader>s :!sort -u<cr>
 
 " Easier linewise reselection
 nnoremap <Leader>V V`]
