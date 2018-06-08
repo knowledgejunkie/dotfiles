@@ -89,6 +89,7 @@ set incsearch
 set showmatch
 set hlsearch
 set gdefault
+set nowrapscan
 
 set scrolloff=5
 set sidescroll=1
