@@ -54,13 +54,6 @@ nnoremap / /\v
 " Remap comma (used as <Leader>) to preserve reverse char search
 nnoremap \ ,
 
-" Don't move on *
-nnoremap * *<C-o>
-
-" Keep search matches in the middle of the window.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
 " Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
