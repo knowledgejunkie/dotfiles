@@ -112,7 +112,7 @@ available [here][playerctl]
 
 ### Vim dependencies
 
-JSON pretty-printing support uses json\_pp from the standard perl package.
+JSON pretty-printing support uses json\_xs from the libjson-xs-perl package.
 XML pretty-printing support uses xml\_pp from the xml-twig-tools package.
 
 The [YouCompleteMe][ycm] Vim plugin is compiled with clang semantic completion

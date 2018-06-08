@@ -7,6 +7,6 @@ setlocal tabstop=8
 setlocal expandtab
 setlocal foldmethod=syntax
 
-" tidy/pretty-print via json_pp
-nnoremap <Leader>jt :%!json_pp<cr>
-vnoremap <Leader>jt :!json_pp<cr>
+" tidy/pretty-print via json_xs
+nnoremap <Leader>jt :%!json_xs<cr>
+vnoremap <Leader>jt :!json_xs<cr>
