@@ -106,9 +106,8 @@ automatically backed up into an epoch-dated subdirectory within
 ### i3 dependencies
 
 In order for "now playing" music information to be displayed in i3blocks, it is
-necessary to manually download and install the [playerctl][playerctl] utility. 
-Not yet available in the Debian repos, a deb file of the current release should be
-available [here][playerctl]
+necessary to install the [playerctl][playerctl] utility. On Debian, it is
+packaged for testing/sid in the playerctl package.
 
 ### Vim dependencies
 
@@ -205,7 +204,6 @@ Feel free to follow me on [GitHub][nm-github] and [Twitter][nm-twitter].
 
 [debian]: http://www.debian.org/
 [i3]: https://i3wm.org/
-[playerctl]: https://github.com/acrisci/playerctl/releases/latest
 [zsh]: http://zsh.sourceforge.net/
 [prezto]: https://github.com/sorin-ionescu/prezto
 [urxvt]: http://software.schmorp.de/pkg/rxvt-unicode.html
