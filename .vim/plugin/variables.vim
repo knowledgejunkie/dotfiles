@@ -3,6 +3,8 @@ let g:bufferline_active_buffer_left = ' '
 let g:bufferline_active_buffer_right = ' '
 let g:bufferline_show_bufnr = 0
 
+let g:BufKillCreateMappings = 0
+
 let g:rooter_use_lcd = 1
 let g:rooter_silent_chdir = 1
 
