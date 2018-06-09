@@ -38,7 +38,7 @@
     unstage = reset HEAD
 
     amend = commit --amend --verbose
-    uncommit = reset --soft HEAD^
+    uncommit = reset --soft "HEAD^"
 
     discard-merge = reset --hard HEAD
 
@@ -87,16 +87,15 @@
     delete-remote-branch = push origin --delete
     delete-local-reference-to-remote-branch = branch -rd
 
-    last = diff HEAD^
+    last = diff "HEAD^"
     pending = diff --cached
 
-    history = log --all --graph      --date=short --pretty=format:'%Cred%h%Creset - %Cgreen%cd%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset'
-    ack     = log --all --topo-order --date=short --pretty=format:'%Cred%h%Creset - %Cgreen%cd%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --full-history -S
+    history = log --all --graph --date=short --pretty=format:'%Cred%h%Creset - %Cgreen%cd%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset'
 
-    l   = log -20 --topo-order --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
-    ll  = log     --topo-order --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
-    gl  = log -20 --graph      --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
-    gll = log     --graph      --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
+    l    = log		 -20 --topo-order --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
+    ll   = log 		     --topo-order --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
+    gl   = log 		 -20 --graph      --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
+    gll  = log 		     --graph      --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
 
     la   = log --all -20 --topo-order --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
     lla  = log --all     --topo-order --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset'
@@ -131,6 +130,14 @@
     authors = shortlog -sne --all
     committers = shortlog -snce --all
 
+	files = "!f() { git diff --name-status \"$1^\" \"$1\" ; }; f"
+	mgrep = "!f() { git log --all --regexp-ignore-case --grep=\"$1\" ; } ; f"
+	mlog  = log --all --topo-order --date=short --pretty=format:'%Cred%h%Creset - %Cgreen%cd%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --full-history --regexp-ignore-case --grep
+	cgrep = "!f() { git log --patch --all --regexp-ignore-case -G\"$1\" ; }; f"
+	clog  = log --all --topo-order --date=short --pretty=format:'%Cred%h%Creset - %Cgreen%cd%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --full-history --regexp-ignore-case -G
+	pgrep = "!f() { git log --patch --all --regexp-ignore-case --pickaxe-regex -S\"$1\" ; }; f"
+	plog  = log --all --topo-order --date=short --pretty=format:'%Cred%h%Creset - %Cgreen%cd%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --full-history --regexp-ignore-case --pickaxe-regex -S
+
 [diff]
     algorithm = patience
 
@@ -149,7 +156,7 @@
     branch = auto
     interactive = auto
 
-[Color "diff"]
+[color "diff"]
     meta = 3
     frag = 13
     old  = 1
