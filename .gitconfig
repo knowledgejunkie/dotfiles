@@ -130,7 +130,11 @@
     authors = shortlog -sne --all
     committers = shortlog -snce --all
 
-	files = "!f() { git diff --name-status \"$1^\" \"$1\" ; }; f"
+	files     = "!f() { git diff --name-status \"$1^\" \"$1\" ; }; f"
+
+	whatadded   = "!f() { git log --diff-filter=A -- *\"$1\" ; }; f"
+	whatdeleted = "!f() { git log --diff-filter=D -- *\"$1\" ; }; f"
+
 	mgrep = "!f() { git log --all --regexp-ignore-case --grep=\"$1\" ; } ; f"
 	mlog  = log --all --topo-order --date=short --pretty=format:'%Cred%h%Creset - %Cgreen%cd%Creset -%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --full-history --regexp-ignore-case --grep
 	cgrep = "!f() { git log --patch --all --regexp-ignore-case -G\"$1\" ; }; f"
