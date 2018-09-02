@@ -1,0 +1,19 @@
+Explanation: Pull packaging-related files from unstable
+Package: debhelper devscripts dh-make dpkg-dev git git-buildpackage pristine-tar quilt
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull packaging-related files from unstable
+Package: autopkgtest lintian myrepos duck debmake diffoscope faketime reprotest cme
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull packaging-related files from unstable
+Package: build-essential cowbuilder cowdancer pbuilder dput equivs packaging-dev sbuild schroot piuparts
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull packaging-related files from unstable
+Package: debian-policy debian-reference-en developers-reference maint-guide
+Pin: release a=unstable
+Pin-Priority: 800
