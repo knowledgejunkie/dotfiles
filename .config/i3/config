@@ -209,6 +209,7 @@ for_window [class="Dia"] floating enable
 for_window [class="Audacious"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="Gimp"] floating enable
+for_window [class="Gimp-2.10"] floating disable
 for_window [class="Skype"] floating enable
 for_window [class="net-sourceforge-dvb-projectx-common-Start"] floating enable
 
