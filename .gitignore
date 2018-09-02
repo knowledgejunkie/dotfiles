@@ -16,6 +16,8 @@ tags
 viminfo
 
 # Specific ignores
+.config/ranger/bookmarks
+.config/ranger/history
 .irssi/away.log
 .irssi/certs/
 .irssi/config
