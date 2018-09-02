@@ -154,5 +154,11 @@ _fzf_compgen_dir() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Disable Software Flow Control (XON/XOFF flow control) ----------------------
+
+# In terminals supporting this, C-s enables terminal scroll lock, and C-q
+# disables it
+stty -ixon
+
 # Local Settings -------------------------------------------------------------
 if [[ -s $HOME/.zshrc_local ]] ; then source $HOME/.zshrc_local ; fi
