@@ -47,7 +47,7 @@ section below).
 To install all software and dependencies via the meta-package, change to the
 checkout directory and run (as root, or via sudo):
 
-    # gdebi knowledgejunkie-dotfiles-deps.deb
+    # gdebi knowledgejunkie-dotfiles-deps_<version>.deb
 
 ### Manual
 
