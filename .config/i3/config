@@ -61,7 +61,7 @@ hide_edge_borders smart
 bindsym $mod+Return exec urxvt
 bindsym $mod+d exec rofi -show run
 
-bindsym $mod+Shift+c config reload
+bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart i3
 
 bindsym $mod+q exec "light-locker-command -l"
