@@ -37,6 +37,7 @@ alias tmi="tmuxinator"
 
 alias v="vim"
 
+alias fd="fdfind"
 alias rg="rg --smart-case --hidden -g '!.git'"
 
 alias collapse="sed -e 's/\s+/ /g'"
@@ -51,6 +52,8 @@ alias cdsvn="cd ~/dev/src/svn/"
 alias cdhg="cd ~/dev/src/hg/"
 
 alias cddot="cd ~/.dotfiles/"
+
+alias dirdiff="git diff --no-index"
 
 # Environment variables ------------------------------------------------------
 export PATH="$HOME/.bin:${PATH}"
