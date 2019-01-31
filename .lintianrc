@@ -1,4 +1,5 @@
 LINTIAN_PROFILE = pkg-perl
+# info = yes
 display-info = yes
 display-experimental = yes
 pedantic = yes
