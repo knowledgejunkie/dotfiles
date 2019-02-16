@@ -74,8 +74,8 @@ download_prezto() {
     # Update the upstream Prezto repo if we already have it
     echo "  Updating upstream 'prezto' repository..."
     cd ${PREZTO_DIRECTORY}
-    git pull --recurse-submodules >/dev/null
-    git submodule update --recursive >/dev/null
+    git pull
+    git submodule update --init --recursive >/dev/null
 fi
 }
 
