@@ -207,7 +207,6 @@ symlink_dotfiles() {
   echo "  Configuring symlinks"
   link "${DOTFILES_DIRECTORY}/.Xresources"        ".Xresources"
   link "${DOTFILES_DIRECTORY}/.abcde.conf"        ".abcde.conf"
-  link "${DOTFILES_DIRECTORY}/.agignore"          ".agignore"
   link "${DOTFILES_DIRECTORY}/.bash_aliases"      ".bash_aliases"
   link "${DOTFILES_DIRECTORY}/.caffrc"            ".caffrc"
   link "${DOTFILES_DIRECTORY}/.ctags"             ".ctags"
