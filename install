@@ -217,7 +217,6 @@ symlink_dotfiles() {
   link "${DOTFILES_DIRECTORY}/.gbp.conf"          ".gbp.conf"
   link "${DOTFILES_DIRECTORY}/.gitconfig"         ".gitconfig"
   link "${DOTFILES_DIRECTORY}/.gitignore"         ".gitignore"
-  link "${DOTFILES_DIRECTORY}/.gitk"              ".gitk"
   link "${DOTFILES_DIRECTORY}/.gitmessage"        ".gitmessage"
   link "${DOTFILES_DIRECTORY}/.inputrc"           ".inputrc"
   link "${DOTFILES_DIRECTORY}/.lessfilter"        ".lessfilter"
