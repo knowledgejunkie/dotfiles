@@ -115,6 +115,9 @@ export DEBEMAIL='knowledgejunkie@gmail.com'
 alias cddeb="cd ~/dev/src/git/debian-packaging"
 alias cdpkg="cd ~/dev/src/git/debian-packaging/pkg-perl/packages"
 
+# dpt helper script
+. /usr/share/pkg-perl-tools/lib/posix-lib.sh
+
 # History grep ---------------------------------------------------------------
 hgrep () {
     history 0 | grep -P --color=always "$@" | grep -P --color=always -v "hgrep $@"
