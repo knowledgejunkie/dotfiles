@@ -14,7 +14,36 @@
 #   TODO
 #
 
+# Load dependencies.
+pmodload 'helper'
+
+function prompt_knowledgejunkie_async_callback {
+  zle && zle reset-prompt
+}
+
+function prompt_knowledgejunkie_async_tasks {
+  # from sorin theme
+  #
+  # Initialize async worker. This needs to be done here and not in
+  # prompt_sorin_setup so the git formatting can be overridden by other prompts.
+  if (( !${prompt_prezto_async_init:-0} )); then
+    async_start_worker prompt_knowledgejunkie -n
+    async_register_callback prompt_knowledgejunkie prompt_knowledgejunkie_async_callback
+    typeset -g prompt_prezto_async_init=1
+  fi
+
+  # Kill the old process of slow commands if it is still running.
+  async_flush_jobs prompt_knowledgejunkie
+
+  # Compute slow commands in the background.
+  async_job prompt_knowledgejunkie "$PWD"
+}
+
 function prompt_knowledgejunkie_precmd {
+
+  # Format pwd
+  _prompt_knowledgejunkie_pwd=$(prompt-pwd)
+
   # Check for untracked files or updated submodules since vcs_info does not.
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
     branch_format="(${_prompt_knowledgejunkie_colors[1]} %b %f${_prompt_knowledgejunkie_colors[4]}%f%u%c)"
@@ -29,15 +58,18 @@ function prompt_knowledgejunkie_precmd {
   if (( $+functions[python-info] )); then
     python-info
   fi
+
+  prompt_knowledgejunkie_async_tasks
 }
 
 function prompt_knowledgejunkie_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
-  prompt_opts=(cr percent subst)
+  prompt_opts=(cr percent sp subst)
 
   # Load required functions.
   autoload -Uz add-zsh-hook
+  autoload -Uz async && async
   autoload -Uz vcs_info
 
   # Add hook for calling vcs_info before each command.
@@ -86,9 +118,11 @@ function prompt_knowledgejunkie_setup {
   # Set python-info parameters.
   zstyle ':prezto:module:python:info:virtualenv' format '(%v)'
 
+  _prompt_knowledgejunkie_pwd=''
+
   # Define prompts.
   PROMPT="
-${_prompt_knowledgejunkie_colors[3]}%n%f on ${_prompt_knowledgejunkie_colors[2]}%m%f in ${_prompt_knowledgejunkie_colors[5]}%~%f "'${vcs_info_msg_0_}'"
+${_prompt_knowledgejunkie_colors[3]}%n%f on ${_prompt_knowledgejunkie_colors[2]}%m%f in ${_prompt_knowledgejunkie_colors[5]}"'${_prompt_knowledgejunkie_pwd}'"%f "'${vcs_info_msg_0_}'"
 "'$python_info[virtualenv]'"$ "
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
