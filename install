@@ -225,7 +225,6 @@ symlink_dotfiles() {
   link "${DOTFILES_DIRECTORY}/.mrconfig"          ".mrconfig"
   link "${DOTFILES_DIRECTORY}/.mrtrust"           ".mrtrust"
   link "${DOTFILES_DIRECTORY}/.pbuilderrc"        ".pbuilderrc"
-  link "${DOTFILES_DIRECTORY}/.pentadactylrc"     ".pentadactylrc"
   link "${DOTFILES_DIRECTORY}/.quiltrc"           ".quiltrc"
   link "${DOTFILES_DIRECTORY}/.reportbugrc"       ".reportbugrc"
   link "${DOTFILES_DIRECTORY}/.xbindkeysrc"       ".xbindkeysrc"
