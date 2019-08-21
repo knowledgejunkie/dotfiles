@@ -48,8 +48,6 @@ alias vi="vim -u NONE -N"
 
 alias cdgit="cd ~/dev/src/git/"
 alias cdcvs="cd ~/dev/src/cvs/"
-alias cdsvn="cd ~/dev/src/svn/"
-alias cdhg="cd ~/dev/src/hg/"
 
 alias cddot="cd ~/.dotfiles/"
 
@@ -113,7 +111,10 @@ export DEBFULLNAME='Nick Morrott'
 export DEBEMAIL='knowledgejunkie@gmail.com'
 
 alias cddeb="cd ~/dev/src/git/debian-packaging"
-alias cdpkg="cd ~/dev/src/git/debian-packaging/pkg-perl/packages"
+alias cdperl="cd ~/dev/src/git/debian-packaging/pkg-perl/packages"
+alias cdpy="cd ~/dev/src/git/debian-packaging/pkg-python"
+alias cdmm="cd ~/dev/src/git/debian-packaging/pkg-multimedia"
+alias cdgo="cd ~/dev/src/git/debian-packaging/pkg-go"
 
 # dpt helper script
 . /usr/share/pkg-perl-tools/lib/posix-lib.sh
