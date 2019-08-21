@@ -6,7 +6,7 @@
 # deb http://security.debian.org/ wheezy/updates main contrib non-free
 # deb-src http://security.debian.org/ wheezy/updates main contrib non-free
 
-# wheezy updates, previously known as 'volatile'
+# wheezy updates
 # deb http://ftp.uk.debian.org/debian/ wheezy-updates main contrib non-free
 # deb-src http://ftp.uk.debian.org/debian/ wheezy-updates main contrib non-free
 
@@ -24,7 +24,7 @@
 # deb http://security.debian.org/ jessie/updates main contrib non-free
 # deb-src http://security.debian.org/ jessie/updates main contrib non-free
 
-# jessie updates, previously known as 'volatile'
+# jessie updates
 # deb http://ftp.uk.debian.org/debian/ jessie-updates main contrib non-free
 # deb-src http://ftp.uk.debian.org/debian/ jessie-updates main contrib non-free
 
@@ -42,15 +42,33 @@
 # deb http://security.debian.org/ stretch/updates main contrib non-free
 # deb-src http://security.debian.org/ stretch/updates main contrib non-free
 
+# stretch updates
+# deb http://ftp.uk.debian.org/debian/ stretch-updates main contrib non-free
+# deb-src http://ftp.uk.debian.org/debian/ stretch-updates main contrib non-free
+
 ##############################################################################
 
 # buster
-deb http://ftp.uk.debian.org/debian/ buster main contrib non-free
-deb-src http://ftp.uk.debian.org/debian/ buster main contrib non-free
+# deb http://ftp.uk.debian.org/debian/ buster main contrib non-free
+# deb-src http://ftp.uk.debian.org/debian/ buster main contrib non-free
 
 # buster security
-deb http://security.debian.org/ buster/updates main contrib non-free
-deb-src http://security.debian.org/ buster/updates main contrib non-free
+# deb http://security.debian.org/ buster/updates main contrib non-free
+# deb-src http://security.debian.org/ buster/updates main contrib non-free
+
+# buster updates
+# deb http://ftp.uk.debian.org/debian/ buster-updates main contrib non-free
+# deb-src http://ftp.uk.debian.org/debian/ buster-updates main contrib non-free
+
+##############################################################################
+
+# bullseye
+deb http://ftp.uk.debian.org/debian/ bullseye main contrib non-free
+deb-src http://ftp.uk.debian.org/debian/ bullseye main contrib non-free
+
+# bullseye security
+deb http://security.debian.org/ bullseye-security main contrib non-free
+deb-src http://security.debian.org/ bullseye-security main contrib non-free
 
 ##############################################################################
 
@@ -69,9 +87,9 @@ deb-src http://ftp.uk.debian.org/debian/ sid main contrib non-free
 # deb-multimedia.org
 deb http://www.deb-multimedia.org stretch main non-free
 deb http://www.deb-multimedia.org buster main non-free
+deb http://www.deb-multimedia.org bullseye main non-free
 deb-src http://www.deb-multimedia.org sid main non-free
 
-deb https://apt.dockerproject.org/repo/ debian-stretch main
+# deb https://apt.dockerproject.org/repo/ debian-stretch main
 # deb https://apt.dockerproject.org/repo/ debian-buster main
 # deb-src https://apt.dockerproject.org/repo/ debian-stretch main
-
