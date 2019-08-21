@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+#
+# elfhash
+# (c) Nick Morrott, 2019
+#
+# Generate the elfhash for a given string
+#
+# Usage:
+#
+# ./elfhash foobar
+#
+# Rationale:
+#
+# Generate a suitable MythTV programid for a given programme title
+
+use strict;
+use warnings;
+use utf8;
+use Digest::Elf;
+
+die "Usage: $0 STRING\n" unless @ARGV == 1;
+my $str = $ARGV[0];
+
+print Digest::Elf::elf( $str ) . "\n";
