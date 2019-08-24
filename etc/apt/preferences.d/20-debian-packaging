@@ -1,5 +1,5 @@
 Explanation: Pull packaging-related files from unstable
-Package: debhelper devscripts dh-make dpkg-dev git git-buildpackage pristine-tar quilt
+Package: debhelper devscripts dh-make dpkg-dev libdpkg-perl git git-man gitk git-buildpackage pristine-tar quilt
 Pin: release a=unstable
 Pin-Priority: 800
 
@@ -9,7 +9,42 @@ Pin: release a=unstable
 Pin-Priority: 800
 
 Explanation: Pull packaging-related files from unstable
-Package: build-essential cowbuilder cowdancer pbuilder dput equivs packaging-dev sbuild schroot piuparts
+Package: build-essential cowbuilder cowdancer pbuilder dput equivs packaging-dev sbuild libsbuild-perl schroot piuparts
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull build-essential deps from unstable
+Package: g++ gcc libc6-dev make cpp gfortran
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull gcc/g++ v8 from unstable
+Package: cpp-8 gcc-8-base g++-8 gcc-8 libgcc-8-dev libstdc++-8-dev
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull gcc/g++ v9 deps from unstable
+Package: cpp-9 gcc-9-base g++-9 gcc-9 libgcc-9-dev libstdc++-9-dev
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull gcc/g++ deps from unstable
+Package: libcc1-0 libasan5 libatomic1 libgcc1 libgomp1 libitm1 liblsan0 libmpx2 libquadmath0 libtsan0 libubsan1 libstdc++6 libc6 libc6-dbg libc-dev-bin libobjc4
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull gfortran v8 deps from unstable
+Package: gfortran-8 libgfortran-8-dev libgfortran5
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull gfortran v9 deps from unstable
+Package: gfortran-9 libgfortran-9-dev libgfortran5
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull binutils and deps from unstable
+Package: binutils binutils-x86-64-linux-gnu binutils-multiarch binutils-common libbinutils 
 Pin: release a=unstable
 Pin-Priority: 800
 
