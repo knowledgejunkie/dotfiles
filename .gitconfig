@@ -62,7 +62,7 @@
     ; be the latest commit available, hence the need for the 'git pullall' alias
     pullall = "!f(){ git pull "$@" && git submodule update --init && git submodule foreach git pull origin master; }; f"
 
-    pull-upstream = pull --no-commit --startegy=recursive -X ours
+    pull-upstream = pull --no-commit --strategy=recursive -X ours
     ; lo = pull origin
 
     po = push origin
