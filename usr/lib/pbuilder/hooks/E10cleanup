@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Copyright: 2012 gregor herrmann <gregoa@debian.org>
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the same terms as Perl itself.
+
+pkgavail() {
+	grep -q "Package: $1" /var/lib/apt/lists/*_Packages
+}
+
+EAT=
+if pkgavail eatmydata ; then
+	EAT=eatmydata
+fi
+
+FCNTLLOCK=
+if pkgavail libfile-fcntllock-perl ; then
+	FCNTLLOCK=libfile-fcntllock-perl
+fi
+
+UBUNTU=
+if [ -e /etc/lsb-release ] && grep -q Ubuntu /etc/lsb-release ; then
+	UBUNTU="gpgv gnupg ubuntu-keyring"
+	unset http_proxy
+fi
+
+apt-get -y install debfoster
+debfoster -o MaxPriority=required -o UseRecommends=no \
+	-o InstallCmd="apt-get install -y" -o RemoveCmd="apt-get --purge remove -y" \
+	-f -n \
+	apt aptitude debfoster cowdancer build-essential ccache vim-tiny $EAT $UBUNTU $FCNTLLOCK
+rm -rf var/lib/debfoster/keepers
+apt-get -y purge debfoster     
+apt-get -y autoremove
+
+dpkg --list | grep '^rc\b' | awk '{ print $2 }' | xargs apt-get -y purge

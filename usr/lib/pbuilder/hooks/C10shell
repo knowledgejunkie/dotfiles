@@ -1,0 +1,11 @@
+#!/bin/bash
+# invoke shell if build fails.
+
+# Copyright: 2012 gregor herrmann <gregoa@debian.org>
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the same terms as Perl itself.
+
+apt-get install -y less joe tree
+cd /tmp/buildd/*/debian/..
+/bin/bash < /dev/tty > /dev/tty 2> /dev/tty

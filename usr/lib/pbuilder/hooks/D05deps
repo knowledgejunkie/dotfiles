@@ -1,3 +1,0 @@
-#!/bin/bash
-(cd /home/nick/dev/src/git/debian-packaging/build-area; apt-ftparchive packages . > Packages)
-apt-get update

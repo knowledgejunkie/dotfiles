@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Copyright: 2012-2016 gregor herrmann <gregoa@debian.org>
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the same terms as Perl itself.
+
+# GID must match the one defined by BUILDUSERID into pbuilderrc file
+iptables  -D OUTPUT ! -s 127.0.0.1 ! -d 127.0.0.1 -m owner --gid-owner 1234 -j LOG --log-uid --log-prefix "COWBUILDER: " || true
+iptables  -D OUTPUT ! -s 127.0.0.1 ! -d 127.0.0.1 -m owner --gid-owner 1234 -j REJECT --reject-with icmp-port-unreachable  || true
+ip6tables -D OUTPUT ! -s ::1       ! -d ::1       -m owner --gid-owner 1234 -j LOG --log-uid --log-prefix "COWBUILDER: " || true
+ip6tables -D OUTPUT ! -s ::1       ! -d ::1       -m owner --gid-owner 1234 -j REJECT --reject-with icmp6-port-unreachable || true
+
+dmesg | grep "COWBUILDER: " || true

@@ -1,0 +1,12 @@
+#!/bin/sh
+# Don't rebuild man-db
+
+# Copyright: 2012 gregor herrmann <gregoa@debian.org>
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the same terms as Perl itself.
+
+echo "I: Preseed man-db/auto-update to false"
+debconf-set-selections <<EOF
+man-db man-db/auto-update boolean false
+EOF
