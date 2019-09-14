@@ -53,6 +53,8 @@ alias cddot="cd ~/.dotfiles/"
 
 alias dirdiff="git diff --no-index"
 
+alias abcdef="abcde -c ~/.abcdef.conf"
+
 # Environment variables ------------------------------------------------------
 export PATH="$HOME/.bin:${PATH}"
 
