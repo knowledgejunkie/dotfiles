@@ -379,9 +379,3 @@ rofi.color-active: S_base03,  S_blue,   S_base03,  S_blue,    S_base03
 
 !                  ´background´, ´border´, ´separator´
 rofi.color-window: S_base03,      S_base03,  S_base03
-
-! xautolock
-xautolock.time: 60
-xautolock.locker: "light-locker-command -l"
-xautolock.corners: ----
-xautolock.cornersize: 100
