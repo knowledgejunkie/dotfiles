@@ -240,7 +240,7 @@ exec --no-startup-id xset dpms 0 0 0
 exec --no-startup-id xset -dpms
 exec --no-startup-id xset s off
 exec --no-startup-id setterm -blank 0
-exec --no-startup-id light-locker
+exec --no-startup-id light-locker --lock-on-suspend
 exec --no-startup-id xautolock -time 10 -locker "light-locker-command -l" -corners 00-- -cornersize 100 -cornerdelay 5 -cornerredelay 10
 exec --no-startup-id compton -f
 exec --no-startup-id udiskie -t
