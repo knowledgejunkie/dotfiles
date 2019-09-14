@@ -51,7 +51,7 @@ alias cdcvs="cd ~/dev/src/cvs/"
 
 alias cddot="cd ~/.dotfiles/"
 
-alias dirdiff="git diff --no-index"
+alias diffdir="git diff --no-index"
 
 alias abcdef="abcde -c ~/.abcdef.conf"
 
