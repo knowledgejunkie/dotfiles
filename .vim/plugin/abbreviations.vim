@@ -1,5 +1,6 @@
 iabbrev kj@ knowledgejunkie@gmail.com
 iabbrev nm@ Nick Morrott <knowledgejunkie@gmail.com>
+iabbrev dd@ Nick Morrott <nickm@debian.org>
 
 " Open help in a new tab (vim-scriptease hard codes help in vsplit)
 "   https://stackoverflow.com/questions/7513380/vim-change-x-function-to-delete-buffer-instead-of-save-quit/7515418#7515418
