@@ -10,7 +10,7 @@ ui text
 #offline
 # name and email setting (if non-default)
 realname "Nick Morrott"
-email "knowledgejunkie@gmail.com"
+email "nickm@debian.org"
 # If nothing else works, remove the # at the beginning
 # of the following three lines:
 #no-cc
