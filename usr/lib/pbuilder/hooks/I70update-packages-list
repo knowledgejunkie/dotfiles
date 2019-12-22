@@ -1,4 +1,5 @@
 #!/bin/bash
+#cd /home/nick/dev/src/git/debian-packaging/builds-$DISTRIBUTION
 cd /home/nick/dev/src/git/debian-packaging/build-area
 rm -f Packages.gz
 # /usr/bin/dpkg-scanpackages . | gzip > Packages.gz
