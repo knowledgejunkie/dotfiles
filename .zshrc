@@ -110,7 +110,7 @@ bindkey \^U backward-kill-line
 
 # Debian ---------------------------------------------------------------------
 export DEBFULLNAME='Nick Morrott'
-export DEBEMAIL='knowledgejunkie@gmail.com'
+export DEBEMAIL='nickm@debian.org'
 
 alias cddeb="cd ~/dev/src/git/debian-packaging"
 alias cdperl="cd ~/dev/src/git/debian-packaging/pkg-perl/packages"
