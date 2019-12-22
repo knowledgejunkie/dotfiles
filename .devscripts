@@ -1,0 +1,2 @@
+DEBSIGN_KEYID=22B3D97BE9E898C90FF6523B3E9B59AC6EC2D359
+USCAN_DESTDIR=/home/nick/dev/src/git/debian-packaging/tarballs
