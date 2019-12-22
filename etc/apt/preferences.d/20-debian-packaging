@@ -1,5 +1,10 @@
 Explanation: Pull packaging-related files from unstable
-Package: debhelper devscripts dh-make dpkg-dev libdpkg-perl git git-man gitk git-buildpackage pristine-tar quilt
+Package: debhelper libdebhelper-perl dh-autoreconf dh-strip-nondeterminism devscripts dh-make dpkg-dev libdpkg-perl
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull packaging-related files from unstable
+Package: git git-man gitk git-buildpackage pristine-tar quilt
 Pin: release a=unstable
 Pin-Priority: 800
 
@@ -44,7 +49,7 @@ Pin: release a=unstable
 Pin-Priority: 800
 
 Explanation: Pull binutils and deps from unstable
-Package: binutils binutils-x86-64-linux-gnu binutils-multiarch binutils-common libbinutils 
+Package: binutils binutils-x86-64-linux-gnu binutils-multiarch binutils-common libbinutils
 Pin: release a=unstable
 Pin-Priority: 800
 
