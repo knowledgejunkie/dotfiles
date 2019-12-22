@@ -8,7 +8,7 @@ root: ~/dev/src/git/debian-packaging/pkg-perl/packages
 
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
-pre: sudo -E cowbuilder --update --basepath=/var/cache/pbuilder/base-sid.cow --override-config
+# pre: sudo -E cowbuilder --update --basepath=/var/cache/pbuilder/base-sid.cow --override-config
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -37,7 +37,7 @@ windows:
       layout: main-vertical
       panes:
         - #empty
-  - build-dir:
+  - build:
       layout: main-vertical
       panes:
         - cd ../../build-area

@@ -37,7 +37,7 @@ windows:
       layout: main-vertical
       panes:
         - #empty
-  - build-dir:
+  - build:
       layout: main-vertical
       panes:
         - cd ../build-area
