@@ -23,11 +23,11 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-" Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 " Disabled for patched version: see
 " https://github.com/tpope/vim-vinegar/issues/66
 " https://github.com/tpope/vim-vinegar/issues/74
-Plug 'manasthakur/vim-vinegar'
+" Plug 'manasthakur/vim-vinegar'
 
 Plug 'scrooloose/syntastic'
 
@@ -52,7 +52,7 @@ Plug 'sjl/gundo.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'elzr/vim-json'
 Plug 'tommcdo/vim-lion'
-Plug 'fszymanski/ListToggle.vim'
+Plug 'Valloric/ListToggle'
 Plug 'wincent/loupe'
 Plug 'jwhitley/vim-matchit'
 Plug 'Valloric/MatchTagAlways'
