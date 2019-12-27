@@ -28,3 +28,7 @@ export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude=.git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fdfind --type d --hidden --follow --exclude=.git'
 export FZF_COMPLETION_TRIGGER='##'
+
+# gpodder
+export GPODDER_HOME="$HOME/.gpodder"
+export GPODDER_DOWNLOAD_DIR=/mnt/media_drive/media/podcasts/gpodder
