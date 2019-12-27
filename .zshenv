@@ -35,3 +35,7 @@ export FZF_COMPLETION_TRIGGER='##'
 # gpodder
 export GPODDER_HOME="$HOME/.gpodder"
 export GPODDER_DOWNLOAD_DIR=/mnt/media_drive/media/podcasts/gpodder
+
+# Debian ---------------------------------------------------------------------
+export DEBFULLNAME='Nick Morrott'
+export DEBEMAIL='nickm@debian.org'

@@ -107,9 +107,6 @@ export LESS_TERMCAP_ue=$(printf '\e[0m')        # leave underline mode
 bindkey \^U backward-kill-line
 
 # Debian ---------------------------------------------------------------------
-export DEBFULLNAME='Nick Morrott'
-export DEBEMAIL='nickm@debian.org'
-
 alias cddeb="cd ~/dev/src/git/debian-packaging"
 alias cdperl="cd ~/dev/src/git/debian-packaging/pkg-perl/packages"
 alias cdpy="cd ~/dev/src/git/debian-packaging/pkg-python"
