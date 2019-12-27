@@ -56,8 +56,6 @@ alias diffdir="git diff --no-index"
 alias abcdef="abcde -c ~/.abcdef.conf"
 
 # Environment variables ------------------------------------------------------
-export PATH="$HOME/.bin:${PATH}"
-
 export EDITOR='vim'
 export HISTSIZE=10000
 export HISTFILESIZE=10000

@@ -11,6 +11,9 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
 fi
 
 
+# PATH -------------------------------------------------------------------
+export PATH="$HOME/.bin:${PATH}"
+
 # i3/Java fixup ----------------------------------------------------------
 export _JAVA_AWT_WM_NONREPARENTING=1
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
