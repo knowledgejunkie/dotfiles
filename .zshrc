@@ -21,6 +21,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.dircolors" ]]; then
     eval `dircolors "${ZDOTDIR:-$HOME}/.dircolors"`
 fi
 
+# zsh-autosuggestions
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#586e75"
+
 # Useful aliases -------------------------------------------------------------
 alias c="clear"
 alias g="git"
