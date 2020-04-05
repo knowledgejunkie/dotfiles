@@ -4,7 +4,7 @@ name: xmltv
 root: ~/dev/src/git/xmltv
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-startup_window: git
+startup_window: upstream
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 attach: false
@@ -13,13 +13,18 @@ attach: false
 # post: tmux -CC attach -t dpkg
 
 windows:
-  - git:
+  - upstream:
       root: ~/dev/src/git/xmltv
       layout: main-vertical
       panes:
         - la
   - testing:
       root: ~/dev/src/git/xmltv-tester-debian
+      layout: main-vertical
+      panes:
+        - tree
+  - results:
+      root: ~/tempdir/xmltv-tester
       layout: main-vertical
       panes:
         - tree
