@@ -28,6 +28,7 @@ function! functions#MyFoldText() abort
 endfunction
 
 " Switch to plaintext mode with: call functions#plaintext()
+" (https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.vim/autoload/wincent/functions.vim)
 function! functions#Plaintext() abort
     setlocal nolist
     setlocal spell
