@@ -1,0 +1,9 @@
+# deb-multimedia.org
+#
+# apt-get update
+# apt-get update -oAcquire::AllowInsecureRepositories=true
+# apt-get install deb-multimedia-keyring
+#
+deb https://www.deb-multimedia.org bullseye main non-free
+deb https://www.deb-multimedia.org sid main non-free
+deb-src https://www.deb-multimedia.org sid main non-free
