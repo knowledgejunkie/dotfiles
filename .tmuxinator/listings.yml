@@ -23,3 +23,13 @@ windows:
       layout: main-vertical
       panes:
         - vim augment.rules
+  - mythlink:
+      root: ~/dev/src/git/tv_grab_uk_radiotimes
+      layout: main-vertical
+      panes:
+        - pwd
+  - scripts:
+      root: ~/scripts
+      layout: main-vertical
+      panes:
+        - ls -l
