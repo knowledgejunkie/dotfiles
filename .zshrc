@@ -23,7 +23,8 @@ fi
 
 # zsh-autosuggestions
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#586e75"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"
+# ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
 
 # Useful aliases -------------------------------------------------------------
 alias c="clear"
