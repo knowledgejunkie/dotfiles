@@ -1,0 +1,6 @@
+Aptitude {
+  Keep-Unused-Pattern "";
+  UI {
+    Package-Display-Format "%c%a%M%S %p %40O %Z %v %V";
+  };
+};
