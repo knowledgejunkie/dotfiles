@@ -1,5 +1,5 @@
 Explanation: Pull packaging-related files from unstable
-Package: debhelper libdebhelper-perl dh-autoreconf dh-strip-nondeterminism devscripts dh-make dpkg-dev libdpkg-perl
+Package: debhelper libdebhelper-perl dh-autoreconf dh-strip-nondeterminism libfile-stripnondeterminism-perl devscripts dh-make dpkg-dev libdpkg-perl
 Pin: release a=unstable
 Pin-Priority: 800
 
@@ -49,7 +49,7 @@ Pin: release a=unstable
 Pin-Priority: 800
 
 Explanation: Pull binutils and deps from unstable
-Package: binutils binutils-x86-64-linux-gnu binutils-multiarch binutils-common libbinutils
+Package: binutils binutils-x86-64-linux-gnu binutils-multiarch binutils-common libbinutils libctf0
 Pin: release a=unstable
 Pin-Priority: 800
 

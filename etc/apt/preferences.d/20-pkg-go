@@ -1,0 +1,14 @@
+Explanation: Pull dedicated Go packaging-related packages from unstable
+Package: dh-golang dh-make-golang
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull dedicated Go packages from unstable
+Package: golang-any golang-go golang-src golang-doc golang-golang-x-tools
+Pin: release a=unstable
+Pin-Priority: 800
+
+Explanation: Pull dedicated Go 1.11 packages from unstable
+Package: golang-1.11-go golang-1.11-src golang-1.11-doc
+Pin: release a=unstable
+Pin-Priority: 800

@@ -1,4 +1,4 @@
 Explanation: Pull dedicated Perl packaging-related packages from unstable
-Package: pkg-perl-tools pkg-perl-autotest dh-make-perl libconfig-model-dpkg-perl
+Package: pkg-perl-tools pkg-perl-autopkgtest dh-make-perl libconfig-model-dpkg-perl
 Pin: release a=unstable
 Pin-Priority: 800
