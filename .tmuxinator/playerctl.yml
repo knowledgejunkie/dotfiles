@@ -1,0 +1,30 @@
+# ~/.tmuxinator/playerctl.yml
+
+name: playerctl
+root: ~/dev/src/git/playerctl
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: upstream
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t dpkg
+
+windows:
+  - upstream:
+      root: ~/dev/src/git/playerctl
+      layout: main-vertical
+      panes:
+        - la
+  - packaging:
+      root: ~/dev/src/git/debian-packaging/pkg-multimedia/playerctl
+      layout: main-vertical
+      panes:
+        - git l
+  - autopkgtest:
+      root: ~/dev/src/git/debian-packaging/build-area
+      layout: main-vertical
+      panes:
+        - ls -l
