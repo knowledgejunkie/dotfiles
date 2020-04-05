@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+BUILDDIR="${BUILDDIR:-/tmp/buildd}"
+BUILDRESULT="${BUILDRRESULT:-/home/nick/dev/src/git/debian-packaging/builds-sid}"
+
+apt-get install -y "${APTGETOPT[@]}" lintian pkg-perl-tools
+
+echo "+++ lintian output +++"
+
+echo "BUILDDIR: $BUILDDIR"
+echo "BUILDRESULT: $BUILDRESULT"
+
+#su -c "lintian -I --show-overrides "$BUILDRESULT"/*.changes" - pbuilder
+
+#su -c "lintian -EvIL +pedantic --no-tag-display-limit --profile pkg-perl "$BUILDRESULT"/*.changes" - pbuilder
+su -c "lintian -EvIL +pedantic --no-tag-display-limit --profile pkg-perl "$BUILDRESULT"/"$GBP_CHANGES_FILE"" - pbuilder
+
+# use this version if you don't want lintian to fail the build
+#su -c "lintian -I --show-overrides "$BUILDRESULT"/*.changes; :" - pbuilder
+
+echo "+++ end of lintian output +++"
+
