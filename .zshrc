@@ -16,6 +16,11 @@ fi
 
 # Customize to your needs...
 
+# Options --------------------------------------------------------------------
+
+# https://github.com/ohmyzsh/ohmyzsh/issues/449#issuecomment-6973326
+setopt NO_NOMATCH # fix extendedglob clashing with git's ^
+
 # Solarised dircolors  -------------------------------------------------------
 if [[ -s "${ZDOTDIR:-$HOME}/.dircolors" ]]; then
     eval `dircolors "${ZDOTDIR:-$HOME}/.dircolors"`
