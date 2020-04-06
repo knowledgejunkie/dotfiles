@@ -28,3 +28,28 @@ windows:
       layout: main-vertical
       panes:
         - #empty
+  - sysadmin-pkg:
+      root: ~/dev/src/git/debian-packaging/knowledgejunkie-sysadmin-deps
+      layout: main-vertical
+      panes:
+        - #empty
+  - preferred-pkg:
+      root: ~/dev/src/git/debian-packaging/knowledgejunkie-preferredapps-deps
+      layout: main-vertical
+      panes:
+        - #empty
+  - apt-pkg:
+      root: ~/dev/src/git/debian-packaging/knowledgejunkie-apt-source
+      layout: main-vertical
+      panes:
+        - #empty
+  - deps-all-pkg:
+      root: ~/dev/src/git/debian-packaging/knowledgejunkie-deps-all
+      layout: main-vertical
+      panes:
+        - #empty
+  - build-area:
+      root: ~/dev/src/git/debian-packaging/build-area
+      layout: main-vertical
+      panes:
+        - #empty
