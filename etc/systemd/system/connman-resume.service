@@ -3,6 +3,7 @@
 
 [Unit]
 Description=Restart connman on resume.
+Documentation=https://wiki.archlinux.org/index.php/Talk:ConnMan
 After=suspend.target
 
 [Service]
