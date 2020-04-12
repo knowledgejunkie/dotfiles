@@ -6,6 +6,7 @@
 ;   http://stackoverflow.com/questions/4611512/is-there-a-way-to-make-git-pull-automatically-update-submodules
 ;   http://mkoby.com/2011/05/02/using-git-submodules/
 ;   http://stackoverflow.com/questions/12255028/how-to-show-git-colors-on-zsh
+;   https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
 
 [user]
     name = Nick Morrott
@@ -105,6 +106,7 @@
     log-merge = !git log $(git merge-base --octopus $(git log -1 --merges --pretty=format:%P $1))..$1 --graph --pretty=oneline --abbrev-commit --boundary
     log-all   = !git log --graph --decorate --pretty=oneline --abbrev-commit --all $(git fsck --no-reflogs | grep commit | cut -d\\ -f3)
 
+    lb   = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
     lf   = log --name-only
     lp   = log --patch --patience
     lw   = whatchanged
