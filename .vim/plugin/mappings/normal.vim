@@ -82,7 +82,7 @@ nnoremap [Z zo[z
 nnoremap ]Z zo]z
 
 " Disable default help binding
-nnoremap <F1> <Nop>
+" nnoremap <F1> <Nop>
 
 " Tab handling
 nnoremap <C-t> :tabnew<CR>

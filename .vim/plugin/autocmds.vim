@@ -33,3 +33,6 @@ au InsertLeave * :set hlsearch
 "       \ endif
 
 au QuickfixCmdPost * Qfsort
+
+au! User GoyoEnter nested call functions#Goyo_Enter()
+au! User GoyoLeave nested call functions#Goyo_Leave()

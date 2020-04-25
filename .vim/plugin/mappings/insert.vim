@@ -42,4 +42,4 @@ inoremap <C-f> <C-x><C-f>
 inoremap <C-]> <C-x><C-]>
 
 " Disable default help binding
-inoremap <F1> <Nop>
+" inoremap <F1> <Nop>

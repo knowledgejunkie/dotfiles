@@ -1,6 +1,6 @@
 " A quicklist of F-key bindings userd elsewhere in this file
 "
-" <F1>
+" <F1>  Lights off (Goyo)
 " <F2>  Tasklist
 " <F3>  GitGutter toggle
 " <F4>  Run current file

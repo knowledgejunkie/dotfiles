@@ -49,3 +49,34 @@ function! functions#Plaintext() abort
         autocmd BufWinLeave <buffer> call clearmatches()
     endif
 endfunction
+
+function! functions#Goyo_Enter()
+    if executable('tmux') && strlen($TMUX)
+        silent !tmux set status off
+        silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+    endif
+    silent !i3-msg bar mode invisible
+    set nowrap
+    set nonumber
+    set norelativenumber
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+    Limelight
+
+endfunction
+
+function! functions#Goyo_Leave()
+    if executable('tmux') && strlen($TMUX)
+        silent !tmux set status on
+        silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+    endif
+    silent !i3-msg bar mode dock
+    set wrap
+    set relativenumber
+    set showmode
+    set showcmd
+    set scrolloff=5
+    Limelight!
+
+endfunction

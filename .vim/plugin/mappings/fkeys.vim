@@ -1,3 +1,6 @@
+" Lights off
+nnoremap <silent> <F1> :Goyo<CR>
+
 " Execute current file
 map <F4> <Esc>:w<CR>:!%:p<CR>
 

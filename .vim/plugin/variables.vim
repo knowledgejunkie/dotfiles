@@ -25,6 +25,10 @@ let g:ag_mapping_message = 0
 
 let g:conflict_marker_enable_mappings = 0
 
+let g:goyo_width = 136
+let g:goyo_height = "85%"
+let g:goyo_linenr = 0
+
 let g:gundo_debug = 1
 let g:gundo_preview_bottom = 1
 let g:gundo_tree_statusline = "Gundo"
@@ -104,6 +108,23 @@ let g:lightline = {
       \   't': 'TERM',
       \ },
       \ }
+
+" Color name (:help cterm-colors) or ANSI code
+" For solarized/flattened, see https://github.com/junegunn/limelight.vim/issues/27
+let g:limelight_conceal_ctermfg = 238
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = '#444444'
+" let g:limelight_default_coefficient = '0.7'
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 0
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+" let g:limelight_bop = '^\s'
+" let g:limelight_eop = '\ze\n^\s'
+" Highlighting priority (defaualt: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
 
 let g:LoupeClearHighlightMap=0
 let g:LoupeHighlightGroup='IncSearch'
