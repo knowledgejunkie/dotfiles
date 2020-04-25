@@ -7,13 +7,6 @@ set showtabline=2
 "
 " Also see https://github.com/itchyny/lightline.vim/issues/87
 
-" Sort of emulate vim-airline's buffer list using vim-bufferline
-" See https://github.com/itchyny/lightline.vim/issues/155
-function! LightlineBufferline()
-  call bufferline#refresh_status()
-  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
-endfunction
-
 function! LightLineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
@@ -90,6 +83,12 @@ endfunction
 
 function! LightLineTabName(n) abort
   return fnamemodify(getcwd(tabpagewinnr(a:n), a:n), ':t')
+endfunction
+
+" Use natural l-to-r sorting for tabs when placed on right
+" See https://github.com/itchyny/lightline.vim/issues/440
+function! LightlineTabRight()
+  return reverse(lightline#tabs())
 endfunction
 
 let g:tagbar_status_func = 'TagbarStatusFunc'

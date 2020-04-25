@@ -86,7 +86,7 @@ Plug 'knowledgejunkie/vim-xmltvfixup'
 Plug 'knowledgejunkie/vim-xmltvconfig'
 
 Plug 'itchyny/lightline.vim'
-Plug 'bling/vim-bufferline'
+Plug 'mengelbrecht/lightline-bufferline'
 
 " Disabled {{{2
 " Plug 'nanotech/jellybeans.vim'

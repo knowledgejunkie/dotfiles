@@ -1,8 +1,3 @@
-let g:bufferline_echo = 0
-let g:bufferline_active_buffer_left = ' '
-let g:bufferline_active_buffer_right = ' '
-let g:bufferline_show_bufnr = 0
-
 let g:BufKillCreateMappings = 0
 
 let g:rooter_use_lcd = 1
@@ -44,8 +39,8 @@ let g:indentLine_char = '│'
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'tabline': {
-      \   'left': [ ['bufferline'] ],
-      \   'right': [ ['tabs'] ],
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['rtabs'] ],
       \ },
       \ 'tab_component_function': {
       \   'tabnum': 'lightline#tab#tabnum',
@@ -78,15 +73,16 @@ let g:lightline = {
       \   'git_branch': 'LightLineGitBranch',
       \ },
       \ 'component_expand': {
-      \   'bufferline': 'LightlineBufferline',
+      \   'buffers': 'lightline#bufferline#buffers',
+      \   'rtabs': 'LightlineTabRight',
       \   'syntastic': 'LightLineSyntasticStatus',
       \   'readonly': 'LightLineReadonly',
       \   'fileencoding': 'LightLineFileencoding',
       \   'fileformat': 'LightLineFileformat',
       \ },
       \ 'component_type': {
-      \   'bufferline': 'tabsel',
-      \   'tabs': 'tabsel',
+      \   'buffers': 'tabsel',
+      \   'rtabs': 'tabsel',
       \   'syntastic': 'error',
       \   'readonly': 'error',
       \   'fileencoding' : 'warning',
