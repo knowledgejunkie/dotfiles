@@ -8,4 +8,5 @@
 " <F6>  Numbering toggle
 " <F7>  Spelling toggle
 " <F8>  Show highlight groups
+" <F9>  Hidden characters toggle
 " <F10> Tagbar toggle

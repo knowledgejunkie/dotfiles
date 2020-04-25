@@ -57,7 +57,7 @@ set noerrorbells
 set ruler
 set number
 set numberwidth=5
-set list
+set nolist
 set listchars=tab:▸·,extends:…,precedes:…,nbsp:⎵,trail:·,eol:⏎,
 set showbreak=↪
 set fillchars=diff:⣿,vert:│

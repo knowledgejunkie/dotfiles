@@ -12,3 +12,7 @@ nnoremap <F8> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> t
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+" toggle display of hidden characters
+inoremap <silent> <F9> <Esc>:setlocal list!<CR>a
+nnoremap <silent> <F9> :setlocal list!<CR>
+
