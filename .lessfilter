@@ -50,7 +50,7 @@ if [[ "$lexer" == text ]]; then
         text/x-shellscript) lexer=sh;;
         text/x-tcl) lexer=tcl;;
         text/x-tex|text/x-texinfo) lexer=latex;; # FIXME: texinfo really needs its own lexer
-        
+
         # Types that file outputs which pygmentize didn't support as of file 5.20, pygments 2.0
         # text/calendar
         # text/inf
@@ -63,7 +63,7 @@ if [[ "$lexer" == text ]]; then
         # text/x-m4
         # text/x-vcard
         # text/x-xmcd
-        
+
         text/plain)  # special filenames. TODO: insert more
             case $(basename "$file") in
                 .zshrc) lexer=sh;;
