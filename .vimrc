@@ -7,7 +7,7 @@ let maplocalleader = ","
 call plug#begin('~/.vim/plugged')
 
 " Enabled {{{2
-Plug 'knowledgejunkie/vim-colors-solarized'
+Plug 'knowledgejunkie/vim-colors-flattened'
 
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-commentary'
@@ -118,8 +118,7 @@ call plug#end()
 " Color scheme ----------------------------------------------------------- {{{1
 
 syntax on
-colorscheme solarized
-set background=dark
+colorscheme flattened_dark
 
 " Machine-specific .vimrc overrides -------------------------------------- {{{1
 

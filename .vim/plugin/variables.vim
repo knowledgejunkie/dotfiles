@@ -41,7 +41,7 @@ let g:indentLine_enabled = 0
 let g:indentLine_char = '│'
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'flattened_dark',
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
       \   'right': [ ['rtabs'] ],
