@@ -97,7 +97,7 @@ if [[ $encoding == "binary" ]]; then
     encoding=latin1
 fi
 if [[ -n "$lexer" ]]; then
-    reader="pygmentize -O inencoding=$encoding $PYGMENTIZE_OPTS $options -l $lexer"
+    reader="pygmentize -f $PYGMENTIZE_FORMATTER -O inencoding=$encoding -P $PYGMENTIZE_OPTS $options -l $lexer"
 fi
 
 # If we found a reader, run it
