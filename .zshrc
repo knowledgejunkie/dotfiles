@@ -128,5 +128,8 @@ _fzf_compgen_dir() {
 # disables it
 stty -ixon
 
+# Pretty ---------------------------------------------------------------------
+pretty() { pygmentize -g -f "$PYGMENTIZE_FORMATTER" -P "$PYGMENTIZE_OPTS" "$*" | less }
+
 # Local Settings -------------------------------------------------------------
 if [[ -s $HOME/.zshrc_local ]] ; then source $HOME/.zshrc_local ; fi
