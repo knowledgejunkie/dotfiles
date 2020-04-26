@@ -3,8 +3,11 @@
 # by Reuben Thomas 2008-2016
 # This program is in the public domain.
 
-# Retrieved from:
+# Initial version retrieved from:
 # https://bitbucket.org/birkenfeld/pygments-main/raw/b144e55d53eaae48345cb198d8c3134c9d198313/external/autopygmentize
+
+# Contributors:
+# Nick Morrott 2020
 
 # Strategy: first see if pygmentize can find a lexer; if not, ask file; if that finds nothing, fail
 # Set the environment variable PYGMENTIZE_OPTS or pass options before the file path to configure pygments.
