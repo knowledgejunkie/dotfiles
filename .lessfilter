@@ -17,6 +17,25 @@
 file="$1"
 file_common_opts="--brief --dereference"
 
+# Ignore filetypes handled by /usr/bin/less{file,pipe} on Debian/Ubuntu
+case $(basename "$file") in
+    # compressed files
+    *.a|*.arj|*.tar.bz2|*.bz|*.bz2|*.lha|*.lzh|*.tar.lz|*.tlz|*.lz|*.tar.lzma|*.lzma|*.rar|*.r[0-9][0-9]|*.tar.gz|*.tgz|*.tar.z|*.tar.dz|*.tar.xz|*.txz|*.xz|*.gz|*.z|*.dz|*.tar|*.jar|*.war|*.ear|*.xpi|*.zip|*.7z|*.zoo)
+        exit 1; ;;
+    # package files
+    *.deb|*.udeb|*.ddeb|*.ipk|*.rpm|*.snap|*.egg|*.whl)
+        exit 1; ;;
+    # documents
+    *.doc|*.pdf)
+        exit 1; ;;
+    # images
+    *.gif|*.jpeg|*.jpg|*.pcd|*.png|*.tga|*.tiff|*.tif)
+        exit 1; ;;
+    # disk images
+    *.iso|*.bin|*.raw)
+        exit 1; ;;
+esac
+
 lexer=$(pygmentize -N "$file")
 if [[ "$lexer" == text ]]; then
     unset lexer
