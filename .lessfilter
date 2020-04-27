@@ -37,6 +37,12 @@ case $(basename "$file") in
 esac
 
 lexer=$(pygmentize -N "$file")
+
+# Handle misdetection of MySQL dumps
+if [[ "$lexer" == tsql ]]; then
+    lexer=mysql
+fi
+
 if [[ "$lexer" == text ]]; then
     unset lexer
     case $(file --mime-type --uncompress $file_common_opts "$file") in
